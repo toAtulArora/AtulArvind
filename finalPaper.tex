@@ -125,7 +125,7 @@ Work and results: In \secref{context} we establish a notation and definitions to
 The notation used henceforth has been defined below.
 
 
-\begin{notn} (a) $\psi\in\mathcal{H}$ would typically represent the quantum mechanical state of the system (assumed pure), residing in the Hilbert space $\mathcal{H}$, (b) $\hat{\mathcal{H}}$ is defined to mean $\mathcal{H}\otimes\mathcal{H}^{\dagger}$ (i.e. the set of Hermitian operators, observables, on the space $\mathcal{H}$), (c) $[\mathcal{H}]$ is defined to mean $(\mathcal{H},\,\mathbb{R}^{\otimes})$, which represents the state of the system including hidden variables, (d) $[\psi]\in[\mathcal{H}]$ will represent the state of the system, including hidden variables, (e) a prediction map is $m:\hat{\mathcal{H}},[\mathcal{H}]\to\mathbb{R}$, (f) a sequence map is $s:\hat{\mathcal{H}},[\mathcal{H}],\mathbb{R}\to[\mathcal{H}]$, (g) the set of all experimental setups is denoted by $\mathcal{E}$, (h) a setup map is $e:\hat{\mathcal{H}}\to\mathcal{E}$, (i) number of observables is represented by $N \in \mathbb{Z}^+$, (j) $f$ is an arbitrary map from $\hat{\mathcal{H}}^{\otimes N}\to \hat{\mathcal{H}}$ constructed using multiplication and addition of the observables, and multiplication with complex numbers\footnote{Strictly, the map $f$ would depend on the operators to ensure preservation of Hermiticity; thus a given $f$ will be defined only for a subset of $\hat {\mathcal H}^{\otimes N}$.}, (k) $\tilde{f}$ is a map from $\mathbb{R}^{\otimes N} \to \mathbb{R}$ constructed by replacing observables in $f$ with real numbers\footnote{$\tilde f$ constructed this way should strictly be written as $\tilde f:\mathbb{R}^{\otimes N} \to \mathbb{C}$.}.
+\begin{notn} (a) $\psi\in\mathcal{H}$ would typically represent the quantum mechanical state of the system (assumed pure), residing in the Hilbert space $\mathcal{H}$, (b) $\hat{\mathcal{H}}$ is defined to mean $\mathcal{H}\otimes\mathcal{H}^{\dagger}$ (i.e. the set of Hermitian operators, observables, on the space $\mathcal{H}$), (c) $[\mathcal{H}]$ is defined to mean $(\mathcal{H},\,\mathbb{R}^{\otimes})$, which represents the state of the system including hidden variables, (d) $[\psi]\in[\mathcal{H}]$ will represent the state of the system, including hidden variables, (e) a prediction map is $m:\hat{\mathcal{H}},[\mathcal{H}]\to\mathbb{R}$, (f) a sequence map is $s:\hat{\mathcal{H}},[\mathcal{H}],\mathbb{R}\to[\mathcal{H}]$, (g) the set of all experimental setups is denoted by $\mathcal{E}$, (h) a setup map is $e:\hat{\mathcal{H}}\to\mathcal{E}$, (i) number of observables is represented by $N \in \mathbb{Z}^+$, (j) $f$ is an arbitrary map from $\hat{\mathcal{H}}^{\otimes N}\to \hat{\mathcal{H}}$ constructed using multiplication and addition of the observables, and multiplication with complex numbers\footnote{Strictly, the map $f$ would depend on the operators to ensure preservation of Hermiticity; thus a given $f$ will be defined only for a subset of $\hat {\mathcal H}^{\otimes N}$.}, (k) $\tilde{f}$ is a map from $\mathbb{R}^{\otimes N} \to \mathbb{R}$ constructed by replacing observables in $f$ with real numbers\footnote{$\tilde f$ constructed this way should be written as $\tilde f:\mathbb{R}^{\otimes N} \to \mathbb{C}$. In fact the values should be restricted to the spectrum of the associated observables.}.
 \end{notn}
 
 In addition to the notation, we use the following definition of non-contextuality.
@@ -135,7 +135,7 @@ A theory is non-contextual, if it provides a map $m:\hat{\mathcal{H}},[\mathcal{
 A map is non-contextual if it is of the form $m:\hat{\mathcal{H}},[\mathcal{H}]\to\mathbb{R}$; prediction maps are non-contextual.
 \end{rem}
 
-In the literature broader definitions have been suggested which declare a larger set of theories as non-contextual. For our purposes however, this restricted definition will suffice. The term contextual is used to suggest that the value an operator takes might depend on which other compatible observable it is measured with. Since quantum mechanics (QM) yields deterministic results only in specific situations, it is imperative to analyse the meaning of contextuality by `completing' QM. Hidden variable theories do precisely this and we have at our disposal the heretic theory of Bohm. Circumventing the details of the theory, we note its salient feature; with each particle, one associates precisely defined $(q,p)$ and a wavefunction $\psi$. Consequently, the outcomes of all experiment are predictable, granted the initial conditions of the system and the apparatus are known (the `hidden variables'). The essence of Bohmian Mechanics relevant here can be captured by the following theorem.
+In the literature broader definitions have been suggested which declare a larger set of theories as non-contextual. For our purposes however, this restricted definition will suffice. The term contextual is used to suggest that the value an operator takes might depend on which other compatible observable it is measured with. Since quantum mechanics (QM) yields deterministic results only in specific situations, it is imperative to analyse the meaning of contextuality by `completing' QM. Hidden variable theories do precisely this and we have at our disposal the heretic theory of Bohm. Circumventing the details of the theory, we note its salient feature; with each particle, one associates precisely defined $(q,p)$ and a wavefunction $\psi$. The construction is such that the particles are guided by the wavefunction. Consequently, the outcomes of all experiment are predictable, granted the initial conditions of the system and the apparatus are known (the `hidden variables'). The essence of Bohmian Mechanics relevant here can be captured by the following theorem.
 
 \begin{thm}
 $\exists$ a (Bohmian) map $m_{B}:\hat{\mathcal{H}},[\mathcal{H}],\mathcal{E}\to\mathbb{R}$,
@@ -173,7 +173,7 @@ consider the state of two spin half particles, $\left|11\right\rangle :=\left|1\
 written in the computational basis, $\hat{B}_{1}=\hat{\sigma}_{x}\otimes\hat{\sigma}_{x}$,
 $\hat{B}_{2}=\hat{\sigma}_{y}\otimes\hat{\sigma}_{y}$ and $\hat{C}=\hat{B}_{1}\hat{B}_{2}=-\hat{\sigma}_{z}\otimes\hat{\sigma}_{z}$,
 we have $m(\hat{C})=-1$ while $m(\hat{B}_{1})=\pm1$ and $m(\hat{B}_{2})=\pm1$,
-independently, according to QM, with probability half. Antithetically it is clear that if one first measures
+independently, according to QM, with probability half. Here multiplicativity doesn't seem to hold. Antithetically it is clear that if one first measures
 $\hat{B}_{1}$ and subsequently measures $\hat{B}_{2}$, then the
 product of the results must be $-1$. This is consistent with measuring
 $\hat{C}$. To capture this property we define \emph{sequential multiplicativity}
@@ -272,9 +272,7 @@ which are non-\emph{multiplicative} might be consistent with QM. To
 that end, in the following section we first show that this is indeed
 the case by constructing an explicit model and supplement it by removing contextuality from Bohmian Mechanics.
 
-Before proceeding we note, however, that QM enforces \emph{sequential
-multiplicativity} at least in certain cases. This result will be used
-to assess accuracy of any hidden variable model we might propose.
+Before proceeding we note, however, that QM can enforce \emph{sequential multiplicativity}. This result will be used to assess accuracy of any hidden variable model we might propose.
 \begin{prop*}
 Let the system be in a state, s.t. measurement of $\hat{C}$ yields
 repeatable results (same result each time). Then according to QM,
@@ -682,7 +680,7 @@ consistent with QM.
 
 \begin{proof}
 GHZ construction ($\left|\mathcal{H}\right|\ge6$): Consider three
-observers with one particle each. Each observer can measure two properties,
+observers with one spin half particle each. Each observer can measure two properties,
 call them X and Y, with outcomes $\pm1$. The associated operators
 are $\hat{\sigma}_{x}$ and $\hat{\sigma}_{y}$. The state of the
 system is $\sqrt{2}\left|\chi_{G}\right\rangle =\left|000\right\rangle -\left|111\right\rangle $
