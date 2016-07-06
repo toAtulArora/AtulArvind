@@ -92,7 +92,7 @@
 
 \affiliation{Indian Institute of Science Education and Research (IISER), Mohali}
 \begin{abstract}
-We propose a non-contextual hidden variable model, consistent with all predictions of QM (for discrete spaces). We reconsider the no-go theorems on hidden variables and conclude that the notion of contextuality is not a necessary feature of quantum mechanics. Motivated by consistency requirements between Bohmian Mechanics and the said theorems, we provide an alternative view. This is accomplished by identifying a new classical property, we call `multiplicativity'. Advantages of this view are illustrated by considering the implications of non-multiplicativity to non-locality. %and its relation to contextuality.
+We propose a non-contextual hidden variable model, consistent with all predictions of QM (for discrete spaces). We reconsider the no-go theorems on hidden variables and conclude that the notion of contextuality is not a necessary feature of quantum mechanics. Motivated by consistency requirements between Bohmian Mechanics and the said theorems, we provide an alternative view. This is accomplished by identifying a new classical property, we call `multiplicativity'. Advantages of this view are illustrated by considering the implications of non-multiplicativity to non-locality.%and its relation to contextuality.
 \end{abstract}
 \maketitle
 
@@ -183,15 +183,16 @@ aforesaid.
 \begin{thm}
 Let a map $m:\hat{\mathcal{H}}\to\mathbb{R}$, be s.t. (a) $m(\hat{\mathbb{I}})=1$,
 (b) $m(f(\hat{A}_{1},\hat{A}_{2},\dots))=\tilde f(m(\hat{A}_{1}),m(\hat{A}_{2}),\dots)$,
-where $\hat{A}_{i}$ are arbitrary Hermitian operators. If $m$ is assumed to describe the outcomes of measurements, then no $m$ exists which is consistent with all predictions of Quantum Mechanics.\end{thm}
+where $\hat{A}_{i}$ are arbitrary Hermitian operators. If $m$ is assumed to describe the outcomes of measurements, then no $m$ exists which is consistent with all predictions of Quantum Mechanics.\label{thm:det} \end{thm}
 Here $m$ maybe viewed as a specific class of prediction maps, that
 implicitly depends on the state $[\psi]$. It follows then that the
 maps ruled out by the theorem are non-contextual. The set of maps
 ruled out, however, can be enlarged by imposing fewer restrictions
 on it. This is achieved by the following theorem.
+
 \begin{thm}
 Let a map $m:\hat{\mathcal{H}}\to\mathbb{R}$, be s.t. (a) $m(\hat{\mathbb{I}})=1$,
-(b) $m(f(\hat{B}_{1},\hat{B}_{2},\dots))=f(m(\hat{B}_{1}),m(\hat{B}_{2}),\dots)$,
+(b) $m(f(\hat{B}_{1},\hat{B}_{2},\dots))=\tilde f(m(\hat{B}_{1}),m(\hat{B}_{2}),\dots)$,
 for any arbitrary function $f$, where $\hat{B}_{i}$ are mutually
 commuting Hermitian operators. If $m$ is assumed to describe the
 outcomes of measurements, then no $m$ exists which is consistent
@@ -257,8 +258,7 @@ According to \thmref{KS}, non-contextual maps which are \emph{multiplicative}
 must be incompatible with QM. It is apparent that non-contextual maps
 which are non-\emph{multiplicative} might be consistent with QM. To
 that end, in the following section we first show that this is indeed
-the case by removing contextuality from Bohmian Mechanics and supplement
-it thereafter by an explicit construction. 
+the case by constructing an explicit model and supplement it by removing contextuality from Bohmian Mechanics.
 
 Before proceeding we note, however, that QM enforces \emph{sequential
 multiplicativity} at least in certain cases. This result will be used
@@ -281,7 +281,7 @@ Let the state of the system be given by $\left|\psi\right\rangle $
 and it must be s.t. $\hat{C}\left|\psi\right\rangle =c\left|\psi\right\rangle $,
 by assumption. For the statement to follow, one need only show that
 $\left|\psi\right\rangle $ must be made of only those $\left|\mathbf{b}\right\rangle $s,
-which satisfy $c=f(b_{1}^{(l_{1})},b_{2}^{(l_{2})},\dots b_{n}^{(l_{n})})$.
+which satisfy $c=\tilde f(b_{1}^{(l_{1})},b_{2}^{(l_{2})},\dots b_{n}^{(l_{n})})$.
 This is the crucial step. Proving this is so is trivial. We start
 with $\hat{C}\left|\psi\right\rangle =c\left|\psi\right\rangle $
 and take its inner product with $\left\langle \mathbf{b}\right|$
@@ -289,7 +289,7 @@ to get
 \begin{eqnarray*}
 \left\langle \mathbf{b}\right|\hat{C}\left|\psi\right\rangle  & = & c\left\langle \mathbf{b}|\psi\right\rangle ,\\
 \left\langle \mathbf{b}\right|f(\hat{B}_{1},\hat{B}_{2},\dots\hat{B}_{n})\left|\psi\right\rangle  & = & c\left\langle \mathbf{b}|\psi\right\rangle ,\\
-f(b_{1}^{(l_{1})},b_{2}^{(l_{2})},\dots b_{n}^{(l_{n})})\left\langle \mathbf{b}|\psi\right\rangle  & = & c\left\langle \mathbf{b}|\psi\right\rangle .
+\tilde f(b_{1}^{(l_{1})},b_{2}^{(l_{2})},\dots b_{n}^{(l_{n})})\left\langle \mathbf{b}|\psi\right\rangle  & = & c\left\langle \mathbf{b}|\psi\right\rangle .
 \end{eqnarray*}
 Also, we have $\left|\psi\right\rangle =\sum_{\mathbf{b}}\left\langle \mathbf{b}|\psi\right\rangle \left|\mathbf{b}\right\rangle $,
 from completeness. If we consider $\left|\mathbf{b}\right\rangle $s
@@ -578,9 +578,10 @@ confuse to mean contextuality. Imagine
 \hat{B}_{2}=\hat{\mathbb{I}}\otimes\hat{\sigma}_{z}=\left|10\right\rangle \left\langle 10\right|+\left|11\right\rangle \left\langle 11\right|-\left[\left|00\right\rangle \left\langle 00\right|+\left|01\right\rangle \left\langle 01\right|\right],
 \]
 while we define 
-\[
-\hat{C}=f(\{\hat{B}_{i}\})=0.\left|00\right\rangle \left\langle 00\right|+1.\left|01\right\rangle \left\langle 01\right|+2.\left|10\right\rangle \left\langle 10\right|+3.\left|11\right\rangle \left\langle 11\right|.
-\]
+\begin{align*}
+\hat{C}&=f(\{\hat{B}_{i}\}) \\ 
+       &=0.\left|00\right\rangle \left\langle 00\right|+1.\left|01\right\rangle \left\langle 01\right|+2.\left|10\right\rangle \left\langle 10\right|+3.\left|11\right\rangle \left\langle 11\right|.
+\end{align*}
 $\hat{C}$ maybe viewed as a function of $\hat{B}_{1}$, $\hat{B}_{2}$
 and other operators $\hat{B}_{i}$ which are constructed to obtain
 a maximally commuting set. A measurement of $\hat{C}$, will collapse
@@ -615,7 +616,7 @@ is necessary.
 TODO: Complete this part.
 \begin{appendix}
 \section{Proofs of the two theorems}
-For theorem 1
+For \thmref{det} we have the following proofs.
 \begin{proof}
 Bell construction ($\left|\mathcal{H}\right|\ge4$): Consider an operator
 $\hat{B}:=a_{1}\otimes b_{1}+a_{2}\otimes b_{1}+a_{1}\otimes b_{2}-a_{2}\otimes b_{2}$
@@ -689,7 +690,7 @@ with all predictions of QM.
 \end{proof}
 
 
-For theorem 2
+For \thmref{KS} the proofs are as below.
 \begin{proof}
 Bell construction ($\left|\mathcal{H}\right|\ge4$): The same proof
 as the one presented earlier goes through here also since $[A_{1},A_{2}]=0$.
