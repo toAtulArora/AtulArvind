@@ -19,6 +19,10 @@
 
 \AtBeginDocument{\providecommand\thmref[1]{\ref{thm:#1}}}
 \AtBeginDocument{\providecommand\eqref[1]{\ref{eq:#1}}}
+\AtBeginDocument{\providecommand\figref[1]{\ref{fig:#1}}}
+\AtBeginDocument{\providecommand\secref[1]{\ref{sec:#1}}}
+\AtBeginDocument{\providecommand\ssecref[1]{\ref{ssec:#1}}}
+
 \RS@ifundefined{subref}
   {\def\RSsubtxt{section~}\newref{sub}{name = \RSsubtxt}}
   {}
@@ -49,6 +53,9 @@
   \newtheorem{notn}[thm]{\protect\notationname}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
 \usepackage{xcolor}
 %\usepackage{url}
 \usepackage{hyperref}
@@ -103,12 +110,17 @@ Background: Einstein's \cite{EinsteinEPR} work on incompleteness of quantum mech
 Previous work {[}the essentials I have already discussed{]}: We take a closer look at the aforesaid no-go theorems and find that contextuality is in fact not a necessary feature of quantum mechanics.
 This has been shown earlier by taking disturbances due to measurements into consideration \cite{NoContextuality}. In this paper, we construct a significantly simpler toy model for illustrating not only the aforesaid but to also delineate a complete alternative to contextuality. The toy model is a specific case of what we call a c-ingle variable theory. Its predictions match with those of quantum mechanics for systems described by arbitrary (discrete) Hilbert spaces.
 
-Triangle: <TODO: ask arvind sir>
+Triangle: <TODO: ask arvind sir, see \figref{block}>
 
-Work and results: <summarise what is done in each section>
+\begin{figure}[h]
+\includegraphics[width=\columnwidth]{block1}
+\caption{Non-contextuality is not inconsistent with QM}
+\label{fig:block}\end{figure}
+
+Work and results: In \secref{context} we establish a notation and definitions to facilitate further discussions. In \secref{nonMultiplicativity} we introduce the notion of multiplicativity and that of sequential multiplicativity. We review the `contextuality' theorem and prove some results about multiplicativity. We construct an explicit non-contextual model in \ssecref{cingle} and apply it to the very proof of `contextuality' to illustrate non-multiplicativity. This is supplemented by a discussion about Bohmian Mechanics in \ssecref{nonContBohm} where contextuality is removed by hand. The paper is concluded with discussion of implications of multiplicativity on locality, entanglement, superposition and apparent contextuality in \secref{implications}.
 
 
-\section{Context}
+\section{Context \label{sec:context}}
 
 The notation used henceforth has been defined below.
 
@@ -134,7 +146,7 @@ then they are consistent with all predictions of QM.
 Observe that given a Stern-Gerlach setup and the initial conditions (position \& wavefunction of the particle), according to the theorem, Bohmian mechanics can predict the value of the spin (say $\hat{\sigma}_{z}$) of the particle. Assume that the state of the particle was $(\left|0\right\rangle +\left|1\right\rangle )/\sqrt{2}$ and that the measurement outcome was spin up. Interestingly, it can be shown \cite{Detlef} that if the direction of the magnetic field gradient is flipped while everything else is unchanged, the measurement outcome will now be spin down. This emphasises the fact that $m_{B}$ is not a prediction map. More importantly it entails that $m_{B}$ is contextual. It must be stressed, however, that the contextuality in this case is not a statement about the context in terms of compatible observables. Here no two observables are compatible (excluding identity).
 
 
-\section{Non-Multiplicativity: An alternative to Contextuality}
+\section{Non-Multiplicativity: An alternative to Contextuality \label{sec:nonMultiplicativity}}
 
 One can show \cite{KochenSpecker} that under reasonable assumptions, no non-contextual theory can explain all predictions of QM. We re-state these results and show that nowhere does contextuality appear to be a logical necessity. Instead we note that non-contextual theories with certain properties, we call \emph{multiplicativity} are incompatible with QM. Viewed from this perspective, non-\emph{multiplicativity} is the non-classical alternative to contextuality in QM. Precise definitions of this and a related property \emph{sequential multiplicativity}, are given below. 
 
@@ -305,7 +317,7 @@ are just $\pm\hat{\mathbb{I}}$, it follows that all states are their
 eigenstates. Consequently, for these operators \emph{sequential multiplicativity}
 must always hold.
 
-\subsection{C-ingle model | An Explicit Construction}
+\subsection{C-ingle model | An Explicit Construction \label{ssec:cingle}}
 
 Let the state of the system
 be $\left|\chi\right\rangle $, defined on a discrete Hilbert space
@@ -436,7 +448,7 @@ $\hat{A}_{13}$ doesn't affect the result one would obtain by measuring
 operators compatible to it (granted they have been measured once before).
 
 
-\subsection{Non-contextual Bohmain Mechanics}
+\subsection{Non-contextual Bohmain Mechanics \label{ssec:nonContBohm}}
 
 Recall that contextuality in Bohmian Mechanics arises from the mapping
 between an operator and the experimental setup. Consider the following
@@ -505,7 +517,7 @@ the Bohmian prediction map $m$ must also be. According to \thmref{KS},
 $m$ must be non-multiplicative.
 \end{proof}
 
-\section{Implications}
+\section{Implications \label{sec:implications}}
 
 
 \subsection{Locality}
