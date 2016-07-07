@@ -18,6 +18,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
 
 \AtBeginDocument{\providecommand\thmref[1]{\ref{thm:#1}}}
+\AtBeginDocument{\providecommand\lemref[1]{\ref{lem:#1}}}
+\AtBeginDocument{\providecommand\propref[1]{\ref{prop:#1}}}
 \AtBeginDocument{\providecommand\eqref[1]{\ref{eq:#1}}}
 \AtBeginDocument{\providecommand\figref[1]{\ref{fig:#1}}}
 \AtBeginDocument{\providecommand\secref[1]{\ref{sec:#1}}}
@@ -31,6 +33,9 @@
   {}
 \RS@ifundefined{lemref}
   {\def\RSlemtxt{lemma~}\newref{lem}{name = \RSlemtxt}}
+  {}
+\RS@ifundefined{propref}
+  {\def\RSproptxt{proposition~}\newref{prop}{name = \RSproptxt}}
   {}
 
 
@@ -99,17 +104,17 @@
 
 \affiliation{Indian Institute of Science Education and Research (IISER), Mohali}
 \begin{abstract}
-We propose a non-contextual hidden variable model, consistent with all predictions of Quantum Mechanics. We reconsider the no-go theorems on hidden variables and conclude that the notion of contextuality is not a necessary feature of quantum mechanics. Motivated by consistency requirements between Bohmian Mechanics and the said theorems, we provide an alternative view. This is accomplished by identifying a new classical property, we call `multiplicativity'. It turns out that if this condition is relaxed one is able to construct hidden variable models which are consistent with QM. Advantages of this view are illustrated by considering the implications of non-multiplicativity to non-locality. Our model is for finite dimensional quantum systems, however, generalization to the infinite dimensional case should be possible. %and its relation to contextuality.
+We propose a non-contextual hidden variable model, consistent with all predictions of quantum mechanics (QM). We reconsider the no-go theorems on hidden variables and conclude that the notion of contextuality is not a necessary feature of QM. Motivated by consistency requirements between bohmian mechanics and the said theorems, we provide an alternative view. This is accomplished by identifying a new classical property, we call `multiplicativity'. It turns out that if this condition is relaxed one is able to construct hidden variable models which are consistent with QM. Advantages of this view are illustrated by considering the implications of non-multiplicativity to non-locality. Our model is for finite dimensional quantum systems, however, generalization to the infinite dimensional case should be possible. %and its relation to contextuality.
 \end{abstract}
 \maketitle
 
 \section{Introduction}
 
-Einstein's \cite{EinsteinEPR} work on incompleteness of quantum mechanics (QM) and the subsequent seminal work of Bell \cite{Bell1964}, assessing compatibility of hidden variable models with QM has proven to be repeatedly useful. In Bell's case, for instance, it gave a precise meaning to the foundational notion of locality. Further, it has been of pragmatic utility in the areas of security, randomness certification etc. \cite{Ekert,PironioRndmnssCrtfcn} While Bell showed that local hidden variable models can not describe nature, the Kochen Specker theorem \cite{KochenSpecker} (and related work \cite{Gleason,BellOnHiddenVariables,Peres,Mermin}) ruled out an even larger class of hidden variable models. Consequently the notion of contextuality was identified, methods to experimentally test it were proposed and evidence in its favour reported \cite{SimonContExpProp,HuangContExp,YangContExp,HasegawaContExp}. Contextuality also, in recent times has been harnessed for computation and cryptography \cite{HowardCntxCmptn,CabelloCntxScrt}. []Contextuality has also stirred further investigation of foundational aspects of QM: relation between contextuality and classicality has been explored \cite{PawelCntxClsscl}, contextuality has been quantified in terms of memory \cite{MatthiasCntxMmry} and bounded memory in conjunction with contextuality has been used to show completeness of QM \cite{CabelloMmryQM}.[] Not all hidden variable models were, however, proved to be incompatible by the aforesaid theorem. Bohm's work \cite{Bohm1,Bohm2} is one such (in)famous example. This approach has allowed for an interpretation of quantum mechanics with precise trajectories.
+Einstein's \cite{EinsteinEPR} work on incompleteness of QM and the subsequent seminal work of Bell \cite{Bell1964}, assessing compatibility of hidden variable (HV) models with QM has proven to be repeatedly useful. In Bell's case, for instance, it gave a precise meaning to the foundational notion of locality. Further, it has been of pragmatic utility in the areas of security, randomness certification etc. \cite{Ekert,PironioRndmnssCrtfcn} While Bell showed that local HV models can not describe nature, the Kochen Specker theorem \cite{KochenSpecker} (and related work \cite{Gleason,BellOnHiddenVariables,Peres,Mermin}) ruled out an even larger class of HV models. Consequently the notion of contextuality was identified, methods to experimentally test it were proposed and evidence in its favour reported \cite{SimonContExpProp,HuangContExp,YangContExp,HasegawaContExp}. Contextuality also, in recent times has been harnessed for computation and cryptography \cite{HowardCntxCmptn,CabelloCntxScrt}. []Contextuality has also stirred further investigation of foundational aspects of QM: relation between contextuality and classicality has been explored \cite{PawelCntxClsscl}, contextuality has been quantified in terms of memory \cite{MatthiasCntxMmry} and bounded memory in conjunction with contextuality has been used to show completeness of QM \cite{CabelloMmryQM}.[] Not all HV models were, however, proved to be incompatible by the aforesaid theorem. Bohm's work \cite{Bohm1,Bohm2} is one such (in)famous example. This approach has allowed for an interpretation of QM with precise trajectories.
 
 
 %Previous work {[}the essentials I have already discussed{]}: 
-We take a closer look at the aforesaid no-go theorems and find that contextuality is in fact not a necessary feature of quantum mechanics (see \figref{block}). This has been shown earlier by taking disturbances due to measurements into consideration \cite{NoContextuality,LaCourNoCntx}. In this paper, we construct a significantly simpler toy model for illustrating not only the aforesaid but to also delineate a complete alternative to contextuality. The toy model is a specific case of what we call a c-ingle variable theory. Its predictions match with those of quantum mechanics for systems described by arbitrary finite dimensional Hilbert spaces.
+We take a closer look at the aforesaid no-go theorems and find that contextuality is in fact not a necessary feature of QM (see \figref{block}). This has been shown earlier by taking disturbances due to measurements into consideration \cite{NoContextuality,LaCourNoCntx}. In this paper, we construct a significantly simpler toy model for illustrating not only the aforesaid but to also delineate a complete alternative to contextuality. The toy model is a specific case of what we call a c-ingle variable theory. Its predictions match with those of QM for systems described by arbitrary finite dimensional Hilbert spaces.
 
 %Triangle: <TODO: ask arvind sir, see \figref{block}>
 
@@ -126,7 +131,7 @@ Organization of this paper is as follows. In \secref{context} we establish a not
 The notation used henceforth has been defined below.
 
 
-\begin{notn} (a) $\psi\in\mathcal{H}$ would typically represent the quantum mechanical state of the system (assumed pure), residing in the Hilbert space $\mathcal{H}$, (b) $\hat{\mathcal{H}}$ is defined to mean $\mathcal{H}\otimes\mathcal{H}^{\dagger}$ (i.e. the set of Hermitian operators, observables, on the space $\mathcal{H}$), (c) $[\mathcal{H}]$ is defined to mean $(\mathcal{H},\,\mathbb{R}^{\otimes})$, which represents the state of the system including hidden variables, (d) $[\psi]\in[\mathcal{H}]$ will represent the state of the system, including hidden variables, (e) a prediction map is $m:\hat{\mathcal{H}},[\mathcal{H}]\to\mathbb{R}$, (f) a sequence map is $s:\hat{\mathcal{H}},[\mathcal{H}],\mathbb{R}\to[\mathcal{H}]$, (g) $f$ is an arbitrary map from $\{ \hat{\mathcal{H}},\hat{\mathcal{H}},\dots\hat{\mathcal{H}} \} \to \hat{\mathcal{H}}$ constructed using multiplication and addition of the observables, and multiplication with complex numbers\footnote{Strictly, the map $f$ would depend on the operators to ensure preservation of Hermiticity; thus a given $f$ will be defined only for a subset of $\{ \hat{\mathcal{H}},\hat{\mathcal{H}},\dots\hat{\mathcal{H}} \}$.}, (h) $\tilde{f}$ is a map constructed by replacing observables in $f$ with real numbers. 
+\begin{notn} (a) $\psi\in\mathcal{H}$ would typically represent the quantum mechanical state of the system (assumed pure), residing in the Hilbert space $\mathcal{H}$, (b) $\hat{\mathcal{H}}$ is defined to mean $\mathcal{H}\otimes\mathcal{H}^{\dagger}$ (i.e. the set of Hermitian operators, observables, on the space $\mathcal{H}$), (c) $[\mathcal{H}]$ is defined to mean $(\mathcal{H},\,\mathbb{R}^{\otimes})$, which represents the state of the system including HVs, (d) $[\psi]\in[\mathcal{H}]$ will represent the state of the system, including HVs, (e) a prediction map is $m:\hat{\mathcal{H}},[\mathcal{H}]\to\mathbb{R}$, (f) a sequence map is $s:\hat{\mathcal{H}},[\mathcal{H}],\mathbb{R}\to[\mathcal{H}]$, (g) $f$ is an arbitrary map from $\{ \hat{\mathcal{H}},\hat{\mathcal{H}},\dots\hat{\mathcal{H}} \} \to \hat{\mathcal{H}}$ constructed using multiplication and addition of the observables, and multiplication with complex numbers\footnote{Strictly, the map $f$ would depend on the operators to ensure preservation of Hermiticity; thus a given $f$ will be defined only for a subset of $\{ \hat{\mathcal{H}},\hat{\mathcal{H}},\dots\hat{\mathcal{H}} \}$.}, (h) $\tilde{f}$ is a map constructed by replacing observables in $f$ with real numbers. 
 %\footnote{$\tilde f$ constructed this way should be written as $\tilde f:\mathbb{R}^{\otimes N} \to \mathbb{C}$. In fact the values should be restricted to the spectrum of the associated observables.}.
 \end{notn}
 
@@ -189,7 +194,7 @@ aforesaid.
 \begin{thm}
 Let a map $m:\hat{\mathcal{H}}\to\mathbb{R}$, be s.t. (a) $m(\hat{\mathbb{I}})=1$,
 (b) $m(f(\hat{A}_{1},\hat{A}_{2},\dots))=\tilde f(m(\hat{A}_{1}),m(\hat{A}_{2}),\dots)$,
-where $\hat{A}_{i}$ are arbitrary Hermitian operators. If $m$ is assumed to describe the outcomes of measurements, then no $m$ exists which is consistent with all predictions of Quantum Mechanics\label{thm:det} (see \ref{proofs} for proofs). \end{thm}
+where $\hat{A}_{i}$ are arbitrary Hermitian operators. If $m$ is assumed to describe the outcomes of measurements, then no $m$ exists which is consistent with all predictions of QM\label{thm:det} (see \ref{proofs} for proofs). \end{thm}
 Here $m$ maybe viewed as a specific class of prediction maps, that
 implicitly depends on the state $[\psi]$. It follows then that the
 maps ruled out by the theorem are non-contextual. The set of maps
@@ -202,7 +207,7 @@ Let a map $m:\hat{\mathcal{H}}\to\mathbb{R}$, be s.t. (a) $m(\hat{\mathbb{I}})=1
 for any arbitrary function $f$, where $\hat{B}_{i}$ are mutually
 commuting Hermitian operators. If $m$ is assumed to describe the
 outcomes of measurements, then no $m$ exists which is consistent
-with all predictions of Quantum Mechanics (see \ref{proofs} for more proofs).\label{thm:KS}\end{thm}
+with all predictions of QM (see \ref{proofs} for more proofs).\label{thm:KS}\end{thm}
 
 
 % The following proof is not only more general, but also independent
@@ -237,7 +242,7 @@ which are non-\emph{multiplicative} might be consistent with QM. To
 that end, in the following section we first show that this is indeed
 the case by constructing an explicit model and supplement it by removing contextuality from Bohmian Mechanics.
 
-Before proceeding we note, however, that QM can enforce \emph{sequential multiplicativity}. This result will be used to assess accuracy of any hidden variable model we might propose.
+Before proceeding we note, however, that QM can enforce \emph{sequential multiplicativity}. This result will be used to assess accuracy of any HV model we might propose.
 \begin{prop*}
 Let the system be in a state, s.t. measurement of $\hat{C}$ yields
 repeatable results (same result each time). Then according to QM,
@@ -273,7 +278,7 @@ It is worth noting that in the PM case, where $\hat{R}_{i}$ and $\hat{C}_{j}$ ar
 \subsection{C-ingle model | An Explicit Construction \label{ssec:cingle}}
 
 Let the state of the system be $\left|\chi\right\rangle $, defined on a finite dimensional Hilbert space and we wish to assign a value to an arbitrary observable $\hat{A}=\sum_{a}a\left|a\right\rangle \left\langle a\right|$, which has eigenvalues $\{a_{\text{min}}=a_{1}\le a_{2}\dots\le a_{n}=a_{\text{max}}\}$. This model has the following postulates: \\
-1. Initial Hidden Variable: Pick a $c\in[0,1]$, from a uniform random distribution.\\
+1. Initial HV: Pick a $c\in[0,1]$, from a uniform random distribution.\\
 2. Assignment/Prediction: The value assigned to $\hat{A}$ is given by finding the smallest $a$ s.t. 
 \[
 c\le\sum_{a'=a_{\text{min}}}^{a}\left|\left\langle a'|\chi\right\rangle \right|^{2},
@@ -283,11 +288,11 @@ viz. we have specified a prediction map, $m(\hat{A})=a$.\\
 
 To see how this works, we restrict ourselves to a single spin half particle. Say $\left|\chi\right\rangle =\cos\theta\left|0\right\rangle +\sin\theta\left|1\right\rangle $, and $\hat{A}=\hat{\sigma}_{z}=\left|0\right\rangle \left\langle 0\right|-\left|1\right\rangle \left\langle 1\right|$. Now, according to the postulates of this theory, $m(\hat{A})=+1$, if $c\le\cos^{2}\theta$ else $\hat{A}$ is assigned $-1$. It follows then, from $c$ being uniformly random in $[0,1]$ that the statistics agree with predictions of QM. The reader can convince him(her)self that the said scheme works in general. 
 
-Note that the assignment, described by the prediction map $m$, is non-contextual since given an operator and a state (+ the hidden variable), the value is uniquely assigned. The map $m$ is, however, non-multiplicative which is clarified by the following non-trivial example.
+Note that the assignment, described by the prediction map $m$, is non-contextual since given an operator and a state (+ the HV), the value is uniquely assigned. The map $m$ is, however, non-multiplicative which is clarified by the following non-trivial example.
 \begin{example}
 C-ingle model applied to the Peres Mermin situation: For illustration, let us start with the state $\left|\psi_{1}\right\rangle =\left|00\right\rangle $. Say from a uniform random distribution we obtained $c=0.4$. To arrive at the assignments, note that $\left|00\right\rangle $ is an eigenket of only $\hat{R}_{i},\hat{C}_{j}$ and $\hat{A}_{33}=\hat{\sigma}_{z}\otimes\hat{\sigma}_{z}$.
-Thus, in the first iteration, all these should be assigned their respective eigenvalues. The remaining operators must be assigned $-1$ as one can readily verify by explicitly finding the smallest $a$ as described in postulate 2 of the model (see \eqref{toyModel}). Two remarks are in order. First, this model is manifestly \emph{non-multiplicative}, for $m_{1}(\hat{C}_{3})=1\neq m_{1}(\hat{A}_{13})m_{1}(\hat{A}_{23})m_{1}(\hat{A}_{33})=-1$, where the subscript has been introduced to index the iteration. More precisely, $m_{1}(\hat{O}):=m(\hat{O},\left[\left|\psi_{1}\right\rangle =\left|00\right\rangle \right])$ where the complete state $\left[\left|\psi_{1}\right\rangle \right]$ implicitly refers to both the quantum state $\left|00\right\rangle $ and the hidden variable $c=0.4$. Second, we must impose \emph{sequential multiplicativity} as a consistency check of the model, which in particular entails that $m_{1}(\hat{C}_{3})=m_{1}(\hat{A}_{33})m_{2}(\hat{A}_{23})m_{3}(\hat{A}_{13})$, where $m_{2}:=m(\hat{O},\left[\left|\psi_{2}\right\rangle \right])$, $m_{3}:=m(\hat{O},\left[\left|\psi_{3}\right\rangle \right])$ and
-$\left|\psi_{2}\right\rangle ,\,\left|\psi_{3}\right\rangle $ are obtained from postulate 3. Note that for each iteration, a new hidden variable is generated. To illustrate \emph{sequential multiplicativity}, we must choose to measure $\hat{A}_{33}$. According to step 3, since $\left|00\right\rangle $ is an eigenstate of $\hat{A}_{33}$, the final state remains $\left|00\right\rangle $. 
+Thus, in the first iteration, all these should be assigned their respective eigenvalues. The remaining operators must be assigned $-1$ as one can readily verify by explicitly finding the smallest $a$ as described in postulate 2 of the model (see \eqref{toyModel}). Two remarks are in order. First, this model is manifestly \emph{non-multiplicative}, for $m_{1}(\hat{C}_{3})=1\neq m_{1}(\hat{A}_{13})m_{1}(\hat{A}_{23})m_{1}(\hat{A}_{33})=-1$, where the subscript has been introduced to index the iteration. More precisely, $m_{1}(\hat{O}):=m(\hat{O},\left[\left|\psi_{1}\right\rangle =\left|00\right\rangle \right])$ where the complete state $\left[\left|\psi_{1}\right\rangle \right]$ implicitly refers to both the quantum state $\left|00\right\rangle $ and the HV $c=0.4$. Second, we must impose \emph{sequential multiplicativity} as a consistency check of the model, which in particular entails that $m_{1}(\hat{C}_{3})=m_{1}(\hat{A}_{33})m_{2}(\hat{A}_{23})m_{3}(\hat{A}_{13})$, where $m_{2}:=m(\hat{O},\left[\left|\psi_{2}\right\rangle \right])$, $m_{3}:=m(\hat{O},\left[\left|\psi_{3}\right\rangle \right])$ and
+$\left|\psi_{2}\right\rangle ,\,\left|\psi_{3}\right\rangle $ are obtained from postulate 3. Note that for each iteration, a new HV is generated. To illustrate \emph{sequential multiplicativity}, we must choose to measure $\hat{A}_{33}$. According to step 3, since $\left|00\right\rangle $ is an eigenstate of $\hat{A}_{33}$, the final state remains $\left|00\right\rangle $. 
 \end{example}
 \begin{widetext}
 \begin{equation}
@@ -352,7 +357,7 @@ operators compatible to it (granted they have been measured once before).
 
 \subsection{Non-contextual Bohmain Mechanics \label{ssec:nonContBohm}}
 
-Since QM yields deterministic results only in specific situations, it is imperative to analyse the meaning of contextuality by `completing' QM. Hidden variable theories do precisely this and we have at our disposal the heretic theory of Bohm. Circumventing the details of the theory, we note its salient feature; with each particle, one associates precisely defined $(q,p)$ and a wavefunction $\psi$. The construction is such that the particles are guided by the wavefunction. Consequently, the outcomes of all experiment are predictable, granted the initial conditions of the system and the apparatus are known (the `hidden variables'). The essence of Bohmian Mechanics relevant here can be captured by the following theorem.
+Since QM yields deterministic results only in specific situations, it is imperative to analyse the meaning of contextuality by `completing' QM. HV theories do precisely this and we have at our disposal the heretic theory of Bohm. Circumventing the details of the theory, we note its salient feature; with each particle, one associates precisely defined $(q,p)$ and a wavefunction $\psi$. The construction is such that the particles are guided by the wavefunction. Consequently, the outcomes of all experiment are predictable, granted the initial conditions of the system and the apparatus are known (the `HV'). The essence of Bohmian Mechanics relevant here can be captured by the following theorem.
 
 \begin{defn}
 (a) the set of all experimental setups is denoted by $\mathcal{E}$, (b) a setup map is $e:\hat{\mathcal{H}}\to\mathcal{E}$.
@@ -448,39 +453,18 @@ a separable state can be used to arrive at a contradiction. For demonstrating
 non-locality using Bell's proof, however, it can be shown that entanglement
 is necessary.
 
-TODO: Complete this part.
+TODO: Discuss and complete.
 \begin{appendix}
 \section{Selected Proofs \label{proofs}}
-For \thmref{det} we have the following proofs.
+Proofs of \thmref{det}:
 \begin{proof}
 Trivial yet most general proof ($\left|\mathcal{H}\right|\ge2$): Consider $\hat A _1 = \sigma_y$, $\hat A_2 =\sigma_x$, $\hat C = f(\hat A_1,\hat A_2) = i\hat A_1 \hat A_2=\sigma_z$. Now we know that $m(\hat \sigma_j)=\pm1$ which entails that $m(\hat C)=  im(\hat A_1)m(\hat A_2)=i$ where we have used property (b). However, $m(\hat C)=m(\hat \sigma_z)=\pm1$ which is a contradiction. Thus no consistent $m$ can exist.
 \end{proof}
 
 \begin{proof}
-Bell construction ($\left|\mathcal{H}\right|\ge4$) \cite{Bell1964}: Consider an operator
-$\hat{B}:=a_{1}\otimes b_{1}+a_{2}\otimes b_{1}+a_{1}\otimes b_{2}-a_{2}\otimes b_{2}$
-s.t. $-1\le\hat{a}_{i},\hat{b}_{j}\le1$ $\forall\,i,j\in\{1,2,3,4\}$
-(which means that the spectrum of $\hat{a}$ and $\hat{b}$ are bounded
-above and below). If we assume that a map $m$ of the aforesaid type
-exists, then it can be shown that $\left\langle \hat{B}\right\rangle \le2$.
-To see this, consider $\hat{A}_{1}=\hat{a}_{1}\otimes\hat{\mathbb{I}}$
-and $\hat{A}_{2}=\hat{\mathbb{I}}\otimes\hat{b}_{1}$, so that if
-$\hat{C}:=\hat{A}_{1}\hat{A}_{2}$ then property (2) entails that
-$m(\hat{C})=m(\hat{A}_{1})m(\hat{A}_{2})$, viz. $m(\hat{a}_{1}\otimes\hat{b}_{1})=m(\hat{a}_{1}\otimes\hat{\mathbb{I}})m(\hat{\mathbb{I}}\otimes\hat{b}_{1})$.
-Note that $m(\hat{*})$, may depend on the state $\left|\psi\right\rangle $
-and the hidden variables%
-. Therefore, we average over multiple measurements, which corresponds
-to averaging over the hidden variables. This is expressed by $\left\langle m(\hat{a}_{1}\otimes\hat{b}_{1})\right\rangle =\left\langle m(\hat{a}_{1}\otimes\hat{\mathbb{I}})\right\rangle \left\langle m(\hat{\mathbb{I}}\otimes\hat{b}_{1})\right\rangle $.
-One can repeat this argument for each term in $\left\langle \hat{B}\right\rangle $.
-Using the fact that $-1\le m(\hat{*})\le1$, and that the extrema
-will occur only at the extreme values of $m$, one can plugin $\pm1$
-for each $\left\langle m(\hat{*})\right\rangle $ to obtain $\left\langle \hat{B}\right\rangle \le2$.
-Quantum mechanically, one can show that $\left\langle \hat{B}\right\rangle =2\sqrt{2}$
-for the state $\left|\psi\right\rangle =\left(\left|+-\right\rangle -\left|-+\right\rangle \right)/\sqrt{2}$,
-where $\hat{\sigma}_{x}\left|\pm\right\rangle =\pm\left|\pm\right\rangle $,
-and $\hat{\sigma}_{x,y,z}$ are the Pauli matrices, given in the z-basis
-as 
-\[
+Bell construction ($\left|\mathcal{H}\right|\ge4$) \cite{Bell1964}: Consider an operator $\hat{B}:=a_{1}\otimes b_{1}+a_{2}\otimes b_{1}+a_{1}\otimes b_{2}-a_{2}\otimes b_{2}$ s.t. $-1\le\hat{a}_{i},\hat{b}_{j}\le1$ $\forall\,i,j\in\{1,2,3,4\}$ (which means that the spectrum of $\hat{a}$ and $\hat{b}$ are bounded above and below). If we assume that a map $m$ of the aforesaid type exists, then it can be shown that $\left\langle \hat{B}\right\rangle \le2$. To see this, consider $\hat{A}_{1}=\hat{a}_{1}\otimes\hat{\mathbb{I}}$ and $\hat{A}_{2}=\hat{\mathbb{I}}\otimes\hat{b}_{1}$, so that if $\hat{C}:=\hat{A}_{1}\hat{A}_{2}$ then property (2) entails that $m(\hat{C})=m(\hat{A}_{1})m(\hat{A}_{2})$, viz. $m(\hat{a}_{1}\otimes\hat{b}_{1})=m(\hat{a}_{1}\otimes\hat{\mathbb{I}})m(\hat{\mathbb{I}}\otimes\hat{b}_{1})$. Note that $m(\hat{*})$, may depend on the state $\left|\psi\right\rangle $ and the HVs. Therefore, we average over multiple measurements, which corresponds
+to averaging over the HVs. This is expressed by $\left\langle m(\hat{a}_{1}\otimes\hat{b}_{1})\right\rangle =\left\langle m(\hat{a}_{1}\otimes\hat{\mathbb{I}})\right\rangle \left\langle m(\hat{\mathbb{I}}\otimes\hat{b}_{1})\right\rangle $. One can repeat this argument for each term in $\left\langle \hat{B}\right\rangle $. Using the fact that $-1\le m(\hat{*})\le1$, and that the extrema will occur only at the extreme values of $m$, one can plugin $\pm1$ for each $\left\langle m(\hat{*})\right\rangle $ to obtain $\left\langle \hat{B}\right\rangle \le2$. Quantum mechanically, one can show that $\left\langle \hat{B}\right\rangle =2\sqrt{2}$ for the state $\left|\psi\right\rangle =\left(\left|+-\right\rangle -\left|-+\right\rangle \right)/\sqrt{2}$,
+where $\hat{\sigma}_{x}\left|\pm\right\rangle =\pm\left|\pm\right\rangle $, and $\hat{\sigma}_{x,y,z}$ are the Pauli matrices, given in the z-basis as  \[
 \hat{\sigma}_{x}\doteq\left[\begin{array}{cc}
 0 & 1\\
 1 & 0
@@ -491,61 +475,27 @@ i & 0
 1 & 0\\
 0 & -1
 \end{array}\right].
-\]
-The observables are $\hat{a}_{1}=\hat{\sigma}_{z}$ and $\hat{a}_{2}=\hat{\sigma}_{x}$,
-while $\hat{b}_{1}=-\frac{\hat{\sigma}_{z}+\hat{\sigma}_{x}}{\sqrt{2}}$
-and $\hat{b}_{2}=\frac{\hat{\sigma}_{z}-\hat{\sigma}_{x}}{\sqrt{2}}$.
-Since quantum mechanics violates the inequality, $\left\langle \hat{B}\right\rangle \le2$,
-we conclude that the map $m$ can not simultaneously exist and be
-consistent with QM.
+\] The observables are $\hat{a}_{1}=\hat{\sigma}_{z}$ and $\hat{a}_{2}=\hat{\sigma}_{x}$, while $\hat{b}_{1}=-\frac{\hat{\sigma}_{z}+\hat{\sigma}_{x}}{\sqrt{2}}$ and $\hat{b}_{2}=\frac{\hat{\sigma}_{z}-\hat{\sigma}_{x}}{\sqrt{2}}$. Since QM violates the inequality, $\left\langle \hat{B}\right\rangle \le2$, we conclude that the map $m$ can not simultaneously exist and be consistent with QM.
 \end{proof}
 
 \begin{proof}
-GHZ construction ($\left|\mathcal{H}\right|\ge6$) \cite{GHZ}: Consider three
-observers with one spin half particle each. Each observer can measure two properties,
-call them X and Y, with outcomes $\pm1$. The associated operators
-are $\hat{\sigma}_{x}$ and $\hat{\sigma}_{y}$. The state of the
-system is $\sqrt{2}\left|\chi_{G}\right\rangle =\left|000\right\rangle -\left|111\right\rangle $
-and we also define $\hat{A}:=\hat{\sigma}_{x}\otimes\hat{\sigma}_{y}\otimes\hat{\sigma}_{y}$,
-$\hat{A}\left|\chi_{G}\right\rangle =\left|\chi_{G}\right\rangle $,
-$\hat{B}:=\hat{\sigma}_{y}\otimes\hat{\sigma}_{x}\otimes\hat{\sigma}_{y}$
-and $\hat{C}:=\hat{\sigma}_{y}\otimes\hat{\sigma}_{y}\otimes\hat{\sigma}_{z}$.
-A measurement of $\hat{A}$ would correspond to measurement of property
-$X,\,Y$ and $Y$ by the three observers respectively. For a map $m$
-consistent with measurement outcomes of QM, we must have $m(\hat{A})=m(\hat{B})=m(\hat{C})=+1$.
+GHZ construction ($\left|\mathcal{H}\right|\ge6$) \cite{GHZ}: Consider three observers with one spin half particle each. Each observer can measure two properties, call them X and Y, with outcomes $\pm1$. The associated operators are $\hat{\sigma}_{x}$ and $\hat{\sigma}_{y}$. The state of the system is $\sqrt{2}\left|\chi_{G}\right\rangle =\left|000\right\rangle -\left|111\right\rangle $ and we also define $\hat{A}:=\hat{\sigma}_{x}\otimes\hat{\sigma}_{y}\otimes\hat{\sigma}_{y}$, $\hat{A}\left|\chi_{G}\right\rangle =\left|\chi_{G}\right\rangle $, $\hat{B}:=\hat{\sigma}_{y}\otimes\hat{\sigma}_{x}\otimes\hat{\sigma}_{y}$ and $\hat{C}:=\hat{\sigma}_{y}\otimes\hat{\sigma}_{y}\otimes\hat{\sigma}_{z}$. A measurement of $\hat{A}$ would correspond to measurement of property $X,\,Y$ and $Y$ by the three observers respectively. For a map $m$ consistent with measurement outcomes of QM, we must have $m(\hat{A})=m(\hat{B})=m(\hat{C})=+1$.
 Property (b) of the map $\implies1=m(\hat{A}\hat{B}\hat{C})=m(\hat{\sigma}_{x}\otimes\hat{\sigma}_{y}\hat{\sigma}_{x}\hat{\sigma}_{y}\otimes\hat{\sigma}_{x})=m(\hat{\sigma}_{x}^{(1)})m(\hat{\sigma}_{y}^{(2)}\hat{\sigma}_{x}^{(2)}\hat{\sigma}_{y}^{(2)})m(\hat{\sigma}_{x}^{(3)})=m(\hat{\sigma}_{x}^{(1)})m(\hat{\sigma}_{x}^{(2)})m(\hat{\sigma}_{x}^{(3)})=m(\hat{D}\equiv\hat{\sigma}_{x}\otimes\hat{\sigma}_{x}\otimes\hat{\sigma}_{x}),$
-where $\hat{\sigma}_{x}^{(1)}\equiv\hat{\sigma}_{x}\otimes\hat{\mathbb{I}}\otimes\hat{\mathbb{I}}$
-and so on. It must be stressed that although $\hat{A}$, $\hat{B}$
-and $\hat{C}$ mutually commute, $\hat{\sigma}_{2}^{(2)},\hat{\sigma}_{y}^{(2)}$
-do not. We used property (b) over both these sets of operators in
-the previous step. Returning to the argument, note that $\hat{D}\left|\chi_{G}\right\rangle =-\left|\chi_{G}\right\rangle $,
-$\implies m(\hat{D})=-1$ which yields a contradiction. We therefore
-conclude that no $m$ with the said properties exists which is consistent
-with all predictions of QM.
+where $\hat{\sigma}_{x}^{(1)}\equiv\hat{\sigma}_{x}\otimes\hat{\mathbb{I}}\otimes\hat{\mathbb{I}}$ and so on. It must be stressed that although $\hat{A}$, $\hat{B}$ and $\hat{C}$ mutually commute, $\hat{\sigma}_{2}^{(2)},\hat{\sigma}_{y}^{(2)}$ do not. We used property (b) over both these sets of operators in the previous step. Returning to the argument, note that $\hat{D}\left|\chi_{G}\right\rangle =-\left|\chi_{G}\right\rangle $, $\implies m(\hat{D})=-1$ which yields a contradiction. We therefore conclude that no $m$ with the said properties exists which is consistent with all predictions of QM.
 \end{proof}
 
 
-For \thmref{KS} the proofs are as below.
+Proofs of \thmref{KS}:
 \begin{proof}
 Kochen Specker ($\left|\mathcal{H}\right|\ge3$) \cite{KochenSpecker}: The original proof given by is rather involved. Here we will satisfy ourselves with assuming its validity and applying our constructions to the aforesaid proof.
 \end{proof}
 
 \begin{proof}
-Bell construction ($\left|\mathcal{H}\right|\ge4$): The same proof
-as the one presented earlier goes through here also since $[A_{1},A_{2}]=0$.
+Bell construction ($\left|\mathcal{H}\right|\ge4$): The same proof as the one presented earlier goes through here also since $[A_{1},A_{2}]=0$.
 \end{proof}
 
 \begin{proof}
-Generalized GHZ construction ($\left|\mathcal{H}\right|\ge6$): Consider
-again, three observers with one quantum particle each. Each observer
-can measure the properties corresponding to $\hat{\sigma}_{x}$ and
-$\hat{\sigma}_{y}$ of his/her particle. The quantum state of these
-particles is also the same as before, $\sqrt{2}\left|\chi_{G}\right\rangle =\left|000\right\rangle -\left|111\right\rangle $.
-We define as earlier $\hat{A}:=\hat{\sigma}_{x}\otimes\hat{\sigma}_{y}\otimes\hat{\sigma}_{y}$
-$\implies\hat{A}\left|\chi_{G}\right\rangle =\left|\chi_{G}\right\rangle $,
-$\hat{B}:=\hat{\sigma}_{y}\otimes\hat{\sigma}_{x}\otimes\hat{\sigma}_{y}$
-and $\hat{C}:=\hat{\sigma}_{y}\otimes\hat{\sigma}_{y}\otimes\hat{\sigma}_{z}$.
-Consider in addition the following operators, represented by $\hat{H}_{ij}$.
+Generalized GHZ construction ($\left|\mathcal{H}\right|\ge6$): Consider again, three observers with one quantum particle each. Each observer can measure the properties corresponding to $\hat{\sigma}_{x}$ and $\hat{\sigma}_{y}$ of his/her particle. The quantum state of these particles is also the same as before, $\sqrt{2}\left|\chi_{G}\right\rangle =\left|000\right\rangle -\left|111\right\rangle $. We define as earlier $\hat{A}:=\hat{\sigma}_{x}\otimes\hat{\sigma}_{y}\otimes\hat{\sigma}_{y}$ $\implies\hat{A}\left|\chi_{G}\right\rangle =\left|\chi_{G}\right\rangle $, $\hat{B}:=\hat{\sigma}_{y}\otimes\hat{\sigma}_{x}\otimes\hat{\sigma}_{y}$ and $\hat{C}:=\hat{\sigma}_{y}\otimes\hat{\sigma}_{y}\otimes\hat{\sigma}_{z}$. Consider in addition the following operators, represented by $\hat{H}_{ij}$.
 \[
 \hat{H}_{ij}\doteq\left[\begin{array}{ccc}
 \hat{\sigma}_{x}\otimes\hat{\mathbb{I}}\otimes\hat{\mathbb{I}}^{(a)} & \hat{\mathbb{I}}\otimes\hat{\sigma}_{y}\otimes\hat{\mathbb{I}}^{(2)} & \mathbb{\hat{I}}\otimes\mathbb{\hat{I}}\otimes\hat{\sigma}_{y}^{(3)}\\
@@ -554,17 +504,7 @@ Consider in addition the following operators, represented by $\hat{H}_{ij}$.
 \hat{\sigma}_{x}\otimes\mathbb{\hat{I}}\otimes\hat{\mathbb{I}}^{(a)} & \mathbb{\hat{I}}\otimes\hat{\sigma}_{x}\otimes\hat{\mathbb{I}}^{(b)} & \hat{\mathbb{I}}\otimes\hat{\mathbb{I}}\otimes\hat{\sigma}_{x}^{(c)}
 \end{array}\right],
 \]
-where from property (b) it follows that $m(\hat{A})=m(\hat{H}_{11})m(\hat{H}_{12})m(\hat{H}_{13})$.
-Note that $[\hat{H}_{ij},\hat{H}_{ik}]=0$, viz. the operators along
-a row commute. To be consistent with QM, $m(\hat{A})=+1$ (similarly
-for row 2 and 3). $m(\hat{D})=-1$ imposes that the product $m(\hat{H}_{41})m(\hat{H}_{42})m(\hat{H}_{43})$,
-row 4, must be $-1$. Using the notation $m(\hat{H}_{ij})=H_{ij}$,
-we can start with the first case. For the last row to yield $-1$,
-we must have either one $-1$ assignments or three $-1$ assignments.
-Let us look at the first case. Without loss of generality, we can
-assume that $H_{41}=H_{42}=+1$ and $H_{43}=-1$. Further, $H_{11}=H_{41}$,
-$H_{22}=H_{42}$ and $H_{33}=H_{43}$ by construction (see below).
-\[
+where from property (b) it follows that $m(\hat{A})=m(\hat{H}_{11})m(\hat{H}_{12})m(\hat{H}_{13})$. Note that $[\hat{H}_{ij},\hat{H}_{ik}]=0$, viz. the operators along a row commute. To be consistent with QM, $m(\hat{A})=+1$ (similarly for row 2 and 3). $m(\hat{D})=-1$ imposes that the product $m(\hat{H}_{41})m(\hat{H}_{42})m(\hat{H}_{43})$, row 4, must be $-1$. Using the notation $m(\hat{H}_{ij})=H_{ij}$, we can start with the first case. For the last row to yield $-1$, we must have either one $-1$ assignments or three $-1$ assignments. Let us look at the first case. Without loss of generality, we can assume that $H_{41}=H_{42}=+1$ and $H_{43}=-1$. Further, $H_{11}=H_{41}$, $H_{22}=H_{42}$ and $H_{33}=H_{43}$ by construction (see below). \[
 H_{ij}\doteq\left[\begin{array}{ccc}
 1\\
  & 1\\
@@ -576,27 +516,16 @@ H_{ij}\doteq\left[\begin{array}{ccc}
 \pm1 & \pm1 & -1\\
 1 & 1 & -1
 \end{array}\right].
-\]
-Next, one must ensure that the first row yields $+1$ which requires
-us to either set $H_{12}=H_{13}$ to $-1$ or $+1$. Let us write
-this as $H_{12}=H_{13}=\pm1$ which would entail that $H_{23}=\pm1$
-and $H_{32}=\pm1$. {[} Note that the notation implies that when we
-choose $+1$, all these are $+1$ and when we choose $-1$, all are
-$-1$. We are not allowed to set, say $H_{12}=-1$ and $H_{13}=+1$.
-{]} For the second row to be $+1$, we conclude that $H_{21}=\pm1$.
-This entails, in turn, that $H_{31}=\pm1$. We now note that the third
-row has become $-1$ whereas according to QM, it must be $+1$. It
-is left upto the reader to see that similar reasoning also yields
-results in inconsistencies with QM. This completes the proof.
+\] Next, one must ensure that the first row yields $+1$ which requires us to either set $H_{12}=H_{13}$ to $-1$ or $+1$. Let us write this as $H_{12}=H_{13}=\pm1$ which would entail that $H_{23}=\pm1$ and $H_{32}=\pm1$. {[} Note that the notation implies that when we choose $+1$, all these are $+1$ and when we choose $-1$, all are $-1$. We are not allowed to set, say $H_{12}=-1$ and $H_{13}=+1$. {]} For the second row to be $+1$, we conclude that $H_{21}=\pm1$. This entails, in turn, that $H_{31}=\pm1$. We now note that the third row has become $-1$ whereas according to QM, it must be $+1$. It is left upto the reader to see that similar reasoning also yields results in inconsistencies with QM. This completes the proof.
 \end{proof}
 
-Proof of \ref{prop:predMapNonLocal} is given below.
+Proof of \propref{predMapNonLocal}:
 \begin{proof}
-{[}Adapted from Bell's proof \cite{Bell1964} {]} Formally it is clear, since a violation of Bell's inequality implies non-locality. Consequently, any consistent completion of QM, will be non-local. More insight can be gained, although some care is needed. The notion of compatible observables is that commuting observables don't disturb each other and can be simultaneously known. While the statement is not precisely stated, we only need to note that $m_{k_{1}}(\hat{C})=m_{k_{2}}(\hat{B}_{1})m_{k_{3}}(\hat{B}_{2})$, for $(k_{1},k_{2},k_{3})\in\{(1,2,3),(2,1,3),\dots\}$ where $m_{i}$ are defined as before. In words, this means that to measure $\hat{C}$, one can instead first measure $\hat{B}_{1}$ and then measure $\hat{B}_{2}$. A multiplication of the values obtained, can be taken to be the value a measurement of $\hat{C}$ yields. This can be verified by measuring $\hat{C}$ subsequently. The Bell scenario offers an interesting freedom, by restricting the form of $\hat{B}_{i}$. To evaluate $\left\langle \hat{B}\right\rangle $, one is required to evaluate $\left\langle \hat{B}_{1}\hat{B}_{2}\right\rangle $. From the compatibility argument, we need to find the average value of $m_{3}(\hat{B}_{1}\hat{B}_{2})=m_{1}(\hat{B}_{1})m_{2}(\hat{B}_{2})$, viz. $\left\langle m_{3}(\hat{a}_{1}\otimes\hat{b}_{1})\right\rangle =\left\langle m_{1}(\hat{a}_{1}\otimes\hat{\mathbb{I}})\right\rangle \left\langle m_{2}(\hat{\mathbb{I}}\otimes\hat{b}_{1})\right\rangle $. So far, the statements were general. Now we assume that our theory is non-multiplicative (and non-contextual). A consistent theory (with QM), using these assumptions, can and must violate $\left\langle \hat{B}\right\rangle \le2$. However, if the particles are taken far away, then the only way the theory can be non-multiplicative ($m_{1}(\hat{B}_{1})\neq m_{2}(\hat{B}_{1})$ for example), is if the theory is non-local. Locality will entail
+{[}Adapted from Bell's proof \cite{Bell1964}{]} Formally it is clear, since a violation of Bell's inequality implies non-locality. Consequently, any consistent completion of QM, will be non-local. More insight can be gained, although some care is needed. The notion of compatible observables is that commuting observables don't disturb each other and can be simultaneously known. While the statement is not precisely stated, we only need to note that $m_{k_{1}}(\hat{C})=m_{k_{2}}(\hat{B}_{1})m_{k_{3}}(\hat{B}_{2})$, for $(k_{1},k_{2},k_{3})\in\{(1,2,3),(2,1,3),\dots\}$ where $m_{i}$ are defined as before. In words, this means that to measure $\hat{C}$, one can instead first measure $\hat{B}_{1}$ and then measure $\hat{B}_{2}$. A multiplication of the values obtained, can be taken to be the value a measurement of $\hat{C}$ yields. This can be verified by measuring $\hat{C}$ subsequently. The Bell scenario offers an interesting freedom, by restricting the form of $\hat{B}_{i}$. To evaluate $\left\langle \hat{B}\right\rangle $, one is required to evaluate $\left\langle \hat{B}_{1}\hat{B}_{2}\right\rangle $. From the compatibility argument, we need to find the average value of $m_{3}(\hat{B}_{1}\hat{B}_{2})=m_{1}(\hat{B}_{1})m_{2}(\hat{B}_{2})$, viz. $\left\langle m_{3}(\hat{a}_{1}\otimes\hat{b}_{1})\right\rangle =\left\langle m_{1}(\hat{a}_{1}\otimes\hat{\mathbb{I}})\right\rangle \left\langle m_{2}(\hat{\mathbb{I}}\otimes\hat{b}_{1})\right\rangle $. So far, the statements were general. Now we assume that our theory is non-multiplicative (and non-contextual). A consistent theory (with QM), using these assumptions, can and must violate $\left\langle \hat{B}\right\rangle \le2$. However, if the particles are taken far away, then the only way the theory can be non-multiplicative ($m_{1}(\hat{B}_{1})\neq m_{2}(\hat{B}_{1})$ for example), is if the theory is non-local. Locality will entail
 that $m_{1}(\hat{B}_{1})=m_{2}(\hat{B}_{1})$ for instance, since the information about which observable was measured first, can't be propagated instantaneously. We see therefore that non-locality arises quite naturally in consistent non-multiplicative theories.
 \end{proof}
 
-Proof of \ref{lem:OpeExp}:
+Proof of \lemref{OpeExp}:
 \begin{proof} Adapted from Bohm's work \cite{Bohm2}\\
 To describe an experimental setup corresponding to a measurement, we use a measuring particle (mass $m_{L}$, say). It is made to interact with the system for a short duration appropriately and subsequently we measure the resultant position of the particle, to learn about the value of the observable of interest. Say for instance, we wish to measure the observable $\hat{L}$, then the required interaction Hamiltonian is given by $\hat{H}_{\text{int}}=a\hat{L}\otimes\hat{p}$. Here the first operator acts on the system and second (after the tensor product symbol) acts on the measuring particle. $a$ quantifies the interaction strength. {[}TODO: check this{]} It has dimensions of frequency, if $L$ has dimensions of length. Let us assume that the system in the state $\left|\psi\right\rangle $. Then it is known that one can express $\left|\psi\right\rangle =\sum_{l}\left\langle l|\psi\right\rangle \left|l\right\rangle $, where $\left|l\right\rangle $ are the eigenstates of $\hat{L}$ with eigenvalue $l$ (we have assumed non-degeneracy for simplicity, but its removal doesn't cause any significant difficulty). $\left|\Psi_{S}(t)\right\rangle =\hat{U}(t)\left|\psi\right\rangle \otimes\left|\varphi\right\rangle $, where  \[
 \hat{U}(t)=e^{-\frac{i}{\hbar}\left[-\hbar^{2}\frac{\nabla_{1}^{2}}{2m}-\hbar^{2}\frac{\nabla_{2}^{2}}{2m_{L}}+\hat{H}_{\text{int}}\right]t}
