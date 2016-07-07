@@ -25,17 +25,21 @@
 \AtBeginDocument{\providecommand\secref[1]{\ref{sec:#1}}}
 \AtBeginDocument{\providecommand\ssecref[1]{\ref{ssec:#1}}}
 
+
+\newref{sec}{name=Section~}
+\newref{ssec}{name=Subsection~}
+
 \RS@ifundefined{subref}
   {\def\RSsubtxt{section~}\newref{sub}{name = \RSsubtxt}}
   {}
 \RS@ifundefined{thmref}
-  {\def\RSthmtxt{theorem~}\newref{thm}{name = \RSthmtxt}}
+  {\def\RSthmtxt{Theorem~}\newref{thm}{name = \RSthmtxt}}
   {}
 \RS@ifundefined{lemref}
-  {\def\RSlemtxt{lemma~}\newref{lem}{name = \RSlemtxt}}
+  {\def\RSlemtxt{Lemma~}\newref{lem}{name = \RSlemtxt}}
   {}
 \RS@ifundefined{propref}
-  {\def\RSproptxt{proposition~}\newref{prop}{name = \RSproptxt}}
+  {\def\RSproptxt{Proposition~}\newref{prop}{name = \RSproptxt}}
   {}
 
 
@@ -104,7 +108,7 @@
 
 \affiliation{Indian Institute of Science Education and Research (IISER), Mohali}
 \begin{abstract}
-We propose a non-contextual hidden variable model, consistent with all predictions of quantum mechanics (QM). We reconsider the no-go theorems on hidden variables and conclude that the notion of contextuality is not a necessary feature of QM. Motivated by consistency requirements between bohmian mechanics and the said theorems, we provide an alternative view. This is accomplished by identifying a new classical property, we call `multiplicativity'. It turns out that if this condition is relaxed one is able to construct hidden variable models which are consistent with QM. Advantages of this view are illustrated by considering the implications of non-multiplicativity to non-locality. Our model is for finite dimensional quantum systems, however, generalization to the infinite dimensional case should be possible. %and its relation to contextuality.
+We propose a non-contextual hidden variable model, consistent with all predictions of Quantum Mechanics (QM). We reconsider the no-go theorems on hidden variables and conclude that the notion of contextuality is not a necessary feature of QM. Motivated by consistency requirements between Bohmian Mechanics and the said theorems, we provide an alternative view. This is accomplished by identifying a new classical property, we call `multiplicativity'. It turns out that if this condition is relaxed one is able to construct hidden variable models which are consistent with QM. Advantages of this view are illustrated by considering the implications of non-multiplicativity to non-locality. Our model is for finite dimensional quantum systems, however, generalization to the infinite dimensional case should be possible. %and its relation to contextuality.
 \end{abstract}
 \maketitle
 
