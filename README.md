@@ -7,3 +7,5 @@ Join paper from project
 ```git commit -am "added the draft"```
 ```git push```
 ```git pull```
+git stash discard local changes if not pushed.
+
