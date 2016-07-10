@@ -1,0 +1,26 @@
+
+* Draft 1
+** First revision requested by Arvind sir
+  1. Multiple issues
+  2. Re-arranged objects
+
+* Draft 2
+** Revisions requested by Arvind Sir
+1. Minor revisions
+2. Decided on PRL as the journal to submit it in
+3. Shorten to 4 page
+
+* Draft 3
+- Submitted to Arvin Sir; He modified it himself and produced draft 4.
+
+* Draft 4
+** Revisions requested by Arvind Sir
+1. [ ] For the long equation; Swap rows and columns | make it floating
+2. [ ] Fix the indentation
+3. [ ] Make s and m bold faced
+** Changes suggested by Me
+1. [X] Remove titles
+2. [X] Rephrasing at various instances
+** Discuss
+1. [ ] Better notation than making s and m bold faced?
+

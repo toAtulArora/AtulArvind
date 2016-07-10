@@ -19,8 +19,11 @@
 \AtBeginDocument{\providecommand\figref[1]{\ref{fig:#1}}}
 \AtBeginDocument{\providecommand\secref[1]{\ref{sec:#1}}}
 \AtBeginDocument{\providecommand\ssecref[1]{\ref{ssec:#1}}}
+\AtBeginDocument{\providecommand\defnref[1]{\ref{defn:#1}}}
+\AtBeginDocument{\providecommand\tblref[1]{\ref{tbl:#1}}}
 
-
+\newref{tbl}{name=Table~}{}
+\newref{defn}{name=Definition~}{}
 \newref{sec}{name=Section~}
 \newref{ssec}{name=Subsection~}
 
@@ -37,14 +40,22 @@
   {\def\RSproptxt{Proposition~}\newref{prop}{name = \RSproptxt}}
   {}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
 \theoremstyle{plain}
 \newtheorem{thm}{\protect\theoremname}
   \theoremstyle{definition}
-  \newtheorem{defn}[thm]{\protect\definitionname}
+  \newtheorem{defn}{\protect\definitionname}
+
   \theoremstyle{remark}
-  \newtheorem{rem}[thm]{\protect\remarkname}
+  \newtheorem{rem}{\protect\remarkname}
+
+  \theoremstyle{remark}
+  \newtheorem{defnrem}{\protect\remarkname}[defn]
+
+
+  \theoremstyle{remark}
+  \newtheorem{thmrem}{\protect\remarkname}[thm]
+
   \theoremstyle{plain}
   \newtheorem*{prop*}{\protect\propositionname}
   \theoremstyle{plain}
@@ -56,7 +67,9 @@
   \theoremstyle{definition}
   \newtheorem{notn}[thm]{\protect\notationname}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{paralist}
 \usepackage{graphicx}
 \graphicspath{ {images/} }
 
@@ -81,6 +94,69 @@
   \providecommand{\theoremname}{Theorem}
   \providecommand{\notationname}{Notation}
 \setlength{\itemindent}{0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%This stuff is required for transposing matrices | fine I didn't want to do donkey work
+\usepackage{xparse}
+\usepackage{environ}
+
+\ExplSyntaxOn
+\NewEnviron{bmatrixT}
+ {
+  \marine_transpose:V \BODY
+ }
+
+\int_new:N \l_marine_transpose_row_int
+\int_new:N \l_marine_transpose_col_int
+\seq_new:N \l_marine_transpose_rows_seq
+\seq_new:N \l_marine_transpose_arow_seq
+\prop_new:N \l_marine_transpose_matrix_prop
+\tl_new:N \l_marine_transpose_last_tl
+\tl_new:N \l_marine_transpose_body_tl
+
+\cs_new_protected:Nn \marine_transpose:n
+ {
+  \seq_set_split:Nnn \l_marine_transpose_rows_seq { \\ } { #1 }
+  \int_zero:N \l_marine_transpose_row_int
+  \prop_clear:N \l_marine_transpose_matrix_prop
+  \seq_map_inline:Nn \l_marine_transpose_rows_seq
+   {
+    \int_incr:N \l_marine_transpose_row_int
+    \int_zero:N \l_marine_transpose_col_int
+    \seq_set_split:Nnn \l_marine_transpose_arow_seq { & } { ##1 }
+    \seq_map_inline:Nn \l_marine_transpose_arow_seq
+     {
+      \int_incr:N \l_marine_transpose_col_int
+      \prop_put:Nxn \l_marine_transpose_matrix_prop
+       {
+        \int_to_arabic:n { \l_marine_transpose_row_int }
+        ,
+        \int_to_arabic:n { \l_marine_transpose_col_int }
+       }
+       { ####1 }
+     }
+   }
+   \tl_clear:N \l_marine_transpose_body_tl
+   \int_step_inline:nnnn { 1 } { 1 } { \l_marine_transpose_col_int }
+    {
+     \int_step_inline:nnnn { 1 } { 1 } { \l_marine_transpose_row_int }
+      {
+       \tl_put_right:Nx \l_marine_transpose_body_tl
+        {
+         \prop_item:Nn \l_marine_transpose_matrix_prop { ####1,##1 }
+         \int_compare:nF { ####1 = \l_marine_transpose_row_int } { & }
+        }
+      }
+     \tl_put_right:Nn \l_marine_transpose_body_tl { \\ }
+    }
+   \begin{bmatrix}
+   \l_marine_transpose_body_tl
+   \end{bmatrix}
+ }
+\cs_generate_variant:Nn \marine_transpose:n { V }
+\cs_generate_variant:Nn \prop_put:Nnn { Nx }
+\ExplSyntaxOff
+
+
 \begin{document}
 \title{A non-contextual hidden variable model for quantum mechanics}
 \author{Atul Singh Arora}
@@ -113,10 +189,9 @@ contextuality.
 \end{abstract}
 \pacs{}
 \maketitle
-\section{Introduction}
-\label{introduction}
+
 Quantum mechanics has been one of the most
-successful theories in physics so far; however,
+successful theories in physics so far, however,
 there has not yet been a final word on its
 completeness and interpretation~\cite{??}.
 Einstein's~\cite{EinsteinEPR} work on the
@@ -140,7 +215,7 @@ and the incompatibility between HV models and QM
 can arise even for a single quantum system.
 Contextuality has thus been identified as a
 fundamental non-classical feature of the quantum
-world and experiments have also been propsed and
+world and experiments have also been proposed and
 conducted to this effect~\cite{SimonContExpProp,
 HuangContExp,YangContExp,HasegawaContExp}.
 Contextuality, on the one hand has led to
@@ -164,11 +239,9 @@ necessary feature of QM (see \figref{block}).
 While this has been shown earlier by taking
 disturbances due to measurements into
 consideration~\cite{NoContextuality,LaCourNoCntx},
-we take a different approach and construct a toy
+we take a different approach and construct a
 HV model consistent with QM.  The predictions of
-the non-contextual toy model that we construct
-(which is a special case of a certain class of
-models) match with those of QM for systems
+the aforesaid model match with those of QM for systems
 described by arbitrary finite-dimensional Hilbert
 spaces.  \begin{figure}[h]
 \includegraphics[width=\columnwidth]{block1}
@@ -179,18 +252,17 @@ observables may not necessarily be obeyed by the
 predictions of an HV model at the level of
 individual outcomes.  Those HV models that obey
 such algebraic constraints possess a special
-property which we call `multiplicativity'.  By
-enlarging the scope of HV models to include
-non-multiplicative models, we construct an
+property which we call `multiplicativity'.  
+Enlarging the scope of HV models to include
+non-multiplicative models, permits us to construct an
 explicit non-contextual model consistent with QM.
 The re-examination of the very proof of
 `contextuality'  is used to illustrate
-non-multiplicativity, which we propose as an
-intrinsic quantum feature as a possible
-alternative to contextuality. 
+non-multiplicativity, an intrinsic quantum feature, 
+which we propose as a possible alternative to contextuality. 
 
 
-{\noindent \bf Notation~:} (a) $\psi\in\mathcal{H}$ 
+{\noindent \bf Notation:} (a) $\psi\in\mathcal{H}$ 
 represents a pure quantum mechanical
 state of the system in the Hilbert space
 $\mathcal{H}$, (b) $\hat{\mathcal{H}}$ is defined
@@ -226,13 +298,13 @@ to explain measurement outcomes. A theory which is
 not non-contextual is contextual.\end{defn}
 
 
-\begin{rem} The notion of non-contextuality may be
+\begin{defnrem} The notion of non-contextuality may be
 extended to maps. A map is non-contextual if it is
 of the form $m: \{ \hat{\mathcal{H}},[\mathcal{H}]
-\} \to\mathbb{R}$; prediction maps for individual
-observables are non-contextual by construction.  
-\end{rem}
-\begin{rem}
+\} \to\mathbb{R}$; prediction maps {\color{red}Comment: Is this really needed ``for individual
+observables''} are non-contextual by construction.  
+\end{defnrem}
+\begin{defnrem}
 Broader definitions in the literature have been
 suggested which declare a larger set of theories
 as non-contextual. For our purposes however, this
@@ -240,13 +312,13 @@ restricted definition will suffice. The term
 contextual is used to suggest that the value an
 operator takes might depend on which other
 compatible observable it is being  measured with.
-\end{rem}
+\end{defnrem}
 
 
 Before we re-examine the result of Kochen and
 Specker~\cite{KochenSpecker} that non-contextual
 models cannot be compatible with quantum
-mechanics, and show that multiplicativity can provide an
+mechanics and show that multiplicativity can provide an
 alternative to contextuality, we define
 multiplicativity more precisely.
 \begin{defn}
@@ -281,7 +353,7 @@ We must have $m(\hat{C})=-1$ while
 $m(\hat{B}_{1})=\pm1$ and $m(\hat{B}_{2})=\pm1$
 independently, according to QM, with probability
 half. Here multiplicativity does not seem to hold.
-Anti-thetically, it is clear that if one first
+Antithetically, it is clear that if one first
 measures $\hat{B}_{1}$ and subsequently measures
 $\hat{B}_{2}$, then the product of the results
 must be $-1$. This is consistent with measuring
@@ -301,32 +373,13 @@ N! {\rm ~permutations~of~}  k'{\rm s}
 \}$, $\hat{B}_{i}\in\hat{\mathcal{H}}$ are
 arbitrary mutually commuting observables,
 $[\psi_{i}]\in[\mathcal{H}]$ and
-$[\psi_{k+1}]\equiv
+$[\psi_{k+1}] :=
 s(\hat{B}_{k},[\psi_{k}],m(\hat{B}_{k},[\psi_{k}]))$,
 $\forall\,[\psi_{i}]$.  
-\end{defn} 
+\label{defn:seqnMltpl}\end{defn} 
 With these definitions we are now ready to discuss
-the `proofs of contextuality'. We first state the
-contextuality theorems in our notation:
-\begin{thm} 
-Let a map
-$m:\hat{\mathcal{H}}\to\mathbb{R}$, be s.t. (a)
-$m(\hat{\mathbb{I}})=1$, (b)
-$m(f(\hat{A}_{1},\hat{A}_{2},\dots))=\tilde
-f(m(\hat{A}_{1}),m(\hat{A}_{2}),\dots)$, where
-$\hat{A}_{i}$ are arbitrary Hermitian operators.
-If $m$ is assumed to describe the outcomes of
-measurements, then no $m$ exists which is
-consistent with all predictions of
-QM\label{thm:det}
-\end{thm} 
-Here $m$ maybe viewed as a specific
-class of prediction maps, that implicitly depends
-on the state $[\psi]$. It follows then that the
-maps ruled out by the theorem are non-contextual.
-The set of maps ruled out, however, can be
-enlarged by imposing fewer restrictions on it.
-This is achieved by the following theorem.
+the `proof of contextuality'. We first state the
+contextuality theorem in our notation:
 \begin{thm} Let a map
 $m:\hat{\mathcal{H}}\to\mathbb{R}$, be s.t. (a)
 $m(\hat{\mathbb{I}})=1$, (b)
@@ -343,7 +396,7 @@ predictions of QM.
 \begin{proof} Peres Mermin
 ($\left|\mathcal{H}\right|\ge4$)
 \cite{Peres,Mermin}:
-For a system composed of two spin-1/2 particles 
+For a system composed of two spin-half particles 
 consider the following set of operators \[
 \hat{A}_{ij}\doteq\left[\begin{array}{ccc}
 \hat{\mathbb{I}}\otimes\hat{\sigma}_{x} &
@@ -356,13 +409,13 @@ consider the following set of operators \[
 \hat{\sigma}_{x}\otimes\hat{\sigma}_{y} &
 \hat{\sigma}_{z}\otimes\hat{\sigma}_{z}
 \end{array}\right] \] which have the property that
-all operators along a row (or column) commute and
-that the product of rows (or columns) yield
+all operators along a row (or column) commute. Further,
+the product of rows (or columns) yields
 $\hat{R}_{i}=\mathbb{I}$ and
 $\hat{C}_{j}=\mathbb{I}\,(j\neq3)$,
 $\hat{C}_{3}=-\mathbb{I}$, ($\forall\,i,j$) where
-$\hat{R}_{i}\equiv\prod_{j}\hat{A}_{ij}$,
-$\hat{C}_{j}\equiv\prod_{i}\hat{A}_{ij}$. Let us
+$\hat{R}_{i}:=\prod_{j}\hat{A}_{ij}$,
+$\hat{C}_{j}:=\prod_{i}\hat{A}_{ij}$. Let us
 assume that $m$ exists. From property (b) of the
 map, to get $m(\hat{C}_{3})=-1$ (as required by
 property (a)), we must have an odd number of $-1$
@@ -379,7 +432,7 @@ contradiction and therefore we conclude that our
 assumption that a consistent $m$ exists, must be
 wrong.  \end{proof}
 
-\begin{rem} One could in principle assume $m$, to
+\begin{thmrem} One could in principle assume $m$, to
 be s.t. (a) $m(\hat{\mathbb{I}})=1$, (b)
 $m(\alpha\hat{B}_{i})=\alpha m(\hat{B}_{i})$, for
 $\alpha\in\mathbb{R}$, (c)
@@ -393,14 +446,15 @@ listed in the theorem is satisfied as a
 consequence.  Therefore, assuming (a)-(d) as
 listed here, rules out a larger class of $m$.
 \cite{KochenSpecker} 
-\end{rem} 
-It is clear that 
-according to
+\end{thmrem} 
+Here $m$ maybe viewed as a specific
+class of prediction maps, that implicitly depends
+on the state $[\psi]$. It is clear that according to
 \thmref{KS}, non-contextual maps which are
 \emph{multiplicative} must be incompatible with
 QM. However, non-contextual maps which are
 non-\emph{multiplicative} might be consistent with
-QM. We will indeed show this by constructing an
+QM. Indeed it is and we will show this by constructing an
 explicit model.
 
 
@@ -410,15 +464,13 @@ result will be used to assess accuracy of any
 proposal of a HV
 model.
 \begin{prop*} 
-Let a QM 
+Let a quantum mechanical 
 system be in a state, s.t. measurement of
 $\hat{C}$ yields repeatable results (same result
 each time). Then according to QM, \emph{sequential
-multiplicativity} holds, where $\hat{C}\equiv
+multiplicativity} holds, where $\hat{C}:=
 f(\hat{B}_{1},\hat{B}_{2},\dots\hat{B}_{n})$, and
-$\hat{B}_{i}$ are as defined. 
-{\color{red} Comment: We need to refer to a specific place
-for def}
+$\hat{B}_{i}$ are as defined (in \defnref{seqnMltpl})
 \end{prop*}
 \begin{proof} 
 Without loss of generality we can take
@@ -436,8 +488,6 @@ where $l_{i}$ indexes the eigenvalues
 corresponding to $\hat{B}_{i}$ and that
 $\sum_{\mathbf{b}}\left|\mathbf{b}\right\rangle
 \left\langle \mathbf{b}\right|=\hat{\mathbb{I}}$.
-{\color{red} Do we need to additional index? $b_j$
-can be an index itself}
 Let the state of the system
 $\left|\psi\right\rangle $ be s.t.
 $\hat{C}\left|\psi\right\rangle
@@ -476,10 +526,10 @@ b_{n}^{(l_{n})})$. However, when $\left\langle
 \mathbf{b}|\psi\right\rangle =0$, viz.
 $\left|\mathbf{b}\right\rangle $s that are
 orthogonal to $\left|\psi\right\rangle $, then
-nothing can be said. We can thus conclude that
+nothing can be said but that is irrelevant. We can thus conclude that
 $\left|\psi\right\rangle $ is made only of those
 $\left|\mathbf{b}\right\rangle $s that satisfy the
-required relation. That completes the proof.
+required relation.
 \end{proof} 
 It is worth noting that in the Peres Mermin
 case, where $\hat{R}_{i}$ and $\hat{C}_{j}$ are
@@ -491,26 +541,26 @@ must always hold.
 %Construction \label{ssec:cingle}}
 We are now ready to describe our explict model.
 Let the state of a finite dimensional quantum system
-be $\left|\chi\right\rangle $, and we wish to
+be $\left|\chi\right\rangle $. We wish to
 assign a value to an arbitrary observable 
 $\hat{A}=\sum_{a}a\left|a\right\rangle
 \left\langle a\right|$, which has 
-eigen vectors $\{ \vert
-a_j\rangle \}$ and the corresponding ordered eigen
-values $\{a_j\}$ such that 
+eigenvectors $\{ \vert
+a_j\rangle \}$. The corresponding ordered eigenvalues are $\{a_j\}$ such that 
 $a_{\rm min}=a_1$
 and 
-$a_{\rm max}=a_n$
+$a_{\rm max}=a_n$.
 
-Our model for assigning values have the following
-three steps~:
+Our HV model for QM assigns values in the following
+three steps:
+\setdefaultleftmargin{0pt}{}{}{}{}{}
 \begin{enumerate}
 \item
-{\bf Initial HV~:} Pick a number
+{\bf Initial HV:} Pick a number
 $c\in[0,1]$, from a uniform random distribution.\
 \item
-{\bf  
-Assignment or Prediction~:}
+{\bf
+Assignment or Prediction:}
  The value assigned to
 $\hat{A}$ is given by finding the smallest $a$
 s.t.  \[
@@ -518,28 +568,25 @@ c\le\sum_{a'=a_{\text{min}}}^{a}\left|\left\langle
 a'|\chi\right\rangle \right|^{2}, \] viz. we have
 specified a prediction map, $m(\hat{A})=a$.
 \item
-{\bf Update~:} After measuring an operator, the state is
+{\bf Update:} After measuring an operator, the state is
 updated (collapsed) in accordance with the rules
 of QM. This completely specifies the sequence map
 $s$.
 \end{enumerate}
 To see how this works consider 
-single spin half particle in state
+a spin-half particle in the state
 $\left|\chi\right\rangle
 =\cos\theta\left|0\right\rangle
-+\sin\theta\left|1\right\rangle $, and
++\sin\theta\left|1\right\rangle $ and the observable
 $\hat{A}=\hat{\sigma}_{z}=\left|0\right\rangle
 \left\langle 0\right|-\left|1\right\rangle
 \left\langle 1\right|$. Now, according to the
 postulates of this theory, $m(\hat{A})=+1$, if
-the value of randomly generated 
+the randomly generated value for 
 $c\le\cos^{2}\theta$ else $\hat{A}$ is assigned
 $-1$. It follows then, from $c$ being uniformly
 random in $[0,1]$ that the statistics agree with
-predictions of QM. The reader can convince
-him(her)self that the said scheme works in
-general. {\color{red} Can we give more detail to
-convince the read explicitly}
+predictions of QM.
 
 Note that the assignment, described by the
 prediction map $m$, is non-contextual since given
@@ -548,9 +595,10 @@ uniquely assigned. The map $m$ is, however,
 non-multiplicative. 
 
 
-To bring out the non-multiplicativity of our model
+To bring out the non-multiplicativity of our model 
+and to convince the reader of its generic validity,
 we apply it to the Peres Mermin situation of two
-spin-1/2 particles. Consider the initial state of
+spin-half particles. Consider the initial state of
 the system 
 $\left|\psi_{1}\right\rangle
 =\left|00\right\rangle $. Assume we 
@@ -564,7 +612,7 @@ assigned their respective eigenvalues. The
 remaining operators must be assigned $-1$ as one
 can readily verify by explicitly finding the
 smallest $a$ as described in postulate 2 of the
-model (see \eqref{toyModel}). Two remarks are in
+model (see \tblref{HVmodel}). Two remarks are in
 order. First, this model is manifestly
 \emph{non-multiplicative}, for
 $m_{1}(\hat{C}_{3})=1\neq
@@ -603,7 +651,7 @@ the assignment remains invariant (in fact any of
 $c<0.5$ would yield the same result), which should
 be evident from the previous exercise. For the
 final step we choose to measure
-$\hat{A}_{23}(=\hat{\sigma}_{y}\otimes\hat{\sigma}_{y})$,
+$\hat p := \hat{A}_{23}(=\hat{\sigma}_{y}\otimes\hat{\sigma}_{y})$,
 to proceed with sequentially measuring
 $\hat{C}_{3}$. To simplify calculations, we note
 \[ \left|00\right\rangle
@@ -648,13 +696,19 @@ doesn't affect the result one would obtain by
 measuring operators compatible to it (granted they
 have been measured once before).
 
-\begin{widetext} \begin{equation}
-\begin{array}{c|ccc} \text{Iteration} & i=1 & i=2
+%\begin{widetext}
+%\onecolumngrid
+\begin{table*}
+ \begin{equation*}
+\begin{array}{c|ccc} 
+\text{Iteration} & i=1 & i=2
 & i=3\\ \left|\psi_{\text{init}}\right\rangle  &
 \left|00\right\rangle  & \left|00\right\rangle  &
 \frac{\left|00\right\rangle +\left|11\right\rangle
-}{\sqrt{2}}\\ \text{HV/Toss} & c=0.4 & c=0.1 &
-c=0.7\\ \\ \text{Predictions} &
+}{\sqrt{2}}\\ 
+\text{HV/Toss} & c=0.4 & c=0.1 &
+c=0.7\\ \\ 
+\text{Predictions} &
 m_{1}(\hat{A}_{ij})\doteq\left[\begin{array}{ccc}
 -1 & -1 & -1\\ -1 & -1 & -1\\ -1 & -1 & +1
 \end{array}\right] &
@@ -663,7 +717,8 @@ m_{2}(\hat{A}_{ij})\doteq\left[\begin{array}{ccc}
 \end{array}\right] &
 m_{3}(\hat{A}_{ij})\doteq\left[\begin{array}{ccc}
 +1 & +1 & +1\\ +1 & +1 & -1\\ +1 & +1 & +1
-\end{array}\right]\\ \text{(Assignments)}\\ &
+\end{array}\right]\\ 
+\text{(Assignments)}\\ &
 m_{1}(\hat{R}_{i}),m_{1}(\hat{C}_{j})=+1\,(j\neq3)
 &
 m_{2}(\hat{R}_{i}),m_{2}(\hat{C}_{j})=+1\,(j\neq3)
@@ -682,8 +737,42 @@ m_{3}(\hat{C}_{3})=-1\\ \text{Operator}\\
 \frac{\left|00\right\rangle +\left|11\right\rangle
 }{\sqrt{2}} & \frac{\left|00\right\rangle
 +\left|11\right\rangle }{\sqrt{2}}
-\end{array}\label{eq:toyModel} \end{equation}
-\end{widetext} 
+% \begin{bmatrixT} 
+% \text{Iteration} & i=1 & i=2
+% & i=3\\ \left|\psi_{\text{init}}\right\rangle  &
+% \left|00\right\rangle  & \left|00\right\rangle  &
+% \frac{\left|00\right\rangle +\left|11\right\rangle
+% }{\sqrt{2}} \\
+% \text{HV} & c=0.4 & c=0.1 & c=0.7 \\
+
+% \text{Predictions or} &
+% {m_{1}(\hat{A}_{ij})\doteq\left[\begin{array}{ccc}
+% -1 & -1 & -1\\ -1 & -1 & -1\\ -1 & -1 & +1
+% \end{array}\right]} &
+% {m_{2}(\hat{A}_{ij})\doteq\left[\begin{array}{ccc}
+% -1 & -1 & -1\\ -1 & -1 & -1\\ -1 & -1 & +1
+% \end{array}\right]} &
+% {m_{3}(\hat{A}_{ij})\doteq\left[\begin{array}{ccc}
+% +1 & +1 & +1\\ +1 & +1 & -1\\ +1 & +1 & +1
+% \end{array}\right]}\\ 
+
+% \text{(Assignments)} &
+% m_{1}(\hat{R}_{i}),m_{1}(\hat{C}_{j})=+1\,(j\neq3)
+% &
+% m_{2}(\hat{R}_{i}),m_{2}(\hat{C}_{j})=+1\,(j\neq3)
+% &
+% m_{3}(\hat{R}_{i}),m_{3}(\hat{C}_{j})=+1\,(j\neq3)\\
+% & m_{1}(\hat{C}_{3})=-1 & m_{2}(\hat{C}_{3})=-1 &
+% m_{3}(\hat{C}_{3})=-1
+% \end{bmatrixT}
+\label{eq:toyModel}
+\end{array}
+% \label{eq:toyModel}
+\end{equation*}
+\caption{HV model applied to the Peres Mermin situation}
+\label{tbl:HVmodel}
+\end{table*}
+%\end{widetext} 
 
 
 
