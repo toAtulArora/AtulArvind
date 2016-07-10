@@ -7,5 +7,6 @@ Join paper from project Started May 2016
 ```git commit -am "added the draft"```
 ```git push```
 ```git pull```
-git stash discard local changes if not pushed.
+```git stash``` discard local changes if not pushed.
 
+[How to setup ssh](http://code.tutsplus.com/tutorials/quick-tip-how-to-work-with-github-and-multiple-accounts--net-22574)
