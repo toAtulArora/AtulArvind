@@ -244,7 +244,7 @@ HV model consistent with QM.  The predictions of
 the aforesaid model match with those of QM for systems
 described by arbitrary finite-dimensional Hilbert
 spaces.  \begin{figure}[h]
-\includegraphics[width=\columnwidth]{block1}
+\includegraphics[width=0.9\columnwidth]{block1}
 \caption{Non-contextuality is not inconsistent
 with QM} \label{fig:block}\end{figure} The
 algebraic constraints obeyed by quantum
@@ -480,12 +480,11 @@ operators (Operators can be added to make the set
 complete if it not so).
 It follows
 that $\exists$
-$\left|\mathbf{b}=\left(b_{1}^{(l_{1})},b_{2}^{(l_{2})},\dots
-b_{n}^{(l_{n})}\right)\right\rangle $ s.t.
+$\left|\mathbf{b}=\left(b_{1},b_{2},\dots
+b_{n}\right)\right\rangle $ s.t.
 $\hat{B}_{i}\left|\mathbf{b}\right\rangle
-=b_{i}^{(l_{i})}\left|\mathbf{b}\right\rangle $,
-where $l_{i}$ indexes the eigenvalues
-corresponding to $\hat{B}_{i}$ and that
+=b_{i}\left|\mathbf{b}\right\rangle $,
+and that
 $\sum_{\mathbf{b}}\left|\mathbf{b}\right\rangle
 \left\langle \mathbf{b}\right|=\hat{\mathbb{I}}$.
 Let the state of the system
@@ -496,8 +495,8 @@ the statement to follow, one need only show that
 $\left|\psi\right\rangle $ must be made of only
 those $\left|\mathbf{b}\right\rangle $s, which
 satisfy $c=\tilde
-f(b_{1}^{(l_{1})},b_{2}^{(l_{2})},\dots
-b_{n}^{(l_{n})})$.  This is the crucial step and
+f(b_{1},b_{2},\dots
+b_{n})$.  This is the crucial step and
 proving this is straightforward. We start with
 $\hat{C}\left|\psi\right\rangle
 =c\left|\psi\right\rangle $ and take its inner
@@ -509,8 +508,8 @@ get \begin{eqnarray*} \left\langle
 \mathbf{b}\right|f(\hat{B}_{1},\hat{B}_{2},\dots\hat{B}_{n})
 \left|\psi\right\rangle
 & = & c\left\langle \mathbf{b}|\psi\right\rangle
-,\\ \tilde f(b_{1}^{(l_{1})},b_{2}^{(l_{2})},\dots
-b_{n}^{(l_{n})})\left\langle
+,\\ \tilde f(b_{1},b_{2},\dots
+b_{n})\left\langle
 \mathbf{b}|\psi\right\rangle  & = & c\left\langle
 \mathbf{b}|\psi\right\rangle .  \end{eqnarray*}
 Also, we have $\left|\psi\right\rangle
@@ -521,8 +520,8 @@ completeness. If we consider
 $\left|\mathbf{b}\right\rangle $s for which
 $\left\langle \mathbf{b}|\psi\right\rangle \neq0$,
 then we can conclude that indeed $c=\tilde
-f(b_{1}^{(l_{1})},b_{2}^{(l_{2})},\dots
-b_{n}^{(l_{n})})$. However, when $\left\langle
+f(b_{1},b_{2},\dots
+b_{n})$. However, when $\left\langle
 \mathbf{b}|\psi\right\rangle =0$, viz.
 $\left|\mathbf{b}\right\rangle $s that are
 orthogonal to $\left|\psi\right\rangle $, then
@@ -563,9 +562,8 @@ $c\in[0,1]$, from a uniform random distribution.\
 Assignment or Prediction:}
  The value assigned to
 $\hat{A}$ is given by finding the smallest $a$
-s.t.  \[
-c\le\sum_{a'=a_{\text{min}}}^{a}\left|\left\langle
-a'|\chi\right\rangle \right|^{2}, \] viz. we have
+s.t.  $c\le\sum_{a'=a_{\text{min}}}^{a}\left|\left\langle
+a'|\chi\right\rangle \right|^{2},$ viz. we have
 specified a prediction map, $m(\hat{A})=a$.
 \item
 {\bf Update:} After measuring an operator, the state is
@@ -700,43 +698,29 @@ have been measured once before).
 %\onecolumngrid
 \begin{table*}
  \begin{equation*}
-\begin{array}{c|ccc} 
-\text{Iteration} & i=1 & i=2
-& i=3\\ \left|\psi_{\text{init}}\right\rangle  &
-\left|00\right\rangle  & \left|00\right\rangle  &
-\frac{\left|00\right\rangle +\left|11\right\rangle
-}{\sqrt{2}}\\ 
-\text{HV/Toss} & c=0.4 & c=0.1 &
-c=0.7\\ \\ 
-\text{Predictions} &
-m_{1}(\hat{A}_{ij})\doteq\left[\begin{array}{ccc}
--1 & -1 & -1\\ -1 & -1 & -1\\ -1 & -1 & +1
-\end{array}\right] &
-m_{2}(\hat{A}_{ij})\doteq\left[\begin{array}{ccc}
--1 & -1 & -1\\ -1 & -1 & -1\\ -1 & -1 & +1
-\end{array}\right] &
-m_{3}(\hat{A}_{ij})\doteq\left[\begin{array}{ccc}
-+1 & +1 & +1\\ +1 & +1 & -1\\ +1 & +1 & +1
-\end{array}\right]\\ 
-\text{(Assignments)}\\ &
-m_{1}(\hat{R}_{i}),m_{1}(\hat{C}_{j})=+1\,(j\neq3)
-&
-m_{2}(\hat{R}_{i}),m_{2}(\hat{C}_{j})=+1\,(j\neq3)
-&
+\begin{array}{ccc} 
+i=1,c=0.4,\left|\psi_{\text{init}}\right\rangle=\left|00\right\rangle & i=2,c=0.1,\left|\psi_{\text{init}}\right\rangle=\left|00\right\rangle & i=3,c=0.7,\left|\psi_{\text{init}}\right\rangle=\frac{\left|00\right\rangle +\left|11\right\rangle}{\sqrt{2}} \\
+%\text{Iteration} & i=1 & i=2 & i=3\\ 
+%\left|\psi_{\text{init}}\right\rangle  & \left|00\right\rangle  & \left|00\right\rangle  & \frac{\left|00\right\rangle +\left|11\right\rangle}{\sqrt{2}}\\ 
+%\text{HV} & c=0.4 & c=0.1 & c=0.7\\ \\ 
+
+m_{1}(\hat{A}_{ij})\doteq\left[\begin{array}{ccc} -1 & -1 & -1\\ -1 & -1 & -1\\ -1 & -1 & +1\end{array}\right] &
+m_{2}(\hat{A}_{ij})\doteq\left[\begin{array}{ccc}-1 & -1 & -1\\ -1 & -1 & -1\\ -1 & -1 & +1\end{array}\right] &
+m_{3}(\hat{A}_{ij})\doteq\left[\begin{array}{ccc}+1 & +1 & +1\\ +1 & +1 & -1\\ +1 & +1 & +1\end{array}\right]\\ \\
+
+
+m_{1}(\hat{R}_{i}),m_{1}(\hat{C}_{j})=+1\,(j\neq3) &
+m_{2}(\hat{R}_{i}),m_{2}(\hat{C}_{j})=+1\,(j\neq3) &
 m_{3}(\hat{R}_{i}),m_{3}(\hat{C}_{j})=+1\,(j\neq3)\\
-& m_{1}(\hat{C}_{3})=-1 & m_{2}(\hat{C}_{3})=-1 &
-m_{3}(\hat{C}_{3})=-1\\ \text{Operator}\\
-\text{Measured} &
-\hat{A}_{13}=\hat{\sigma}_{z}\otimes\hat{\sigma}_{z};m_{1}(\hat{A}_{13})=+1
-&
-\quad\quad\hat{A}_{23}=\hat{\sigma}_{y}\otimes\hat{\sigma}_{y};m_{2}(\hat{A}_{23})=-1\quad\quad
-&
+
+m_{1}(\hat{C}_{3})=-1 & m_{2}(\hat{C}_{3})=-1 & m_{3}(\hat{C}_{3})=-1\\ 
+
+
+\hat{A}_{13}=\hat{\sigma}_{z}\otimes\hat{\sigma}_{z};m_{1}(\hat{A}_{13})=+1&
+\quad\quad\hat{A}_{23}=\hat{\sigma}_{y}\otimes\hat{\sigma}_{y};m_{2}(\hat{A}_{23})=-1\quad\quad&
 \hat{A}_{33}=\hat{\sigma}_{x}\otimes\hat{\sigma}_{x};m_{3}(\hat{A}_{33})=+1\\
-\\ \left|\psi_{\text{final}}\right\rangle  &
-\left|00\right\rangle  &
-\frac{\left|00\right\rangle +\left|11\right\rangle
-}{\sqrt{2}} & \frac{\left|00\right\rangle
-+\left|11\right\rangle }{\sqrt{2}}
+
+\left|\psi_{\text{final}}\right\rangle = \left|00\right\rangle  & \left|\psi_{\text{final}}\right\rangle = \frac{\left|00\right\rangle +\left|11\right\rangle}{\sqrt{2}} & \left|\psi_{\text{final}}\right\rangle = \frac{\left|00\right\rangle+\left|11\right\rangle }{\sqrt{2}}
 % \begin{bmatrixT} 
 % \text{Iteration} & i=1 & i=2
 % & i=3\\ \left|\psi_{\text{init}}\right\rangle  &
@@ -780,29 +764,36 @@ m_{3}(\hat{C}_{3})=-1\\ \text{Operator}\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {\color{red} Will work on CC after everthin else
 is done}
-\section{Concluding Remarks
-\label{sec:implications}} We have already
-constructed an explicit non-contextual model,
+This has implications to Bohm's HV model as well, Bohmian Mechanics (BM), where the notion of positions (and hence trajectories) is precisely defined and particles are guided by the wavefunction. Consequently, given the initial conditions precisely (which is never the case experimentally) one can predict results of all experiments precisely. This entails that BM is capable of predicting outcomes of, for instance, a Stern Gerlach experiment. However, within BM two experiments which correspond to measurement of the same operator, can yield opposite results. Further, this can be demonstrated for a single spin half particle. This observation is often used as a demonstration of `contextuality' in BM, although we did not even speak of compatible measurements. It turns out, however, that if one restricts oneself to a one-one map between an experiment and an observable (by following some convention for example) then the so called `contextuality' can be removed from BM. One finds that the map so obtained from observables to their predictions turns out to be non-multiplicative, suggesting that at least in this case, non-multiplicativity is a more suitable explanation of non-classicality.
+
+We have already constructed an explicit non-contextual model,
 which is consistent with QM.  This model we knew
 had to be non-multiplicative.  We will see how
 non-multiplicativity gives rise to what one might
-confuse to mean contextuality.  Imagine \[
-\hat{B}_{1}=\hat{\sigma}_{z}\otimes\hat{\mathbb{I}}=\left|00\right\rangle
+confuse to mean contextuality.  Imagine $\hat{B}_{1}=\hat{\sigma}_{z}\otimes\hat{\mathbb{I}}=\left|00\right\rangle
 \left\langle 00\right|+\left|01\right\rangle
 \left\langle 01\right|-\left[\left|10\right\rangle
 \left\langle 10\right|+\left|11\right\rangle
-\left\langle 11\right|\right], \] \[
+\left\langle 11\right|\right],$ $
 \hat{B}_{2}=\hat{\mathbb{I}}\otimes\hat{\sigma}_{z}=\left|10\right\rangle
 \left\langle 10\right|+\left|11\right\rangle
 \left\langle 11\right|-\left[\left|00\right\rangle
 \left\langle 00\right|+\left|01\right\rangle
-\left\langle 01\right|\right], \] while we define
-\begin{align*} \hat{C}&=f(\{\hat{B}_{i}\}) \\
-&=0.\left|00\right\rangle \left\langle
+\left\langle 01\right|\right],$ while we define
+$ \hat{C}=f(\{\hat{B}_{i}\})
+=0.\left|00\right\rangle \left\langle
 00\right|+1.\left|01\right\rangle \left\langle
 01\right|+2.\left|10\right\rangle \left\langle
 10\right|+3.\left|11\right\rangle \left\langle
-11\right|.  \end{align*} $\hat{C}$ maybe viewed as
+11\right|. $
+
+% \begin{align*} \hat{C}&=f(\{\hat{B}_{i}\}) \\
+% &=0.\left|00\right\rangle \left\langle
+% 00\right|+1.\left|01\right\rangle \left\langle
+% 01\right|+2.\left|10\right\rangle \left\langle
+% 10\right|+3.\left|11\right\rangle \left\langle
+% 11\right|.  \end{align*}
+ $\hat{C}$ maybe viewed as
 a function of $\hat{B}_{1}$, $\hat{B}_{2}$ and
 other operators $\hat{B}_{i}$ which are
 constructed to obtain a maximally commuting set. A
@@ -826,7 +817,7 @@ be noted that $B_{1}$ has a well defined value,
 and so does $\hat{C}$. Thus by our accepted
 definition, there's no contextuality. It is just
 that $m_{1}(\hat{C})\neq
-f(m_{1}(\hat{B}_{1}),m_{1}(\hat{B}_{2}),\dots)$,
+\tilde f(m_{1}(\hat{B}_{1}),m_{1}(\hat{B}_{2}),\dots)$,
 viz. the theory is non-multiplicative. Note that
 after measuring $\hat{C}$ however,
 $m_{2}(\hat{B}_{1})=+1$ and
