@@ -38,3 +38,4 @@
 * Draft 6
 ** Some mentions
 1. Fixed the notation format, the theorem format etc.
+2. Did a small re-write in the last paragraph (about entanglement etc.)
