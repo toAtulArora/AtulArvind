@@ -36,3 +36,5 @@
 2. pstricks
 
 * Draft 6
+** Some mentions
+1. Fixed the notation format, the theorem format etc.

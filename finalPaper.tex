@@ -43,6 +43,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
 \theoremstyle{plain}
 \newtheorem{thm}{\protect\theoremname}
+
+\theoremstyle{plain}
+\newtheorem*{thm*}{\protect\theoremname}
+
   \theoremstyle{definition}
   \newtheorem{defn}{\protect\definitionname}
 
@@ -65,7 +69,7 @@
   \theoremstyle{definition}
   \newtheorem{example}[thm]{\protect\examplename}
   \theoremstyle{definition}
-  \newtheorem{notn}[thm]{\protect\notationname}
+  \newtheorem*{notn*}{\protect\notationname}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
@@ -262,7 +266,9 @@ non-multiplicativity, an intrinsic quantum feature,
 which we propose as a possible alternative to contextuality. 
 
 
-{\noindent \bf Notation:} (a) $\psi\in\mathcal{H}$ 
+%{\noindent \bf Notation:} 
+\begin{notn*}
+(a) $\psi\in\mathcal{H}$ 
 represents a pure quantum mechanical
 state of the system in the Hilbert space
 $\mathcal{H}$, (b) $\hat{\mathcal{H}}$ is defined
@@ -289,7 +295,7 @@ for a subset of $\{
 \hat{\mathcal{H}},\hat{\mathcal{H}},\dots\hat{\mathcal{H}}
 \}$.}, (h) $\tilde{f}$ is a map constructed by
 replacing observables in $f$ with real numbers.
-
+\end{notn*}
 
 \begin{defn} A theory is non-contextual, if it
 provides a map $M: \{
@@ -379,7 +385,7 @@ $\forall\,[\psi_{i}]$.
 With these definitions we are now ready to discuss
 the `proof of contextuality'. We first state the
 contextuality theorem in our notation:
-\begin{thm} Let a map
+\begin{thm*} Let a map
 $M:\hat{\mathcal{H}}\to\mathbb{R}$, be s.t. (a)
 $M(\hat{\mathbb{I}})=1$, (b)
 $M(f(\hat{B}_{1},\hat{B}_{2},\dots))=\tilde
@@ -390,9 +396,9 @@ assumed to describe the outcomes of measurements,
 then no $M$ exists which is consistent with all
 predictions of QM. 
 \label{thm:KS}
-\end{thm}
+\end{thm*}
 
-\begin{proof} Peres Mermin
+\begin{proof} Peres Mermin [PM]
 ($\left|\mathcal{H}\right|\ge4$)
 \cite{Peres,Mermin}:
 For a system composed of two spin-half particles 
@@ -449,7 +455,7 @@ listed here, rules out a larger class of $M$.
 Here $M$ maybe viewed as a specific
 class of prediction maps, that implicitly depends
 on the state $[\psi]$. It is clear that according to
-\thmref{KS}, non-contextual maps which are
+the theorem, non-contextual maps which are
 \emph{multiplicative} must be incompatible with
 QM. However, non-contextual maps which are
 non-\emph{multiplicative} might be consistent with
