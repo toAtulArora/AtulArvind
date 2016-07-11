@@ -32,7 +32,7 @@
 4. [ ] Nielsen Chuang
 5. [X] Shrink the table somehow
 ** Discussion Conclusions
-1. [ ] Make s and m capital
-2. [ ] pstricks
+1. [X] Make s and m capital
+2. pstricks
 
 * Draft 6
