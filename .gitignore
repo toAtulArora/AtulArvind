@@ -22,7 +22,8 @@ account_details
 *.mtc1
 *.out
 *.synctex.gz
-*.pdf
+# *.pdf (wanted some PDFs to atleast go through!)
+finalPaper.pdf
 \#*\#
 *\~
 \_*
