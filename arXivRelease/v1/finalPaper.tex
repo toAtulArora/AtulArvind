@@ -1,0 +1,816 @@
+\documentclass[british,aps,prl,superscriptaddress,nofootinbib,times,reprint]{revtex4-1}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=2cm,rmargin=2cm,headheight=2cm,headsep=2cm,footskip=2cm}
+\setcounter{secnumdepth}{3}
+\usepackage{verbatim}
+\usepackage{refstyle}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{esint}
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\AtBeginDocument{\providecommand\thmref[1]{\ref{thm:#1}}}
+\AtBeginDocument{\providecommand\lemref[1]{\ref{lem:#1}}}
+\AtBeginDocument{\providecommand\propref[1]{\ref{prop:#1}}}
+\AtBeginDocument{\providecommand\eqref[1]{\ref{eq:#1}}}
+\AtBeginDocument{\providecommand\figref[1]{\ref{fig:#1}}}
+\AtBeginDocument{\providecommand\secref[1]{\ref{sec:#1}}}
+\AtBeginDocument{\providecommand\ssecref[1]{\ref{ssec:#1}}}
+\AtBeginDocument{\providecommand\defnref[1]{\ref{defn:#1}}}
+\AtBeginDocument{\providecommand\tblref[1]{\ref{tbl:#1}}}
+
+\newref{tbl}{name=Table~}{}
+\newref{defn}{name=Definition~}{}
+\newref{sec}{name=Section~}
+\newref{ssec}{name=Subsection~}
+\newref{fig}{name=Figure~}
+
+\RS@ifundefined{subref}
+  {\def\RSsubtxt{section~}\newref{sub}{name = \RSsubtxt}}
+  {}
+\RS@ifundefined{thmref}
+  {\def\RSthmtxt{Theorem~}\newref{thm}{name = \RSthmtxt}}
+  {}
+\RS@ifundefined{lemref}
+  {\def\RSlemtxt{Lemma~}\newref{lem}{name = \RSlemtxt}}
+  {}
+\RS@ifundefined{propref}
+  {\def\RSproptxt{Proposition~}\newref{prop}{name = \RSproptxt}}
+  {}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\theoremstyle{plain}
+\newtheorem{thm}{\protect\theoremname}
+
+\theoremstyle{plain}
+\newtheorem*{thm*}{\protect\theoremname}
+
+  \theoremstyle{definition}
+  \newtheorem{defn}{\protect\definitionname}
+
+  \theoremstyle{remark}
+  \newtheorem*{rem}{\protect\remarkname}
+
+  \theoremstyle{remark}
+  \newtheorem{defnrem}{\protect\remarkname}[defn]
+
+
+  \theoremstyle{remark}
+  \newtheorem{thmrem}{\protect\remarkname}[thm]
+
+  \theoremstyle{plain}
+  \newtheorem*{prop*}{\protect\propositionname}
+  \theoremstyle{plain}
+  \newtheorem{lem}[thm]{\protect\lemmaname}
+  \theoremstyle{plain}
+  \newtheorem{prop}[thm]{\protect\propositionname}
+  \theoremstyle{definition}
+  \newtheorem{example}[thm]{\protect\examplename}
+  \theoremstyle{definition}
+  \newtheorem*{notn*}{\protect\notationname}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{paralist}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\usepackage{xcolor}
+%\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+\makeatother
+
+\usepackage{babel}
+  \providecommand{\definitionname}{Definition}
+  \providecommand{\examplename}{Example}
+  \providecommand{\lemmaname}{Lemma}
+  \providecommand{\propositionname}{Proposition}
+  \providecommand{\remarkname}{Remark}
+  \providecommand{\theoremname}{Theorem}
+  \providecommand{\notationname}{Notation}
+\setlength{\itemindent}{0pt}
+
+
+
+\begin{document}
+\title{A non-contextual hidden variable model for quantum mechanics}
+\author{Atul Singh Arora}
+%\email{ms11003@iisermohali.ac.in}
+\selectlanguage{british}%
+\affiliation{Indian Institute of Science Education and Research (IISER), Mohali}
+\author{Arvind}
+%\email{arvind@iisermohali.ac.in}
+\selectlanguage{british}%
+\affiliation{Indian Institute of Science Education
+and Research (IISER), Mohali}
+\begin{abstract}
+We propose a non-contextual hidden variable model,
+consistent with all predictions of quantum
+mechanics (QM).  A careful scrutiny of consistency
+requirements of any hidden variable model with
+quantum mechanics and the corresponding no-go
+theorems, leads us to the conclusion that the
+notion of contextuality is not a necessary feature
+of QM.  The alternative view that emerges, hinges
+on identifying a new classical property which we
+call ``multiplicativity''.  It turns out that by
+relaxing this condition of ``multiplicativity'' on
+hidden variable models, they can be made
+consistent with QM.  The connection of
+non-multiplicativity to Bohm's model and to
+apparent contextuality is also discussed.
+\end{abstract}
+\pacs{}
+\maketitle
+Quantum mechanics has been one of the most
+successful theories in physics so far, however,
+there has not yet been a final word on its
+completeness and interpretation.
+Einstein's~\cite{EinsteinEPR} work on the
+incompleteness of QM and the subsequent seminal
+work of Bell~\cite{Bell1964}, assessing the
+compatibility of a more complete model involving
+hidden variables (HV) and locality with QM, has
+provided deep insights into  how the quantum world
+differs from its classical counterpart.  In recent
+times, these insights have been of pragmatic
+utility in the areas of quantum information
+processing, where EPR pairs are fundamental motifs
+of entanglement~\cite{Ekert,PironioRndmnssCrtfcn,NielsenChuang}.
+The work of  Kochen Specker~\cite{KochenSpecker}
+and Gleason et.
+al.~\cite{Gleason,BellOnHiddenVariables,Peres,Mermin})
+broadened the schism between  HV models and QM.
+They showed that it was contextuality and not
+non-locality which was at the heart of this schism
+and the incompatibility between HV models and QM
+can arise even for a single quantum system.
+Contextuality has thus been identified as a
+fundamental non-classical feature of the quantum
+world and experiments have also been proposed and
+conducted to this effect~\cite{SimonContExpProp,
+HuangContExp}.
+Contextuality, on the one hand has led to
+investigations on the foundational aspects of
+QM including attempts to prove completeness of QM~\cite{PawelCntxClsscl,CabelloMmryQM}, and on the other
+hand has been harnessed for computation and
+cryptography~\cite{HowardCntxCmptn,CabelloCntxScrt}.
+However, not all HV
+models are incompatible with QM, and a very
+important case in point is  Bohm's model based on
+precise trajectories for quantum
+systems~\cite{Bohm1,Bohm2}. 
+
+
+
+A closer look at the aforesaid no-go theorems
+reveals that contextuality is in fact not a
+necessary feature of QM (see \figref{block}).
+While this has been shown earlier by taking
+disturbances due to measurements into
+consideration~\cite{NoContextuality},
+we take a different approach 
+and construct a 
+HV model whose 
+predictions match with those of QM for systems
+described by arbitrary finite-dimensional Hilbert
+spaces.  \begin{figure}[h]
+\includegraphics[width=0.9\columnwidth]{block1}
+\caption{Non-contextuality is not inconsistent
+with QM} \label{fig:block}\end{figure} The
+algebraic constraints obeyed by quantum
+observables may not necessarily be obeyed by the
+predictions of an HV model at the level of
+individual outcomes.  Those HV models that obey
+such algebraic constraints possess a special
+property which we call `multiplicativity'.  
+Enlarging the scope of HV models to include
+non-multiplicative models, permits us to construct an
+explicit non-contextual model consistent with QM.
+The re-examination of the very proof of
+`contextuality'  is used to illustrate
+non-multiplicativity, an intrinsic quantum feature, 
+which we propose as a possible alternative to contextuality. 
+
+
+%{\noindent \bf Notation:} 
+\begin{notn*}
+(a) $\psi\in\mathcal{H}$ 
+represents a pure quantum mechanical
+state of the system in the Hilbert space
+$\mathcal{H}$, (b) $\hat{\mathcal{H}}$ is defined
+to mean the set of Hermitian 
+observables for the system, (c)
+$[\mathcal{H}]$ is defined to mean
+$(\mathcal{H},\,\mathbb{R}^{\otimes})$, which
+represents the state of the system including HVs,
+(d) $[\psi]\in[\mathcal{H}]$ will represent the
+state of the system, including HVs, (e) a
+prediction map is
+$M:\{ \hat{\mathcal{H}},[\mathcal{H}] \}\to\mathbb{R}$,
+(f) a sequence map is
+$S:\{ \hat{\mathcal{H}},[\mathcal{H}],\mathbb{R} \}\to[\mathcal{H}]$,
+(g) $f$ is an arbitrary map from $\{
+\hat{\mathcal{H}},\hat{\mathcal{H}},\dots\hat{\mathcal{H}}
+\} \to \hat{\mathcal{H}}$ constructed using
+multiplication and addition of the observables,
+and multiplication with complex
+numbers\footnote{Strictly, the map $f$ would
+depend on the operators to ensure preservation of
+Hermiticity; thus a given $f$ will be defined only
+for a subset of $\{
+\hat{\mathcal{H}},\hat{\mathcal{H}},\dots\hat{\mathcal{H}}
+\}$.}, (h) $\tilde{f}$ is a map constructed by
+replacing observables in $f$ with real numbers.
+\end{notn*}
+
+\begin{defn} A theory is non-contextual, if it
+provides a map $M: \{
+\hat{\mathcal{H}},[\mathcal{H}] \} \to\mathbb{R}$
+to explain measurement outcomes. A theory which is
+not non-contextual is contextual.\end{defn}
+
+
+\begin{defnrem} The notion of non-contextuality may be
+extended to maps. A map is non-contextual if it is
+of the form $M: \{ \hat{\mathcal{H}},[\mathcal{H}]
+\} \to\mathbb{R}$; prediction maps as defined above, for individual observables, are non-contextual by construction.  
+\end{defnrem}
+\begin{defnrem}
+Broader definitions in the literature have been
+suggested which declare a larger set of theories
+as non-contextual. For our purposes however, this
+restricted definition will suffice. The term
+contextual is used to suggest that the value an
+operator takes might depend on which other
+compatible observable it is being  measured with.
+\end{defnrem}
+
+
+Before we re-examine the result of Kochen and
+Specker~\cite{KochenSpecker} that non-contextual
+models cannot be compatible with quantum
+mechanics and show that multiplicativity can provide an
+alternative to contextuality, we define
+multiplicativity more precisely.
+\begin{defn}
+A prediction map $M$ is \emph{multiplicative} iff
+\begin{align*} &
+M(f(\hat{B}_{1},\hat{B}_{2},\dots\hat{B}_{N}),[\psi])
+= \\ & \tilde
+f(M(\hat{B}_{1},[\psi]),M(\hat{B}_{2},[\psi]),\dots
+M(\hat{B}_{N},[\psi])), \end{align*}
+where $\hat{B}_{i}\in\hat{\mathcal{H}}$ are
+arbitrary mutually commuting observables and
+$[\psi]\in[\mathcal{H}]$. A
+\emph{non-multiplicative} map is one that is not
+multiplicative.  
+\end{defn} 
+Note that if $M$ is taken to represent the
+measurement outcome (in QM), then for states of
+the system which are simultaneous eigenkets of
+$\hat{B}_{i}$s, $M$ must clearly be
+multiplicative. It is, however, not obvious that
+this property must always hold. For example,
+consider two spin-half particles in the state 
+$\left|1\right\rangle \otimes\left|1\right\rangle
+$ written in the computational basis and take
+operators 
+$\hat{B}_{1}=\hat{\sigma}_{x}\otimes\hat{\sigma}_{x}$,
+$\hat{B}_{2}=\hat{\sigma}_{y}\otimes\hat{\sigma}_{y}$
+and
+$\hat{C}=\hat{B}_{1}\hat{B}_{2}=-\hat{\sigma}_{z}\otimes\hat{\sigma}_{z}$
+written in terms of Pauli operators.
+We must have $M(\hat{C})=-1$ while
+$M(\hat{B}_{1})=\pm1$ and $M(\hat{B}_{2})=\pm1$
+independently, according to QM, with probability
+half. Here multiplicativity does not seem to hold.
+Antithetically, it is clear that if one first
+measures $\hat{B}_{1}$ and subsequently measures
+$\hat{B}_{2}$, then the product of the results
+must be $-1$. This is consistent with measuring
+$\hat{C}$. To capture this property we define
+\emph{sequential multiplicativity} as follows.
+\begin{defn} 
+A prediction map $m$ is
+\emph{sequentially multiplicative} for a given
+sequence map $s$, iff \begin{align*}
+&M(f(\hat{B}_{1},\hat{B}_{2},\dots\hat{B}_{N}),[\psi_{1}])=\\
+&\tilde
+f(M(\hat{B}_{1},[\psi_{k_{1}}]),M(\hat{B}_{2},[\psi_{k_{2}}]),\dots,M(\hat{B}_{N},[\psi_{k_{N}}])),
+\end{align*} 
+where
+$\mathbf{k}=(k_{1},k_{2},\dots,k_{N})\in\{
+N! {\rm ~permutations~of~}  k'{\rm s}
+\}$, $\hat{B}_{i}\in\hat{\mathcal{H}}$ are
+arbitrary mutually commuting observables,
+$[\psi_{i}]\in[\mathcal{H}]$ and
+$[\psi_{k+1}] :=
+S(\hat{B}_{k},[\psi_{k}],M(\hat{B}_{k},[\psi_{k}]))$,
+$\forall\,[\psi_{i}]$.  
+\label{defn:seqnMltpl}\end{defn} 
+With these definitions we are now ready to discuss
+the `proof of contextuality'. We first state the
+contextuality theorem in our notation:
+\begin{thm*} Let a map
+$M:\hat{\mathcal{H}}\to\mathbb{R}$, be s.t. (a)
+$M(\hat{\mathbb{I}})=1$, (b)
+$M(f(\hat{B}_{1},\hat{B}_{2},\dots))=\tilde
+f(M(\hat{B}_{1}),M(\hat{B}_{2}),\dots)$, for any
+arbitrary function $f$, where $\hat{B}_{i}$ are
+mutually commuting Hermitian operators. If $m$ is
+assumed to describe the outcomes of measurements,
+then no $M$ exists which is consistent with all
+predictions of QM. 
+\label{thm:KS}
+\end{thm*}
+
+\begin{proof} Peres Mermin [PM]
+($\left|\mathcal{H}\right|\ge4$)
+\cite{Peres,Mermin}:
+For a system composed of two spin-half particles 
+consider the following set of operators \[
+\hat{A}_{ij}\doteq\left[\begin{array}{ccc}
+\hat{\mathbb{I}}\otimes\hat{\sigma}_{x} &
+\hat{\sigma}_{x}\otimes\hat{\mathbb{I}} &
+\hat{\sigma}_{x}\otimes\hat{\sigma}_{x}\\
+\hat{\sigma}_{y}\otimes\hat{\mathbb{I}} &
+\hat{\mathbb{I}}\otimes\hat{\sigma}_{y} &
+\hat{\sigma}_{y}\otimes\hat{\sigma}_{y}\\
+\hat{\sigma}_{y}\otimes\hat{\sigma}_{x} &
+\hat{\sigma}_{x}\otimes\hat{\sigma}_{y} &
+\hat{\sigma}_{z}\otimes\hat{\sigma}_{z}
+\end{array}\right] \] which have the property that
+all operators along a row (or column) commute. Further,
+the product of rows (or columns) yields
+$\hat{R}_{i}=\hat{\mathbb{I}}$ and
+$\hat{C}_{j}=\hat{\mathbb{I}}\,(j\neq3)$,
+$\hat{C}_{3}=-\hat{\mathbb{I}}$, ($\forall\,i,j$) where
+$\hat{R}_{i}:=\prod_{j}\hat{A}_{ij}$,
+$\hat{C}_{j}:=\prod_{i}\hat{A}_{ij}$. Let us
+assume that $M$ exists. From property (b) of the
+map, to get $M(\hat{C}_{3})=-1$ (as required by
+property (a)), we must have an odd number of $-1$
+assignments in the third column. In the remaining
+columns, the number of $-1$ assignments must be
+even (for each column). Thus, in the entire
+square, the number of $-1$ assignments must be
+odd. Let us use the same reasoning, but along the
+rows. Since each $M(\hat{R}_{i})=1$, we must have
+even number of $-1$ assignments along each row.
+Thus, in the entire square, the number of $-1$
+assignments must be even. We have arrived at a
+contradiction and therefore we conclude that our
+assumption that a consistent $M$ exists, must be
+wrong.  \end{proof}
+
+\begin{rem} One could in principle assume $M$, to
+be s.t. (a) $M(\hat{\mathbb{I}})=1$, (b)
+$M(\alpha\hat{B}_{i})=\alpha M(\hat{B}_{i})$, for
+$\alpha\in\mathbb{R}$, (c)
+$M(\hat{B}_{i}^{2})=M(\hat{B}_{i})^{2}$, (d)
+$M(\hat{B}_{i}+\hat{B}_{j})=M(\hat{B}_{i})+M(\hat{B}_{j})$,
+to deduce (d')
+$M(\hat{B}_{i}\hat{B}_{j})=M(\hat{B}_{i})M(\hat{B}_{j})$
+and that $M(\hat{B}_{i})\in$ spectrum of
+$\hat{B}_{i}$. Effectively then, condition (b)
+listed in the theorem is satisfied as a
+consequence.  Therefore, assuming (a)-(d) as
+listed here, rules out a larger class of $M$~\cite{KochenSpecker}.
+\end{rem} 
+Here $M$ maybe viewed as a specific
+class of prediction maps, that implicitly depends
+on the state $[\psi]$. It is clear that according to
+the theorem, non-contextual maps which are
+\emph{multiplicative} must be incompatible with
+QM. However, non-contextual maps which are
+non-\emph{multiplicative} might be consistent with
+QM. Indeed it is and we will show this by constructing an
+explicit model.
+
+
+Before proceeding we note, however, that QM can
+enforce \emph{sequential multiplicativity}. This
+result will be used to assess accuracy of any
+proposal of a HV
+model.
+\begin{prop*} 
+Let a quantum mechanical 
+system be in a state, s.t. measurement of
+$\hat{C}$ yields repeatable results (same result
+each time). Then according to QM, \emph{sequential
+multiplicativity} holds, where $\hat{C}:=
+f(\hat{B}_{1},\hat{B}_{2},\dots\hat{B}_{n})$, and
+$\hat{B}_{i}$ are as defined (in \defnref{seqnMltpl})
+\end{prop*}
+\begin{proof} 
+Without loss of generality we can take
+$\hat{B}_{1},\hat{B}_{2},\dots\hat{B}_{n}$ to be
+mutually compatible and a complete set of
+observables (operators can be added to make the set
+complete if it not so).
+It follows
+that $\exists$
+$\left|\mathbf{b}=\left(b_{1},b_{2},\dots
+b_{n}\right)\right\rangle $ s.t.
+$\hat{B}_{i}\left|\mathbf{b}\right\rangle
+=b_{i}\left|\mathbf{b}\right\rangle $,
+and that
+$\sum_{\mathbf{b}}\left|\mathbf{b}\right\rangle
+\left\langle \mathbf{b}\right|=\hat{\mathbb{I}}$.
+Let the state of the system
+$\left|\psi\right\rangle $ be s.t.
+$\hat{C}\left|\psi\right\rangle
+=c\left|\psi\right\rangle $. For
+the statement to follow, one need only show that
+$\left|\psi\right\rangle $ must be made of only
+those $\left|\mathbf{b}\right\rangle $s, which
+satisfy $c=\tilde
+f(b_{1},b_{2},\dots
+b_{n})$.  This is the crucial step and
+proving this is straightforward. We start with
+$\hat{C}\left|\psi\right\rangle
+=c\left|\psi\right\rangle $ and take its inner
+product with $\left\langle \mathbf{b}\right|$ to
+get \begin{eqnarray*} \left\langle
+\mathbf{b}\right|\hat{C}\left|\psi\right\rangle  &
+= & c\left\langle \mathbf{b}|\psi\right\rangle ,\\
+\left\langle
+\mathbf{b}\right|f(\hat{B}_{1},\hat{B}_{2},\dots\hat{B}_{n})
+\left|\psi\right\rangle
+& = & c\left\langle \mathbf{b}|\psi\right\rangle
+,\\ \tilde f(b_{1},b_{2},\dots
+b_{n})\left\langle
+\mathbf{b}|\psi\right\rangle  & = & c\left\langle
+\mathbf{b}|\psi\right\rangle .  \end{eqnarray*}
+Also, we have $\left|\psi\right\rangle
+=\sum_{\mathbf{b}}\left\langle
+\mathbf{b}|\psi\right\rangle
+\left|\mathbf{b}\right\rangle $, from
+completeness. If we consider
+$\left|\mathbf{b}\right\rangle $s for which
+$\left\langle \mathbf{b}|\psi\right\rangle \neq0$,
+then we can conclude that indeed $c=\tilde
+f(b_{1},b_{2},\dots
+b_{n})$. However, when $\left\langle
+\mathbf{b}|\psi\right\rangle =0$, viz.
+$\left|\mathbf{b}\right\rangle $s that are
+orthogonal to $\left|\psi\right\rangle $, then
+nothing can be said but that is irrelevant. We can thus conclude that
+$\left|\psi\right\rangle $ is made only of those
+$\left|\mathbf{b}\right\rangle $s that satisfy the
+required relation.
+\end{proof} 
+It is worth noting that in the Peres Mermin
+case, where $\hat{R}_{i}$ and $\hat{C}_{j}$ are
+just $\pm\hat{\mathbb{I}}$, it follows that all
+states are their eigenstates. Consequently, for
+these operators \emph{sequential multiplicativity}
+must always hold.
+%\subsection{C-ingle model | An Explicit
+%Construction \label{ssec:cingle}}
+We are now ready to describe our explict model.
+Let the state of a finite dimensional quantum system
+be $\left|\chi\right\rangle $. We wish to
+assign a value to an arbitrary observable 
+$\hat{A}=\sum_{a}a\left|a\right\rangle
+\left\langle a\right|$, which has 
+eigenvectors $\{ \vert
+a_j\rangle \}$. The corresponding ordered eigenvalues are $\{a_j\}$ such that 
+$a_{\rm min}=a_1$
+and 
+$a_{\rm max}=a_n$.
+
+Our HV model for QM assigns values in the following
+three steps:
+\setdefaultleftmargin{0pt}{}{}{}{}{}
+\begin{enumerate}
+\item
+{\bf Initial HV:} Pick a number
+$c\in[0,1]$, from a uniform random distribution.\
+\item
+{\bf
+Assignment or Prediction:}
+ The value assigned to
+$\hat{A}$ is given by finding the smallest $a$
+s.t.  $c\le\sum_{a'=a_{\text{min}}}^{a}\left|\left\langle
+a'|\chi\right\rangle \right|^{2},$ viz. we have
+specified a prediction map, $M(\hat{A},[\chi ])=a$.
+\item
+{\bf Update:} After measuring an operator, the state is
+updated (collapsed) in accordance with the rules
+of QM. This completely specifies the sequence map
+$S$.
+\end{enumerate}
+To see how this works consider 
+a spin-half particle in the state
+$\left|\chi\right\rangle
+=\cos\theta\left|0\right\rangle
++\sin\theta\left|1\right\rangle $ and the observable
+$\hat{A}=\hat{\sigma}_{z}=\left|0\right\rangle
+\left\langle 0\right|-\left|1\right\rangle
+\left\langle 1\right|$. Now, according to the
+postulates of this theory, $M(\hat{A},[\chi])=+1$.
+If
+the randomly generated value for 
+$c\le\cos^{2}\theta$ else $\hat{A}$ is assigned
+$-1$, it then follows,  from $c$ being uniformly
+random in $[0,1]$ that the statistics agree with
+the predictions of QM.
+
+Note that the assignment described by the
+prediction map $M$ is non-contextual since, given
+an operator and a state (+ the HV $c$), the value is
+uniquely assigned. The map $M$ is however,
+non-multiplicative. 
+
+
+To bring out the non-multiplicativity of our model 
+and to convince the reader of its generic validity,
+we apply it to the Peres Mermin situation of two
+spin-half particles. Consider the initial state of
+the system 
+$\left|\psi_{1}\right\rangle
+=\left|00\right\rangle $. Assume we 
+obtained $c=0.4$ as a random choice. To arrive
+at the assignments, note that
+$\left|00\right\rangle $ is an eigenket of only
+$\hat{R}_{i},\hat{C}_{j}$ and
+$\hat{A}_{33}=\hat{\sigma}_{z}\otimes\hat{\sigma}_{z}$.
+Thus, in the first iteration, all these should be
+assigned their respective eigenvalues. The
+remaining operators must be assigned $-1$ as one
+can readily verify by explicitly finding the
+smallest $a$ as described in postulate 2 of the
+model (see \tblref{HVmodel}). 
+%Two remarks are in
+This model is manifestly
+\emph{non-multiplicative}, for
+$M_{1}(\hat{C}_{3})=1\neq
+M_{1}(\hat{A}_{13})M_{1}(\hat{A}_{23})M_{1}(\hat{A}_{33})=-1$,
+where the subscript refers to the iteration
+number.
+More precisely,
+$M_{1}(\hat{O}):=M(\hat{O},\left[\left|\psi_{1}\right\rangle
+=\left|00\right\rangle \right])$ where the
+complete state $\left[\left|\psi_{1}\right\rangle
+\right]$ implicitly refers to both the quantum
+state $\left|00\right\rangle $ and the HV $c=0.4$.
+%Second, we must impose \emph{sequential
+%multiplicativity} as a consistency check of the
+%model, which in particular entails that
+The model however  obeys the \emph{sequential
+multiplicativity} as required for consistency,
+namely,
+$M_{1}(\hat{C}_{3})=M_{1}(\hat{A}_{33})M_{2}(\hat{A}_{23})M_{3}(\hat{A}_{13})$,
+where
+$M_{2}:=M(\hat{O},\left[\left|\psi_{2}\right\rangle
+\right])$,
+$M_{3}:=M(\hat{O},\left[\left|\psi_{3}\right\rangle
+\right])$ and $\left|\psi_{2}\right\rangle
+,\,\left|\psi_{3}\right\rangle $ are obtained from
+postulate 3. Note that for each iteration, a new
+HV is generated. To illustrate \emph{sequential
+multiplicativity}, we must choose to measure
+$\hat{A}_{33}$. According to step 3, since
+$\left|00\right\rangle $ is an eigenstate of
+$\hat{A}_{33}$, the final state remains
+$\left|00\right\rangle $.  
+
+
+For the next iteration, $i=2$, 
+after the first measurement is over
+say the random number generator yielded the value $c=0.1$.
+Since $\left|\psi\right\rangle $ is also
+unchanged
+the assignment remains invariant (in fact any of
+$c<0.5$ would yield the same result as
+evident from the previous exercise). For the
+final step we choose to measure
+$\hat{A}_{23}(=\hat{\sigma}_{y}\otimes\hat{\sigma}_{y})$,
+to proceed with sequentially measuring
+$\hat{C}_{3}$. To simplify calculations, we note
+$\left|00\right\rangle
+=\frac{1}{\sqrt 2} \left( (\left|\tilde{+}\tilde{-}\right\rangle
++\left|\tilde{-}\tilde{+}\right\rangle
+)/\sqrt{2}+(\left|\tilde{+}\tilde{+}\right\rangle
++\left|\tilde{-}\tilde{-}\right\rangle
+)/\sqrt{2}\right) , 
+$
+with
+$\left|\tilde{\pm}\right\rangle
+=\left|0\right\rangle \pm i\left|1\right\rangle $
+(eigenkets of $\hat{\sigma}_{y}$). Since
+$\left|00\right\rangle$ is manifestly not an
+eigenket of $\hat A_{23}$, we must find an appropriate
+eigenket $\left|a^-_{23}\right\rangle $ s.t.
+$\hat A_{23}\left|a^{-}_{23}\right\rangle
+=-\left|a^{-}_{23}\right\rangle $, since $c=0.1$ and
+$\left\langle a_{23}^{-}|00\right\rangle $ is already
+$>0.1$. It is evident that
+$\left|a^{-}_{23}\right\rangle
+=\left(\left|\tilde{+}\tilde{-}\right\rangle
++\left|\tilde{-}\tilde{+}\right\rangle
+\right)/\sqrt{2}=\left(\left|00\right\rangle
++\left|11\right\rangle \right)/\sqrt{2}$, which
+becomes the final state. 
+
+
+For the final
+iteration, $i=3$, say we obtain $c=0.7$. So far,
+we have $M_{1}(\hat{A}_{33})=1$ and
+$M_{2}(\hat{A}_{23})=-1$. We must obtain
+$M_{3}(\hat{A}_{13})=1$, independent of the value
+of $c$, to be consistent. Let us check that.
+Indeed, according to postulate 2, since
+$\hat{\sigma}_{x}\otimes\hat{\sigma}_{x}\left(\left|00\right\rangle
++\left|11\right\rangle
+\right)/\sqrt{2}=1\left(\left|00\right\rangle
++\left|11\right\rangle \right)/\sqrt{2}$,
+$M_{3}(\hat{A}_{13})=1$ for all allowed values of
+$c$. It is to be noted that
+$M_{2}(\hat{A}_{33})=M_{3}(\hat{A}_{33})$ and
+$M_{2}(\hat{A}_{23})=M_{3}(\hat{A}_{23})$, which
+essentially expresses the compatibility of these
+observables; i.e. 
+once measured, the values of observables compatible
+with $\hat{A}_{13}$ are not affected by the 
+measurement of $\hat{A}_{13}$.
+
+\begin{table*}
+ \begin{equation*}
+\begin{array}{ccc} 
+i=1,c=0.4,\left|\psi_{\text{init}}\right\rangle=\left|00\right\rangle & i=2,c=0.1,\left|\psi_{\text{init}}\right\rangle=\left|00\right\rangle & i=3,c=0.7,\left|\psi_{\text{init}}\right\rangle=\frac{\left|00\right\rangle +\left|11\right\rangle}{\sqrt{2}} \\
+%\text{Iteration} & i=1 & i=2 & i=3\\ 
+%\left|\psi_{\text{init}}\right\rangle  & \left|00\right\rangle  & \left|00\right\rangle  & \frac{\left|00\right\rangle +\left|11\right\rangle}{\sqrt{2}}\\ 
+%\text{HV} & c=0.4 & c=0.1 & c=0.7\\ \\ 
+
+M_{1}(\hat{A}_{ij})\doteq\left[\begin{array}{ccc} -1 & -1 & -1\\ -1 & -1 & -1\\ -1 & -1 & +1\end{array}\right] &
+M_{2}(\hat{A}_{ij})\doteq\left[\begin{array}{ccc}-1 & -1 & -1\\ -1 & -1 & -1\\ -1 & -1 & +1\end{array}\right] &
+M_{3}(\hat{A}_{ij})\doteq\left[\begin{array}{ccc}+1 & +1 & +1\\ +1 & +1 & -1\\ +1 & +1 & +1\end{array}\right]\\ \\
+
+
+M_{1}(\hat{R}_{i}),M_{1}(\hat{C}_{j})=+1\,(j\neq3) &
+M_{2}(\hat{R}_{i}),M_{2}(\hat{C}_{j})=+1\,(j\neq3) &
+M_{3}(\hat{R}_{i}),M_{3}(\hat{C}_{j})=+1\,(j\neq3)\\
+
+M_{1}(\hat{C}_{3})=-1 & M_{2}(\hat{C}_{3})=-1 & M_{3}(\hat{C}_{3})=-1\\ 
+
+
+\hat{A}_{33}=\hat{\sigma}_{z}\otimes\hat{\sigma}_{z};M_{1}(\hat{A}_{33})=+1&
+\quad\quad\hat{A}_{23}=\hat{\sigma}_{y}\otimes\hat{\sigma}_{y};M_{2}(\hat{A}_{23})=-1\quad\quad&
+\hat{A}_{13}=\hat{\sigma}_{x}\otimes\hat{\sigma}_{x};M_{3}(\hat{A}_{13})=+1\\
+
+\left|\psi_{\text{final}}\right\rangle = \left|00\right\rangle  & \left|\psi_{\text{final}}\right\rangle = \frac{\left|00\right\rangle +\left|11\right\rangle}{\sqrt{2}} & \left|\psi_{\text{final}}\right\rangle = \frac{\left|00\right\rangle+\left|11\right\rangle }{\sqrt{2}}
+% \begin{bmatrixT} 
+% \text{Iteration} & i=1 & i=2
+% & i=3\\ \left|\psi_{\text{init}}\right\rangle  &
+% \left|00\right\rangle  & \left|00\right\rangle  &
+% \frac{\left|00\right\rangle +\left|11\right\rangle
+% }{\sqrt{2}} \\
+% \text{HV} & c=0.4 & c=0.1 & c=0.7 \\
+
+% \text{Predictions or} &
+% {m_{1}(\hat{A}_{ij})\doteq\left[\begin{array}{ccc}
+% -1 & -1 & -1\\ -1 & -1 & -1\\ -1 & -1 & +1
+% \end{array}\right]} &
+% {m_{2}(\hat{A}_{ij})\doteq\left[\begin{array}{ccc}
+% -1 & -1 & -1\\ -1 & -1 & -1\\ -1 & -1 & +1
+% \end{array}\right]} &
+% {m_{3}(\hat{A}_{ij})\doteq\left[\begin{array}{ccc}
+% +1 & +1 & +1\\ +1 & +1 & -1\\ +1 & +1 & +1
+% \end{array}\right]}\\ 
+
+% \text{(Assignments)} &
+% m_{1}(\hat{R}_{i}),m_{1}(\hat{C}_{j})=+1\,(j\neq3)
+% &
+% m_{2}(\hat{R}_{i}),m_{2}(\hat{C}_{j})=+1\,(j\neq3)
+% &
+% m_{3}(\hat{R}_{i}),m_{3}(\hat{C}_{j})=+1\,(j\neq3)\\
+% & m_{1}(\hat{C}_{3})=-1 & m_{2}(\hat{C}_{3})=-1 &
+% m_{3}(\hat{C}_{3})=-1
+% \end{bmatrixT}
+\label{eq:toyModel}
+\end{array}
+% \label{eq:toyModel}
+\end{equation*}
+\caption{HV model applied to the Peres Mermin situation}
+\label{tbl:HVmodel}
+\end{table*}
+This has implications to Bohm's HV model (BHVM),
+where we have the notion of precise trajectories
+for particles guided by the wavefunction.  In BHVM
+if the initial conditions are precisely known the
+entire trajectory of a particle can be predicted
+including the individual outcome of measurements.
+For the case of a single spin-half particle in a
+Stern-Gerlach experiment, BHVM can predict
+opposite results for two measurements of the
+same operator.  This observation is often used as
+a demonstration of `contextuality' in BM, although
+we did not even speak of compatible
+measurements~\cite{HardyCntxBM}.  It turns out, however,
+that if one restricts oneself to a one-one map
+between an experiment and an observable (by
+following a certain convention), the so-called
+`contextuality' can be removed from BHVM.  One
+finds that the map so obtained from observables to
+their predictions turns out to be
+non-multiplicative, suggesting that at least in
+this case, non-multiplicativity is a more suitable
+explanation of non-classicality.
+
+
+
+We have  constructed an explicit non-contextual HV
+model consistent with QM which is
+non-multiplicative. We illustrate how
+non-multiplicativity gives rise to situations which
+could get confused with the presence of contextuality.
+
+Imagine
+$
+\hat{B}_{1}=\hat{\sigma}_{z}\otimes\hat{\mathbb{I}}=
+\left|00\right\rangle
+\left\langle 00\right|+\left|01\right\rangle
+\left\langle 01\right|-\left[\left|10\right\rangle
+\left\langle 10\right|+\left|11\right\rangle
+\left\langle 11\right|\right],
+$ 
+$
+\hat{B}_{2}=\hat{\mathbb{I}}\otimes\hat{\sigma}_{z}=
+\left|10\right\rangle
+\left\langle 10\right|+\left|11\right\rangle
+\left\langle 11\right|-\left[\left|00\right\rangle
+\left\langle 00\right|+\left|01\right\rangle
+\left\langle 01\right|\right],
+$ 
+while we define 
+$
+\hat{C}=f(\{\hat{B}_{i}\})
+=0.\left|00\right\rangle \left\langle
+00\right|+1.\left|01\right\rangle \left\langle
+01\right|+2.\left|10\right\rangle \left\langle
+10\right|+3.\left|11\right\rangle \left\langle
+11\right|. 
+$
+$\hat{C}$ maybe viewed as a function of
+$\hat{B}_{1}$, $\hat{B}_{2}$ and other operators
+$\hat{B}_{i}$ which are constructed to obtain a
+maximally commuting set. A measurement of
+$\hat{C}$, will collapse the state into one of the
+states which are simultaneous eignkets of $B_{1}$
+and $B_{2}$. Consequently, from the observed value
+of $\hat{C}$, one can deduce the values of
+$\hat{B}_{1}$ and $\hat{B}_{2}$. Now consider
+$\sqrt{2}\left|\chi\right\rangle
+=\left|10\right\rangle +\left|01\right\rangle $,
+for which $M_{1}(\hat{B}_{1})=1$, and
+$M_{1}(\hat{B}_{2})=1$, using our model,
+with $c<0.5$. However, $M_{1}(\hat{C})=1$, from
+which one can deduce that $B_{1}$ was $+1$, while
+$B_{2}$ was $-1$.  This property itself, one may
+be tempted call contextuality, viz.  the value of
+$B_{1}$ depends on whether it is measured alone or
+with the remaining $\{B_{i}\}$. However, it must
+be noted that $B_{1}$ has a well defined value,
+and so does $\hat{C}$. Thus by our accepted
+definition, there is no contextuality. It is just
+that $M_{1}(\hat{C})\neq \tilde
+f(M_{1}(\hat{B}_{1}),M_{1}(\hat{B}_{2}),\dots)$,
+viz. the theory is non-multiplicative. Note that
+after measuring $\hat{C}$ however,
+$M_{2}(\hat{B}_{1})=+1$ and
+$M_{2}(\hat{B}_{2})=-1$ (for any value of $c$)
+consistent with those deduced by measuring
+$\hat{C}$.
+
+
+Evidently, multiplicativity must hold for the
+common eigenkets of $\hat{B}_{i}$.  Consequently,
+any violation of multiplicativity must arise from
+states that are superpositions or linear
+combinations of these common eigenkets.  Note,
+however, that entanglement is not necessary to
+show a violation; for instance the Peres Mermin
+test is a state independent test where a separable
+state can be used to arrive at a contradiction.
+Entanglement can be used to show non-locality of
+non-multiplicative prediction maps using Bell's
+theorem however, the notion of non-multiplicativity
+is more basic.  \begin{acknowledgments} 
+ASA and Arvind acknowledge funding from KVPY and DST Grant No. EMR/2014/000297 respectively.
+%Arvind acknowledges funding from DST India under Grant No. EMR/2014/000297. ASA acknolwedges KVPY, DST for financial support.
+\end{acknowledgments}
+%\bibliographystyle{apsrev4-1}
+\bibliography{references} \end{document}
