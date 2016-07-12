@@ -26,6 +26,7 @@
 \newref{defn}{name=Definition~}{}
 \newref{sec}{name=Section~}
 \newref{ssec}{name=Subsection~}
+\newref{fig}{name=Figure~}
 
 \RS@ifundefined{subref}
   {\def\RSsubtxt{section~}\newref{sub}{name = \RSsubtxt}}
@@ -51,7 +52,7 @@
   \newtheorem{defn}{\protect\definitionname}
 
   \theoremstyle{remark}
-  \newtheorem{rem}{\protect\remarkname}
+  \newtheorem*{rem}{\protect\remarkname}
 
   \theoremstyle{remark}
   \newtheorem{defnrem}{\protect\remarkname}[defn]
@@ -164,11 +165,11 @@
 \begin{document}
 \title{A non-contextual hidden variable model for quantum mechanics}
 \author{Atul Singh Arora}
-\email{ms11003@iisermohali.ac.in}
+%\email{ms11003@iisermohali.ac.in}
 \selectlanguage{british}%
 \affiliation{Indian Institute of Science Education and Research (IISER), Mohali}
 \author{Arvind}
-\email{arvind@iisermohali.ac.in}
+%\email{arvind@iisermohali.ac.in}
 \selectlanguage{british}%
 \affiliation{Indian Institute of Science Education
 and Research (IISER), Mohali}
@@ -176,17 +177,17 @@ and Research (IISER), Mohali}
 We propose a non-contextual hidden variable model,
 consistent with all predictions of quantum
 mechanics (QM).  A careful scrutiny of consistency
-requirements between any hidden variable model and
+requirements of any hidden variable model with
 quantum mechanics and the corresponding no-go
 theorems, leads us to the conclusion that the
 notion of contextuality is not a necessary feature
 of QM.  The alternative view that emerges, hinges
 on identifying a new classical property, which we
-call ``multiplicativity''.  It turns out that, by
+call ``multiplicativity''.  It turns out that by
 relaxing this condition of ``multiplicativity'' on
 hidden variable models, they can be made
 consistent with QM.  The connection of
-non-multiplicativity to the Bohm Model and to
+non-multiplicativity to Bohm's model and to
 apparent contextuality is also discussed.
 \end{abstract}
 \pacs{}
@@ -194,7 +195,7 @@ apparent contextuality is also discussed.
 Quantum mechanics has been one of the most
 successful theories in physics so far, however,
 there has not yet been a final word on its
-completeness and interpretation~\cite{??}.
+completeness and interpretation.
 Einstein's~\cite{EinsteinEPR} work on the
 incompleteness of QM and the subsequent seminal
 work of Bell~\cite{Bell1964}, assessing the
@@ -205,7 +206,7 @@ differs from its classical counterpart.  In recent
 times, these insights have been of pragmatic
 utility in the areas of quantum information
 processing, where EPR pairs are fundamental motifs
-of entanglement~\cite{Ekert,PironioRndmnssCrtfcn}.
+of entanglement~\cite{Ekert,PironioRndmnssCrtfcn,NielsenChuang}.
 The work of  Kochen Specker~\cite{KochenSpecker}
 and Gleason et.
 al.~\cite{Gleason,BellOnHiddenVariables,Peres,Mermin})
@@ -218,20 +219,18 @@ Contextuality has thus been identified as a
 fundamental non-classical feature of the quantum
 world and experiments have also been proposed and
 conducted to this effect~\cite{SimonContExpProp,
-HuangContExp,YangContExp,HasegawaContExp}.
+HuangContExp}.
 Contextuality, on the one hand has led to
 investigations on the foundational aspects of
-QM~\cite{PawelCntxClsscl,?????}, and on the other
+QM including attempts to prove completeness of QM~\cite{PawelCntxClsscl,CabelloMmryQM}, and on the other
 hand has been harnessed for computation and
-cryptography~\cite{HowardCntxCmptn,CabelloCntxScrt,??}.
-Quantitative measures of contextuality based on
-memory~\cite{MatthiasCntxMmry} have also been used
-to demonstrate the completeness of
-QM~\cite{CabelloMmryQM}.  However, not all HV
+cryptography~\cite{HowardCntxCmptn,CabelloCntxScrt}.
+However, not all HV
 models are incompatible with QM, and a very
 important case in point is  Bohm's model based on
 precise trajectories for quantum
 systems~\cite{Bohm1,Bohm2}. 
+
 
 
 A closer look at the aforesaid no-go theorems
@@ -239,10 +238,11 @@ reveals that contextuality is in fact not a
 necessary feature of QM (see \figref{block}).
 While this has been shown earlier by taking
 disturbances due to measurements into
-consideration~\cite{NoContextuality,LaCourNoCntx},
-we take a different approach and construct a
-HV model consistent with QM.  The predictions of
-the aforesaid model match with those of QM for systems
+consideration~\cite{NoContextuality},
+we take a different approach 
+and construct a 
+HV model whose 
+predictions match with those of QM for systems
 described by arbitrary finite-dimensional Hilbert
 spaces.  \begin{figure}[h]
 \includegraphics[width=0.9\columnwidth]{block1}
@@ -413,9 +413,9 @@ consider the following set of operators \[
 \end{array}\right] \] which have the property that
 all operators along a row (or column) commute. Further,
 the product of rows (or columns) yields
-$\hat{R}_{i}=\mathbb{I}$ and
-$\hat{C}_{j}=\mathbb{I}\,(j\neq3)$,
-$\hat{C}_{3}=-\mathbb{I}$, ($\forall\,i,j$) where
+$\hat{R}_{i}=\hat{\mathbb{I}}$ and
+$\hat{C}_{j}=\hat{\mathbb{I}}\,(j\neq3)$,
+$\hat{C}_{3}=-\hat{\mathbb{I}}$, ($\forall\,i,j$) where
 $\hat{R}_{i}:=\prod_{j}\hat{A}_{ij}$,
 $\hat{C}_{j}:=\prod_{i}\hat{A}_{ij}$. Let us
 assume that $M$ exists. From property (b) of the
@@ -434,7 +434,7 @@ contradiction and therefore we conclude that our
 assumption that a consistent $M$ exists, must be
 wrong.  \end{proof}
 
-\begin{thmrem} One could in principle assume $M$, to
+\begin{rem} One could in principle assume $M$, to
 be s.t. (a) $M(\hat{\mathbb{I}})=1$, (b)
 $M(\alpha\hat{B}_{i})=\alpha M(\hat{B}_{i})$, for
 $\alpha\in\mathbb{R}$, (c)
@@ -446,9 +446,8 @@ and that $M(\hat{B}_{i})\in$ spectrum of
 $\hat{B}_{i}$. Effectively then, condition (b)
 listed in the theorem is satisfied as a
 consequence.  Therefore, assuming (a)-(d) as
-listed here, rules out a larger class of $M$.
-\cite{KochenSpecker} 
-\end{thmrem} 
+listed here, rules out a larger class of $M$~\cite{KochenSpecker}.
+\end{rem} 
 Here $M$ maybe viewed as a specific
 class of prediction maps, that implicitly depends
 on the state $[\psi]$. It is clear that according to
@@ -673,9 +672,9 @@ $\left|\tilde{\pm}\right\rangle
 =\left|0\right\rangle \pm i\left|1\right\rangle $
 (eigenkets of $\hat{\sigma}_{y}$). Since
 $\left|00\right\rangle$ is manifestly not an
-eigenket of $A_{23}$, we must find an appropriate
+eigenket of $\hat A_{23}$, we must find an appropriate
 eigenket $\left|a^-_{23}\right\rangle $ s.t.
-$A_{23}\left|a^{-}_{23}\right\rangle
+$\hat A_{23}\left|a^{-}_{23}\right\rangle
 =-\left|a^{-}_{23}\right\rangle $, since $c=0.1$ and
 $\left\langle a_{23}^{-}|00\right\rangle $ is already
 $>0.1$. It is evident that
@@ -728,9 +727,9 @@ M_{3}(\hat{R}_{i}),M_{3}(\hat{C}_{j})=+1\,(j\neq3)\\
 M_{1}(\hat{C}_{3})=-1 & M_{2}(\hat{C}_{3})=-1 & M_{3}(\hat{C}_{3})=-1\\ 
 
 
-\hat{A}_{13}=\hat{\sigma}_{z}\otimes\hat{\sigma}_{z};M_{1}(\hat{A}_{13})=+1&
+\hat{A}_{33}=\hat{\sigma}_{z}\otimes\hat{\sigma}_{z};M_{1}(\hat{A}_{33})=+1&
 \quad\quad\hat{A}_{23}=\hat{\sigma}_{y}\otimes\hat{\sigma}_{y};M_{2}(\hat{A}_{23})=-1\quad\quad&
-\hat{A}_{33}=\hat{\sigma}_{x}\otimes\hat{\sigma}_{x};M_{3}(\hat{A}_{33})=+1\\
+\hat{A}_{13}=\hat{\sigma}_{x}\otimes\hat{\sigma}_{x};M_{3}(\hat{A}_{13})=+1\\
 
 \left|\psi_{\text{final}}\right\rangle = \left|00\right\rangle  & \left|\psi_{\text{final}}\right\rangle = \frac{\left|00\right\rangle +\left|11\right\rangle}{\sqrt{2}} & \left|\psi_{\text{final}}\right\rangle = \frac{\left|00\right\rangle+\left|11\right\rangle }{\sqrt{2}}
 % \begin{bmatrixT} 
@@ -774,13 +773,13 @@ for particles guided by the wavefunction.  In BHVM
 if the initial conditions are precisely known the
 entire trajectory of a particle can be predicted
 including the individual outcome of measurements.
-For the case of a single spin-1/2 particle in a
+For the case of a single spin-half particle in a
 Stern-Gerlach experiment, BHVM can predict
 opposite results for two measurements of the
 same operator.  This observation is often used as
 a demonstration of `contextuality' in BM, although
 we did not even speak of compatible
-measurements\cite{??}.  It turns out, however,
+measurements~\cite{HardyCntxBM}.  It turns out, however,
 that if one restricts oneself to a one-one map
 between an experiment and an observable (by
 following a certain convention), the so-called
@@ -861,16 +860,17 @@ Evidently, multiplicativity must hold for the
 common eigenkets of $\hat{B}_{i}$.  Consequently,
 any violation of multiplicativity must arise from
 states that are superpositions or linear
-combinations of these common eigenkets.  Note
+combinations of these common eigenkets.  Note,
 however, that entanglement is not necessary to
 show a violation; for instance the Peres Mermin
 test is a state independent test where a separable
 state can be used to arrive at a contradiction.
 Entanglement can be used to show non-locality of
 non-multiplicative prediction maps using Bell's
-theorem  however, the notion of non-multiplicativity
-is more basic.  \begin{acknowledgments} Arvind
-acknowledges funding from DST India under Grant
-No. EMR/2014/000297.  \end{acknowledgments}
+theorem however, the notion of non-multiplicativity
+is more basic.  \begin{acknowledgments} 
+ASA and Arvind acknowledge funding from KVPY and DST Grant No. EMR/2014/000297 respectively.
+%Arvind acknowledges funding from DST India under Grant No. EMR/2014/000297. ASA acknolwedges KVPY, DST for financial support.
+\end{acknowledgments}
 %\bibliographystyle{apsrev4-1}
 \bibliography{references} \end{document}
