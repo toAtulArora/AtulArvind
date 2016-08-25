@@ -1,0 +1,448 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language british
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman ccfonts
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family rmdefault
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\headheight 2cm
+\headsep 2cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Beyond the c-ingle model | c-ingle resilience
+\end_layout
+
+\begin_layout Author
+Atul Singh Arora
+\end_layout
+
+\begin_layout Section
+Ideas on record
+\end_layout
+
+\begin_layout Subsection
+July 26, 2016
+\end_layout
+
+\begin_layout Standard
+Correspondence sent to Prof Arvind by me.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "breaklines=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Dear Sir,
+\end_layout
+
+\begin_layout Plain Layout
+
+I realized that one could implement multiplicativity in a chosen basis and
+ still be consistent with QM.
+ BM does so in the position basis.
+ Extending our model with this ingredient might help make BM a special case
+ of our model.
+\end_layout
+
+\begin_layout Plain Layout
+
+It would also be interesting to prove some maximal multiplicativity related
+ claim.
+\end_layout
+
+\begin_layout Plain Layout
+
+Sincerely
+\end_layout
+
+\begin_layout Plain Layout
+
+Atul
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "breaklines=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Dear Sir
+\end_layout
+
+\begin_layout Plain Layout
+
+Unlike [non] contextuality, multiplicativity is permitted to a certain degree
+ in QM.
+ Multiplicativity also related to classicality.
+ Thus multiplicativity might be used to develop a more non multiplicative
+ theory than QM to study what makes QM unique, perhaps like PR boxes.
+\end_layout
+
+\begin_layout Plain Layout
+
+Sincerely
+\end_layout
+
+\begin_layout Plain Layout
+
+Atul
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Derive BM by enforcing multiplicativity in position basis
+\end_layout
+
+\begin_layout Subsection
+August 24, 2016
+\end_layout
+
+\begin_layout Standard
+I start with introducing some notation.
+ Let 
+\begin_inset Formula $\hat{q}_{1}=\hat{q}\otimes\mathbb{I}\otimes\mathbb{I}\otimes\dots$
+\end_inset
+
+, 
+\begin_inset Formula $\hat{q}_{2}=\mathbb{I}\otimes\hat{q}\otimes\mathbb{I}\otimes\dots$
+\end_inset
+
+ and so on.
+ We want the assignments to be given according to the C-ingle model for
+ 
+\begin_inset Formula $\hat{q}_{i}$
+\end_inset
+
+ operators.
+ If we now impose multiplicativity on these compatible operators, viz.
+ 
+\begin_inset Formula $\hat{q}_{i}$
+\end_inset
+
+ then we know from BM that we can obtain the value corresponding to any
+ Hermitian operator, using the measurement Hamiltonian.
+ Here's the point to be noted.
+ For kets, if I specify the basis, all other kets can be constructed off
+ of it.
+ For observables, once I specify the basis observables (like Pauli matrices
+ etc.), all other observables can be constructed off of them.
+ The catch is this.
+ For a given maximally commuting set of observables, I will obtain a ket
+ basis.
+ I can impose multiplicativity and assign values to the commuting set of
+ observables only.
+ Now how do I assign values to the remaining observables? Obviously, the
+ remaining observables can't be constructed using the maximally commuting
+ set of observables.
+ The non-trivial part is that (which is already known) if one makes all
+ commuting observables multiplicative, contradiction results.
+ This is evident from the Peres Mermin construction.
+ Question now is, to what degree is multiplicativity allowed? This might
+ have, at a deeper level, connections with the fact stated earlier that
+ BM can predict outcomes of measuring arbitrary Hermitian operators, once
+ positions are specified.
+ Ok, so something funky can be attempted.
+ For instance one can use 
+\begin_inset Formula $\sigma_{z}$
+\end_inset
+
+'s generator in place of 
+\begin_inset Formula $p_{z}$
+\end_inset
+
+ for instance in the interaction Hamiltonian and see if things work out
+ like they should for measuring spins using spins.
+ 
+\begin_inset Formula $\sigma_{z}$
+\end_inset
+
+'s generators, judging by their action, should perhaps be anhilation and
+ creation operators.
+ Or should it be 
+\begin_inset Formula $\sigma_{x}$
+\end_inset
+
+ because it flips 
+\begin_inset Formula $\left|0\right\rangle $
+\end_inset
+
+ and 
+\begin_inset Formula $\left|1\right\rangle $
+\end_inset
+
+? So it turns out one can use the following: Say there're two particles
+ spin half particles, one is the `apparatus' while the other is the `test
+ particle'.
+ Say the operator one wishes to measure is 
+\begin_inset Formula $\sigma_{z}$
+\end_inset
+
+ for the `test particle'.
+ We initialize the `apparatus' to the state 
+\begin_inset Formula $\left|+\right\rangle =(\left|0\right\rangle +\left|1\right\rangle )/\sqrt{2}$
+\end_inset
+
+.
+ Then we make this system evolve under the interaction Hamiltonian 
+\begin_inset Formula $H=\sigma_{z}\otimes\sigma_{y}$
+\end_inset
+
+ acting on the state 
+\begin_inset Formula $\left|\chi\right\rangle \otimes\left|+\right\rangle $
+\end_inset
+
+ where 
+\begin_inset Formula $\left|\chi\right\rangle =(\alpha\left|0\right\rangle +\beta\left|1\right\rangle )/\sqrt{2}$
+\end_inset
+
+.
+ At time 
+\begin_inset Formula $t=\hbar\pi/2$
+\end_inset
+
+, the final state of the system will be 
+\begin_inset Formula $\alpha\left|00\right\rangle +\beta\left|11\right\rangle $
+\end_inset
+
+ (use the Bloch vector picture; 
+\begin_inset Formula $\left|+\right\rangle $
+\end_inset
+
+ will be along the x-axis and the interaction will rotate along the y-axis
+ by 
+\begin_inset Formula $\pi/2$
+\end_inset
+
+ when the `test particle' state is 
+\begin_inset Formula $\left|0\right\rangle $
+\end_inset
+
+ and by 
+\begin_inset Formula $-\pi/2$
+\end_inset
+
+ when it is 
+\begin_inset Formula $\left|1\right\rangle $
+\end_inset
+
+ [the signs may be opposite]).
+ So according to this if the operators had values fixed until a measurement
+ is made then there can be an inconsistency in value assignment.
+ Say according to the c-ingle model, the value assigned to 
+\begin_inset Formula $c$
+\end_inset
+
+ was 
+\begin_inset Formula $0.4$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha=0.1$
+\end_inset
+
+.
+ Now 
+\begin_inset Formula $m(\mathbb{I}\otimes\sigma_{z})=+1$
+\end_inset
+
+ while 
+\begin_inset Formula $m(\sigma_{z}\otimes\mathbb{I})=-1$
+\end_inset
+
+, however, after the interaction, 
+\begin_inset Formula $m(\mathbb{I}\otimes\sigma_{z})=-1$
+\end_inset
+
+ and 
+\begin_inset Formula $m(\sigma_{z}\otimes\mathbb{I})=-1$
+\end_inset
+
+.
+ It becomes magically consistent! The flaw in the reasoning was that if
+ 
+\begin_inset Formula $c$
+\end_inset
+
+ is fixed, the values assigned to operators will also remain fixed.
+ That is not true as the value depends on the wavefunction.
+ The predicted value of the `apparatus' will automatically and always become
+ the same as the value predicted for the operator it is measuring, both
+ after interaction and before interaction.
+ The only place where there's some ambiguity is when one is supposed to
+ consider eigenkets of 
+\begin_inset Formula $\mathbb{I}\otimes\sigma_{z}$
+\end_inset
+
+; in this case I simply assumed 
+\begin_inset Formula $\left|\chi\right\rangle $
+\end_inset
+
+ to be the eigenket but that needs justification.
+ [EDIT: actually it is correct; degenerate eigenvectors yield the same eigenvalu
+e and can be clubbed together; the result remains invariant; look at the
+ c-ingle model from the thesis] Consequently, our model has what we are
+ calling dynamical consistency.
+ From here there are two obvious directions to follow; 1.
+ see if this holds for a generalization of BM where both 
+\begin_inset Formula $q$
+\end_inset
+
+ and 
+\begin_inset Formula $p$
+\end_inset
+
+ have predictable values and 2.
+ see what implications multiplicativity has for finally we have a bridge
+ between values assigned to non-commuting observables.
+\end_layout
+
+\begin_layout Standard
+I think an interesting method for proceeding further would be to see how
+ BM differs from c-ingle.
+ What is certainly clear is that multiplicativity of 
+\begin_inset Formula $q_{i}$
+\end_inset
+
+s holds in BM but not in c-ingle.
+ It appears although that the general structure of c-ingle is necessary
+ for its consistency.
+ So one can try two things: first, see if multiplicativity on 
+\begin_inset Formula $q$
+\end_inset
+
+ raises any obvious dynamical inconsistency.
+ Second one must see if, granted the previous step results in a consistent
+ theory, one can in addition make 
+\begin_inset Formula $p$
+\end_inset
+
+ multiplicative.
+ Perhaps a simplification can be made.
+ One can start with checking if making spin along 
+\begin_inset Formula $\sigma_{z}$
+\end_inset
+
+ can be made multiplicative and then see what happens if the same is enforced
+ for 
+\begin_inset Formula $\sigma_{x}/\sigma_{z}$
+\end_inset
+
+ etc.
+\end_layout
+
+\begin_layout Standard
+Aside: I realized one could get a one-one map from 
+\begin_inset Formula $\mathbb{R}\to\mathbb{R}^{N}$
+\end_inset
+
+ by breaking any 
+\begin_inset Formula $\alpha\in\mathbb{R}$
+\end_inset
+
+ as for example 
+\begin_inset Formula $\alpha=123456789.0987654321\to[13579.975\dots,2468.0864\dots]$
+\end_inset
+
+ for sending to 
+\begin_inset Formula $\mathbb{R}^{2}$
+\end_inset
+
+.
+ The issue would of course be with 
+\begin_inset Formula $d\alpha$
+\end_inset
+
+ not corresponding to a physically small area in 
+\begin_inset Formula $\mathbb{R}^{2}$
+\end_inset
+
+.
+ This I thought would be needed for implementing multiplicativity but now
+ I doubt that.
+\end_layout
+
+\end_body
+\end_document
