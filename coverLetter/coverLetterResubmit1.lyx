@@ -85,7 +85,27 @@ IISER Mohali,
 \begin_inset Newline newline
 \end_inset
 
-Sector 81 Mohali - 140306 INDIA
+Sector 81 Mohali - 140306 
+\begin_inset Newline newline
+\end_inset
+
+India
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+date{February 12, 2017}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -112,7 +132,11 @@ American Physical Society
 \begin_inset Newline newline
 \end_inset
 
-Ridge NY 11961-2701 USA
+Ridge NY 11961-2701 
+\begin_inset Newline newline
+\end_inset
+
+USA
 \end_layout
 
 \begin_layout Standard
