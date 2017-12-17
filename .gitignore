@@ -24,6 +24,7 @@ account_details
 *.synctex.gz
 # *.pdf (wanted some PDFs to atleast go through!)
 finalPaper.pdf
+nonContextual.pdf
 \#*\#
 *\~
 \_*

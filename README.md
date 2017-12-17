@@ -1,5 +1,7 @@
-# AtulArvind
-Join paper from project Started May 2016
+# Non-Contextual HV model for QM
+This is based on my Master's Thesis, started writing in May 2016. The latest files are in
+```version2postPRL```
+but the PDF should be available above.
 
 ## Git Commands
 ```git clone address/to/project```

@@ -1,17 +1,19 @@
-\documentclass[british,aps,prl,superscriptaddress,nofootinbib,times,reprint]{revtex4-1}
-%\documentclass[british,aps,superscriptaddress,nofootinbib,twocolumn,prl]{revtex4-1}
-%\usepackage[T1]{fontenc}
-%\usepackage[latin9]{inputenc}
-\usepackage{geometry}
-\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=2cm,rmargin=2cm,headheight=2cm,headsep=2cm,footskip=2cm}
-\setcounter{secnumdepth}{3}
+\documentclass[doublecol,british]{epl2} 
+% or \documentclass[page-classic]{epl2} for one column style
+\usepackage[normalem]{ulem}
+
+
+%\setcounter{secnumdepth}{3}     
+\usepackage{mathtools}
 \usepackage{verbatim}
 \usepackage{refstyle}
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amssymb}
-%\usepackage{esint}
+\usepackage{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=2cm,lmargin=2cm,rmargin=2cm,headheight=2cm,headsep=2cm,footskip=1cm}
 \makeatletter
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
 \AtBeginDocument{\providecommand\thmref[1]{\ref{thm:#1}}}
 \AtBeginDocument{\providecommand\lemref[1]{\ref{lem:#1}}}
@@ -73,7 +75,6 @@
   \theoremstyle{definition}
   \newtheorem*{notn*}{\protect\notationname}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage{paralist}
 \usepackage{graphicx}
@@ -101,44 +102,37 @@
   \providecommand{\notationname}{Notation}
 \setlength{\itemindent}{0pt}
 
+%%%%%%%%%%%%%%%%%%%
+
+\title{Non-contextual Hidden Variable Model for Quantum Mechanics}
+\shorttitle{Non-contextual HV Model for QM} %Insert here a short version of the title if it exceeds 70 characters
+
+\author{Atul Singh Arora\inst{1,2} \and Arvind\inst{1} \and Kishor Bharti\inst{3}}
+\shortauthor{A. S. Arora \etal}
+
+\institute{                    
+  \inst{1} Indian Institute of Science Education and Research (IISER), Mohali,\\Sector 81 SAS Nagar 140306 Punjab India.\\
+  \inst{2} Université libre de Bruxelles, \\50 av. F. D. Roosevelt - CP 165/59, B-1050 Brussels, Belgium.\\
+  \inst{3} Centre for Quantum Technologies (CQT), \\National University of Singapore (NUS) -  Block S15, 3 Science Drive 2, Singapore 117543.
+}
+
+\pacs{03.65.Ta}{Foundations of quantum mechanics}
+%\pacs{}{}
+% \pacs{nn.mm.xx}{First pacs description}
+% \pacs{nn.mm.xx}{Second pacs description}
+% \pacs{nn.mm.xx}{Third pacs description}
+
+
+\abstract{ \color{blue}
+We construct a simple non-contextual hidden variable model consistent with all kinematic predictions of quantum mechanics (QM). The famous Bell-KS theorem shows that non-contextual models which satisfy a further reasonable restriction are inconsistent with QM. We define a weaker variant of this restriction which captures its essence while still allowing a non-contextual description of QM. This is in contrast to contextual toy hidden variable models, such as the one by Bell, and brings out an interesting alternate way of looking at QM. This is also related to Bohm's model where it is harder to pin down such features.}
 
 
 \begin{document}
-\title{A non-contextual hidden variable model for quantum mechanics}
-\author{Atul Singh Arora}
-\email{ms11003@iisermohali.ac.in}
-%\selectlanguage{british}%
-\affiliation{Department of Physical Sciences, 
-Indian Institute of Science Education and Research
-Mohali, Sector 81 SAS Nagar 140306 Punjab India.}
-\author{Arvind}
-\email{arvind@iisermohali.ac.in}
-\affiliation{Department of Physical Sciences, 
-Indian Institute of Science Education and Research
-Mohali, Sector 81 SAS Nagar 140306 Punjab India.}
-%\selectlanguage{british}%
-\begin{abstract}
-We propose a non-contextual hidden variable model,
-consistent with all kinematic
-predictions of quantum
-mechanics (QM).  A careful scrutiny of consistency
-requirements of any hidden variable model with
-quantum mechanics and the corresponding no-go
-theorems leads us to the conclusion that,
-contrary to common belief,  the notion of
-contextuality is not a necessary feature of quantum kinematics (QK).
-The alternative view that emerges, hinges on
-identifying a new classical property which we call
-``multiplicativity''.  It turns out that by
-relaxing this condition of ``multiplicativity'' on
-hidden variable models, they can be made
-consistent with QK while remaining
-non-contextual.  The connection of
-non-``multiplicativity'' to Bohm's model and to
-apparent contextuality is also discussed.
-\end{abstract}
-\pacs{}
+
 \maketitle
+
+
+\section{Introduction}
 Quantum mechanics has been one of the most
 successful theories in physics so far, however,
 there has not yet been a final word on its
@@ -176,23 +170,28 @@ QM~\cite{PawelCntxClsscl,CabelloMmryQM}, and on
 the other hand has been harnessed for computation
 and
 cryptography~\cite{HowardCntxCmptn,CabelloCntxScrt}.
-However, not all HV models (e.g.
+{\color{blue} While there have been generalisations, in this letter, we restrict ourselves to the standard notion of non-contextuality as used by KS [??].} 
+Not all HV models (e.g.
 Bohm's model based on
-trajectories~\cite{Bohm1,Bohm2}) are incompatible
+trajectories~\cite{Bohm1,Bohm2}), however, are incompatible
 with QM~\cite{BellOnHiddenVariables} and we, in
 this letter, present a new non-contextual HV model
 consistent with QM.
-\begin{figure}[h]
-\includegraphics[width=0.9\columnwidth]{block1}
-\caption{Non-contextuality is not inconsistent
-with kinematic predictions of QM} \label{fig:block}\end{figure}
+% \begin{figure}[h]
+% \includegraphics[width=0.9\columnwidth]{block1}
+% \caption{Non-contextuality is not inconsistent
+% with kinematic predictions of QM} \label{fig:block}\end{figure}
+{\color{blue}
+The KS theorem is applicable to non-contextual HV models which additionally satisfy functional consistency --- algebraic constraints obeyed by commuting quantum observables must be satisfied by the HV model at the level of individual outcomes. One of the main justifications given for imposing this was the reasonable requirement that an observable $\hat A^2$ must depend on $\hat A$ even at the HV level because otherwise one can construct HV models where these observables get mapped to random variables with no relation to each other (see [??]). As we will show, one can weaken this requirement into what we call weak functional consistency --- functional consistency is demanded only when the observables in question have sharp values. This entails that even in the HV model the observables will depend on each other where they should thereby capturing the same idea. The consequence of demanding only the weaker variant is that the KS theorem no longer applies and non-contextual HV models can be consistently constructed. This is in stark contrast with contextual HV models, such as the one by Bell, which we demonstrate by re-examining a `proof of contextuality' using our model. 
+}
+\sout{
 A closer scrutiny of the arguments
 leading to the dichotomy between QM and HV models
 reveals that the algebraic constraints obeyed by
 quantum observables may not necessarily be obeyed
 by the predictions of an HV model at the level of
 individual outcomes and  that contextuality is 
-not a necessary feature of QM.  Those HV
+not a necessary feature of QM. Those HV
 models that obey such algebraic constraints
 possess a special property which we call
 ``multiplicativity''.  Enlarging the scope of HV
@@ -200,7 +199,7 @@ models to include non-multiplicative models,
 permits us to construct an explicit non-contextual
 HV model consistent with 
 kinematic predictions of
-QM (see \figref{block}).
+QM  %(see \figref{block}).
 The re-examination of the very proof of
 ``contextuality''  is used to illustrate
 non-multiplicativity, an intrinsic quantum
@@ -209,11 +208,14 @@ alternative to contextuality.
 Non-mulitiplicativity thus might turn out to be
 the key quantum feature distinguishing the quantum
 world from the classical one and may have a role
-to play in QIP protocols.  This provides a new
+to play in QIP protocols. }
+This provides a new
 way to look at the classical-quantum divide and at
-the foundations of quantum mechanics. 
+the foundations of quantum mechanics.
 
 
+\section{Non-Contextuality and Functional Consistency}
+We introduce some notation and make the relevant notions precise to facilitate the description and assesment of our model.
 \begin{notn*}
 (a) $\psi\in\mathcal{H}$ represents a pure quantum
 mechanical state of the system in the Hilbert
@@ -251,24 +253,33 @@ itself can be called  non-contextual.
 \end{defnrem}
 
 \begin{defnrem}
+{\color{blue} Broader definitions in the literature have been suggested~\cite{spekkens_pra} which extend the notion to probabilistic HV models. The idea is that any feature of a HV model that is not determined solely by the operational aspect of QM is defined to be, in the case of measurements for instance, measurement contextuality. To maintain a distinction between different features of HV models, which is of interest here, we stick to the standard definition.}
+\sout{
 Broader definitions in the literature have been
 suggested which declare a larger set of theories
-as non-contextual~\cite{spekkens_pra}. For our
+as non-contextual. For our %~\cite{spekkens_pra}. For our
 purposes, however, this restricted definition will
 suffice  and our results will in any case be valid
 for the broader definitions. The term contextual
 is used to suggest that the value an observable
 takes might depend on which other compatible
-observable it is being  measured with.
+observable it is being  measured with. }
 \end{defnrem}
+
+{\color{blue} 
+In addition to a HV model being non-contextual Kochen and Specker~\cite{KochenSpecker} demand the following to establish their no-go theorem.
+}
+
+\sout{
 Before we re-examine the result of Kochen and
-Specker~\cite{KochenSpecker} that non-contextual
+Specker that non-contextual%~\cite{KochenSpecker} that non-contextual
 models cannot be compatible with quantum
 mechanics and show that multiplicativity can provide an
 alternative to contextuality, we define
-multiplicativity explicitly.
+multiplicativity explicitly.}
+
 \begin{defn}
-A prediction map $M$ is \emph{multiplicative} iff
+A prediction map $M$ is \emph{functionally consistent} iff
 \begin{align*} &
 M(f(\hat{B}_{1},\hat{B}_{2},\dots\hat{B}_{N}),[\psi])
 = \\ & \tilde
@@ -277,14 +288,14 @@ M(\hat{B}_{N},[\psi])), \end{align*}
 where $\hat{B}_{i}\in\hat{\mathcal{H}}$ are
 arbitrary mutually commuting observables and
 $[\psi]\in[\mathcal{H}]$. A
-\emph{non-multiplicative} map is one that is not
-multiplicative.  
+\emph{functionally inconsistent} map is one that is not
+functionally consistent.  
 \end{defn} 
 Note that if $M$ is taken to represent the
 measurement outcome (in QM), then for states of
 the system which are simultaneous eigenkets of
 $\hat{B}_{i}$s, $M$ must clearly be
-multiplicative. It is, however, not obvious that
+functionally consistent. It is, however, not obvious that
 this property must always hold. For example,
 consider two spin-half particles in the state 
 $\left|1\right\rangle \otimes\left|1\right\rangle
@@ -298,17 +309,17 @@ written in terms of Pauli operators.
 We must have $M(\hat{C})=-1$ while
 $M(\hat{B}_{1})=\pm1$ and $M(\hat{B}_{2})=\pm1$
 independently, according to QM, with probability
-half. Here multiplicativity clearly is not
-required to hold.
+half. Here functional consistency clearly is not
+required to hold {\color{blue} and indeed this is why it was demanded in addition to being consistent with QM by KS}.
 Antithetically, it is clear that if one first
 measures $\hat{B}_{1}$ and subsequently measures
 $\hat{B}_{2}$, then the product of the results
 must be $-1$. This is consistent with measuring
-$\hat{C}$. To capture this property we define
-\emph{sequential multiplicativity} as follows.
+$\hat{C}$. {\color{blue} In our treatment, instead of imposing functional consistency, we demand its aforesaid weaker variant. It captures the same idea, however, only when it has a precise meaning according to QM.} To capture this property precisely we define
+\emph{weak functional consistency} as follows.
 \begin{defn} 
-A prediction map $m$ is
-\emph{sequentially multiplicative} for a given
+A prediction map $m$ has
+\emph{weak functional consistency} for a given
 sequence map $s$, iff \begin{align*}
 &M(f(\hat{B}_{1},\hat{B}_{2},\dots\hat{B}_{N}),[\psi_{1}])=\\
 &\tilde
@@ -325,6 +336,7 @@ S(\hat{B}_{k},[\psi_{k}],M(\hat{B}_{k},[\psi_{k}]))$,
 $\forall\,[\psi_{i}]$.  
 \label{defn:seqnMltpl}
 \end{defn} 
+
 With these definitions we are now ready to discuss
 the `proof of contextuality'. We first state the
 contextuality theorem in our notation:
@@ -345,7 +357,8 @@ predictions of QM.
 ($\left|\mathcal{H}\right|\ge4$)
 \cite{Peres,Mermin}:
 For a system composed of two spin-half particles 
-consider the following set of operators \[
+consider the following set of operators 
+\begin{equation*}
 \hat{A}_{ij}\doteq\left[\begin{array}{ccc}
 \hat{\mathbb{I}}\otimes\hat{\sigma}_{x} &
 \hat{\sigma}_{x}\otimes\hat{\mathbb{I}} &
@@ -356,7 +369,9 @@ consider the following set of operators \[
 \hat{\sigma}_{y}\otimes\hat{\sigma}_{x} &
 \hat{\sigma}_{x}\otimes\hat{\sigma}_{y} &
 \hat{\sigma}_{z}\otimes\hat{\sigma}_{z}
-\end{array}\right] \] which have the property that
+\end{array}\right]
+\end{equation*}
+which have the property that
 all operators along a row (or column) commute. Further,
 the product of rows (or columns) yields
 $\hat{R}_{i}=\hat{\mathbb{I}}$ and
@@ -399,20 +414,15 @@ Here $M$ maybe viewed as a specific class of
 prediction maps, that implicitly depends on the
 state $[\psi]$. It is clear that according to the
 theorem, non-contextual maps which are
-\emph{multiplicative} must be incompatible with
+\emph{functionally consistent} must be incompatible with
 QM. 
-This leaves open an interesting possibility
-that non-contextual maps which are
-non-\emph{multiplicative} could be consistent with
-QM. We explicitly construct such an HV model and use
-\emph{sequential multiplicativity} as a consistency
-check imposed by QM.
+This leaves open an interesting possibility that non-contextual maps which have \emph{weak functional consistency} could be consistent with QM.
+{ \color{blue} Before proceeding to do so explicitly we observe that \emph{weak functional consistency} is, in fact, a consequnce of QM.}
 \begin{prop*} 
 Let a quantum mechanical 
 system be in a state, s.t. measurement of
 $\hat{C}$ yields repeatable results (same result
-each time). Then according to QM, \emph{sequential
-multiplicativity} holds, where $\hat{C}:=
+each time). Then according to QM, \emph{weak functional consistency} holds, where $\hat{C}:=
 f(\hat{B}_{1},\hat{B}_{2},\dots\hat{B}_{n})$, and
 $\hat{B}_{i}$ are as defined (in \defnref{seqnMltpl})
 \end{prop*}
@@ -485,13 +495,11 @@ It is worth noting that in the Peres Mermin
 case, where $\hat{R}_{i}$ and $\hat{C}_{j}$ are
 $\pm\hat{\mathbb{I}}$, it follows that all
 states are their eigenstates. Consequently, for
-these operators \emph{sequential multiplicativity}
+these operators \emph{weak functional consistency}
 must always hold.
-%\subsection{C-ingle model | An Explicit
-%Construction \label{ssec:cingle}}
 
 
-
+\section{Construction}
 We are now ready to describe our 
 model explicitly.
 Let the state of a finite dimensional quantum
@@ -543,11 +551,9 @@ The assignment described by the
 prediction map $M$ is non-contextual since, given
 an operator and a state (alongwith the HV $c$), the value is
 uniquely assigned. The map $M$ is, however,
-non-multiplicative.
+functionally inconsistent.
 
-
-To bring out the non-multiplicativity of our model 
-explicitly and to show its
+{\color{blue} To see this functional inconsistency explicitly in} our model and to see its
 applicability to composite systems,
 we apply the model to the Peres Mermin situation of two
 spin-half particles. Consider the initial state of
@@ -698,7 +704,7 @@ M_{1}(\hat{C}_{3})=-1 & M_{2}(\hat{C}_{3})=-1 & M_{3}(\hat{C}_{3})=-1\\
 \caption{HV model applied to the Peres Mermin situation}
 \label{tbl:HVmodel}
 \end{table*}
-The \emph{non-multiplicativity} is
+The \emph{functional inconsistency} is
 manifest, for $M_{1}(\hat{C}_{3})=1\neq
 M_{1}(\hat{A}_{13})M_{1}(\hat{A}_{23})M_{1}(\hat{A}_{33})=-1$,
 where the subscript refers to the iteration
@@ -708,8 +714,8 @@ $M_{1}(\hat{O}):=M(\hat{O},\left[\left|\psi_{1}\right\rangle
 complete state $\left[\left|\psi_{1}\right\rangle
 \right]$ implicitly refers to both the quantum
 state $\left|00\right\rangle $ and the HV $c=0.4$.
-The model, however, obeys the \emph{sequential
-multiplicativity} as required for consistency,
+The model, however, obeys the \emph{weak functional
+consistency} requirement,
 namely,
 $M_{1}(\hat{C}_{3})=M_{1}
 (\hat{A}_{33})M_{2}(\hat{A}_{23})M_{3}(\hat{A}_{13})$,
@@ -720,15 +726,17 @@ $M_{3}:=M(\hat{O},\left[\left|\psi_{3}\right\rangle
 \right])$ and $\left|\psi_{2}\right\rangle
 ,\,\left|\psi_{3}\right\rangle $ are obtained from
 postulate 3. Note that for each iteration, a new
-HV is generated. To illustrate \emph{sequential
-multiplicativity}, we must choose to measure
+HV is generated. To illustrate \emph{weak functional consistency}, 
+we must choose to measure
 $\hat{A}_{33}$. According to step 3, since
 $\left|00\right\rangle $ is an eigenstate of
 $\hat{A}_{33}$, the final state remains
 $\left|00\right\rangle $.  
 
-
-Non-multiplicativity has implications to Bohm's HV
+\section{Implications and Remarks}
+{ \color{blue} 
+The model demonstrates \emph{function inconsistency} as an alternative signature of quantumness as opposed to contextuality. This view is not just an artifact of the simplicity of the model. 
+It }has implications to Bohm's HV
 model (BHVM), where if the initial conditions are
 precisely known the entire trajectory of a
 particle (guided by the wavefunction) can be
@@ -738,24 +746,26 @@ particle in a Stern-Gerlach experiment, can
 predict opposite results for two measurements of
 the same operator.  This observation which is
 often used as a demonstration of ``contextuality''
-in BM, does not even inolve  overlapping sets of
+in BM, does not inolve  overlapping sets of
 compatible measurements to provide two different
-contexts~\cite{HardyCntxBM}.  It turns out that,
+contexts~\cite{HardyCntxBM} {\color{blue}and is therefore not of
+interest here.}  It turns out that,
 if one constructs  a one-one map between an
 experiment and an observable (by following a
-certain convention), the so-called ``contextuality''
+certain convention), this so-called ``contextuality''
 can be removed from BHVM.  However, the prediction
 map so obtained from observables to measurement
-outcomes turns out to be non-multiplicative,
-suggesting that non-multiplicativity is a more
+outcomes turns out to be \emph{functionally inconsistent},
+suggesting that \emph{functional inconsistency} is a more
 suitable explanation of non-classicality
 of BHVM.
+{\color{blue} In fact, our model when appropriately extended to continous variables yields Bohmian trajectories in the single particle  case which suggests that it can be used as a starting point for constructing more interesting families of HV theories that take quantum time dynamics into account as well.
 
+Bell himself had constructed a deceptively similar toy model to demonstrate a HV construction that is not ruled out by his contextuality no-go theorem. However, his model was contextual (and functionally consistent) which is in stark contrast with our construction which is non-contextual (and functionally inconsistent).
 
-
-We illustrate how non-multiplicativity gives rise
+We end with making two short remarks.} First, we illustrate how functional inconsistency gives rise
 to situations which could get confused with the
-presence of contextuality.  Imagine for two sping
+presence of contextuality.  Imagine for two spin
 1/2 particles
 \begin{eqnarray*}
 &&\hat{B}_{1}\!=\!\hat{\sigma}_{z}\otimes\hat{\mathbb{I}}\!=\!
@@ -803,34 +813,34 @@ our accepted definition, there is no
 contextuality. It is just that $M_{1}(\hat{C})\neq
 \tilde
 f(M_{1}(\hat{B}_{1}),M_{1}(\hat{B}_{2}),\dots)$,
-viz. the theory is non-multiplicative. Note that
+viz. the theory is functionally inconsistent. Note that
 after measuring $\hat{C}$, however,
 $M_{2}(\hat{B}_{1})=+1$ and
 $M_{2}(\hat{B}_{2})=-1$ (for any value of $c$)
 consistent with those deduced by measuring
-$\hat{C}$.  Evidently, multiplicativity must hold
+$\hat{C}$.  Evidently, functional consistency must hold
 for the common eigenkets of $\hat{B}_{i}$'s.
-Consequently, any violation of multiplicativity
+Consequently, any violation of functional consistency
 must arise from states that are super-positions or
 linear combinations of these eigenkets. 
 
 
-Clearly, entanglement is not necessary to have a
-non-multiplicative situation; for instance the
+{\color{blue} Second, note that} \sout{Clearly,} entanglement is not necessary to demonstrate
+functional inconsistency; for instance the
 Peres Mermin test is a state independent test
 where a separable state can be used to arrive at a
 contradiction. On the other hand if everyting is
-multiplicative in a situation, can we have
+functionally consistent in a situation, can we have
 violation of Bell's inequality or non-locality?
 The answer is no and, therefore, one can say that
 Bell's inequalities bring out  non-local
-consequences of  non-multiplicative prediction
-maps and the notion of non-multiplicativity is
-more basic.  
+consequences of functionally inconsistent prediction
+maps and the notion of functional inconsistency is
+more basic.
 
-
+\section{Conclusion}
 In this letter we have presented
-non-multiplicativity as an alternative to
+functional inconsistency as an alternative to
 contextuality and as an essential signature of
 quantumness at the kinematic level. Our result
 points to a (quantum) dynamical exploration of contextuality which 
@@ -843,11 +853,38 @@ so far has effectively been studied kinematically only.
 We expect our result to provide new insights that will be useful
 in the areas of foundations of QM and QIP.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{acknowledgments} ASA and Arvind acknowledge
+
+
+\acknowledgments
+We are thankful to the anonymous referees for their feedback. ASA and Arvind acknowledge
 funding from KVPY and DST Grant No.
 EMR/2014/000297 respectively.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\end{acknowledgments}
-%\bibliographystyle{apsrev4-1}
-\bibliography{references} \end{document}
+
+% \begin{thebibliography}{0}
+
+% \bibitem{b.a}
+%   \Name{Author F., Author S. \and Author T.}
+%   \REVIEW{Some Rev. A}{69}{1969}{9691}.
+
+% \bibitem{b.b}
+%   \Name{Author F. \and Author S.}
+%   \Book{Some Book of Interest}
+%   \Editor{A. Editor}
+%   \Vol{9}
+%   \Publ{Publishing house, City}
+%   \Year{1939}
+%   \Page{666}.
+
+% \bibitem{b.c}
+%   \Editor{Editor A.}
+%   \Book{Some Book of Interest}
+%   \Vol{9}
+%   \Publ{Publishing house, City}
+%   \Year{1939}
+%   \Section{A}.
+\bibliographystyle{unsrt}
+\bibliography{references}
+% \end{thebibliography}
+
+\end{document}
+
