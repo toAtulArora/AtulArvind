@@ -107,7 +107,7 @@
 \title{Non-contextual Hidden Variable Model for Quantum Mechanics}
 \shorttitle{Non-contextual HV Model for QM} %Insert here a short version of the title if it exceeds 70 characters
 
-\author{Atul Singh Arora\inst{1,2} \and Arvind\inst{1} \and Kishor Bharti\inst{3}}
+\author{Atul Singh Arora\inst{1,2} \and Kishor Bharti\inst{3} \and Arvind\inst{1}}
 \shortauthor{A. S. Arora \etal}
 
 \institute{                    
@@ -150,7 +150,7 @@ been of pragmatic utility in the area of quantum
 information processing (QIP), where EPR pairs are
 fundamental motifs of
 entanglement~\cite{Ekert,PironioRndmnssCrtfcn,NielsenChuang}.
-The work of  Kochen Specker~\cite{KochenSpecker}
+The work of  Kochen Specker (KS)~\cite{KochenSpecker}
 and Gleason {\it
 et.\,al.}~\cite{Gleason,Peres,Mermin} broadened
 the schism between  HV models and QM.  They showed
@@ -170,19 +170,19 @@ QM~\cite{PawelCntxClsscl,CabelloMmryQM}, and on
 the other hand has been harnessed for computation
 and
 cryptography~\cite{HowardCntxCmptn,CabelloCntxScrt}.
-{\color{blue} While there have been generalisations, in this letter, we restrict ourselves to the standard notion of non-contextuality as used by KS [??].} 
+{\color{blue} While there have been generalisations, in this letter, we restrict ourselves to the standard notion of non-contextuality as used by KS~\cite{KochenSpecker}.} 
 Not all HV models (e.g.
 Bohm's model based on
 trajectories~\cite{Bohm1,Bohm2}), however, are incompatible
 with QM~\cite{BellOnHiddenVariables} and we, in
 this letter, present a new non-contextual HV model
 consistent with QM.
-% \begin{figure}[h]
-% \includegraphics[width=0.9\columnwidth]{block1}
-% \caption{Non-contextuality is not inconsistent
-% with kinematic predictions of QM} \label{fig:block}\end{figure}
+\begin{figure}[h]
+\includegraphics[width=0.9\columnwidth]{block2}
+\caption{Non-contextuality is not inconsistent
+with kinematic predictions of QM} \label{fig:block}\end{figure}
 {\color{blue}
-The KS theorem is applicable to non-contextual HV models which additionally satisfy functional consistency --- algebraic constraints obeyed by commuting quantum observables must be satisfied by the HV model at the level of individual outcomes. One of the main justifications given for imposing this was the reasonable requirement that an observable $\hat A^2$ must depend on $\hat A$ even at the HV level because otherwise one can construct HV models where these observables get mapped to random variables with no relation to each other (see [??]). As we will show, one can weaken this requirement into what we call weak functional consistency --- functional consistency is demanded only when the observables in question have sharp values. This entails that even in the HV model the observables will depend on each other where they should thereby capturing the same idea. The consequence of demanding only the weaker variant is that the KS theorem no longer applies and non-contextual HV models can be consistently constructed. This is in stark contrast with contextual HV models, such as the one by Bell, which we demonstrate by re-examining a `proof of contextuality' using our model. 
+The KS theorem is applicable to non-contextual HV models which additionally satisfy functional consistency --- algebraic constraints obeyed by commuting quantum observables must be satisfied by the HV model at the level of individual outcomes. One of the main justifications given for imposing this was the reasonable requirement that an observable $\hat A^2$ must depend on $\hat A$ even at the HV level because otherwise one can construct HV models where these observables get mapped to random variables with no relation to each other (see~\cite{KochenSpecker}). As we will show, one can weaken this requirement into what we call weak functional consistency --- functional consistency is demanded only when the observables in question have sharp values. This entails that even in the HV model the observables will depend on each other where they should thereby capturing the same idea. The consequence of demanding only the weaker variant is that the KS theorem no longer applies and non-contextual HV models can be consistently constructed. This is in stark contrast with contextual HV models, such as the toy model\footnote{introduced in connection with Gleason's Theorem} by Bell~\cite{BellOnHiddenVariables}, which we demonstrate by re-examining a `proof of contextuality' using our model. 
 }
 \sout{
 A closer scrutiny of the arguments
@@ -267,7 +267,7 @@ observable it is being  measured with. }
 \end{defnrem}
 
 {\color{blue} 
-In addition to a HV model being non-contextual Kochen and Specker~\cite{KochenSpecker} demand the following to establish their no-go theorem.
+In addition to a HV model being non-contextual Kochen and Specker~\cite{KochenSpecker} demand \emph{functional consistency} to establish their no-go theorem which is defined below in our notation.
 }
 
 \sout{
@@ -315,7 +315,7 @@ Antithetically, it is clear that if one first
 measures $\hat{B}_{1}$ and subsequently measures
 $\hat{B}_{2}$, then the product of the results
 must be $-1$. This is consistent with measuring
-$\hat{C}$. {\color{blue} In our treatment, instead of imposing functional consistency, we demand its aforesaid weaker variant. It captures the same idea, however, only when it has a precise meaning according to QM.} To capture this property precisely we define
+$\hat{C}$. {\color{blue} In our treatment, instead of imposing functional consistency, we demand its aforesaid weaker variant. It captures the same idea, however, only when it has a precise meaning according to QM.} \sout{To capture this property precisely we define} {\color{blue} To this end we define}
 \emph{weak functional consistency} as follows.
 \begin{defn} 
 A prediction map $m$ has
@@ -761,7 +761,7 @@ suitable explanation of non-classicality
 of BHVM.
 {\color{blue} In fact, our model when appropriately extended to continous variables yields Bohmian trajectories in the single particle  case which suggests that it can be used as a starting point for constructing more interesting families of HV theories that take quantum time dynamics into account as well.
 
-Bell himself had constructed a deceptively similar toy model to demonstrate a HV construction that is not ruled out by his contextuality no-go theorem. However, his model was contextual (and functionally consistent) which is in stark contrast with our construction which is non-contextual (and functionally inconsistent).
+Bell himself had constructed a deceptively similar toy model\footnote{as referred to earlier} to demonstrate a HV construction that is not ruled out by his contextuality no-go theorem. However, his model was contextual (and functionally consistent) which is in stark contrast with our construction which is non-contextual (and functionally inconsistent).
 
 We end with making two short remarks.} First, we illustrate how functional inconsistency gives rise
 to situations which could get confused with the
