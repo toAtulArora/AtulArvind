@@ -1,0 +1,105 @@
+EPL
+
+
+December 5, 2018
+
+
+Dear Editor(s)
+
+
+
+The authors put forward the notion of "non functional-consistency" as an alternative to the notion of quantum mechanical non contextuality and claim that this notion provides an essential signature of quantumness at the kinematic level. 
+
+While the first claim is condivisible and to some extent argumented in the ms (see below), the second one ("essential signature") is not really explained and should be better proved or removed.
+
+>> We removed the "essential signature" claim. Indeed, we can not logically conclude this (yet).
+
+
+
+The ms is potentially of interest  for the distinguished audience of PLA, but there are too many unclear points to make a definite assessment.  The notation, some of the formulas, and several statements are not very clear and they should be improved before the ms may be considered for publication. Here in the following some mandatory amendments:
+
+
+- Formula should be numbered and they should be recalled when mentioned in other location of the text;
+
+>> TODO: Still pending! I numbered one formula but can't figure how to fix the rest.
+
+
+
+- hat C in the last formula of page 4 should be better defined; what is the exact meaning of 1. |00⟩ ⟨00| + 2. |01⟩ ⟨01| + 3. |10⟩ ⟨10| + 4. |11⟩ ⟨11| ?
+
+>> We have properly motivated the operator C as a refinement operator which is well defined in the contextuality literature (TODO: Kishor, perhaps add a reference.)
+
+
+
+- Caption of Table I should be improved and made almost independent of the text
+
+>> We have considerably improved the caption and have indeed made it quite independent of the text.
+
+
+
+- The last sentence of the conclusions "We expect our result to provide new insights that will be useful in the areas of foundations of QM and QIP." is too generic. Which insights? Which areas? To which problems?
+
+>> We have restructured the entire conclusion section and addressed the aforesaid by clarifying the insight, making the area of interest more precise and giving an example of where such an insight has been previously used. (TODO: check the conclusion section)
+
+
+
+- The last sentence before conclusions is saying "The answer is no and, therefore, one can say that Bell's inequalities bring out non-local consequences of non functionally-consistent prediction maps and the notion of non functional-consistency is more basic" and a question immediately arises: Which is the physical meaning of the  notion of non functional-consistency?
+
+>> TODO: Still pending! I can't figure this one out.
+
+
+
+- If possible, avoid notation like |\tilde + \langle
+
+>> Replaced the notation.
+
+
+
+We hope that the revised manuscript meets the acceptance criteria.
+
+
+Sincerely
+
+Arvind
+
+
+
+
+
+
+
+
+
+Highlights
+
+* Bell's theorem shows quantum mechanics (QM) can not have a local hidden variable completion.
+* Bohm constructs a non-local hidden variable completion of QM; Bell endorses it.
+* Kochen Spekker theorem shows QM can not have a non-contextual completion.
+* Relaxing an assumption of the KS theorem, allows us to construct a non-contextual completion, but it is forced to be "non functionally-conistent".
+* We see Bohm's completion also exhibits "non functional-consistency".
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Following are the things we must do.
+——————
+Response to Reviewers (mandatory)
+
+This should be a separate file labeled "Response to Reviewers" that carefully addresses the issues raised in the comments appended below, point-by-point. You should also include a suitable rebuttal to any specific request for change that you have not made. Mention the page, paragraph, and line number of any revisions that are made.
+
+
+
+Highlights (mandatory)
+
+Highlights consist of a short collection of bullet points that convey the core findings of the article and should be submitted in a separate file in the online submission system. Please use 'Highlights' in the file name and include 3 to 5 bullet points (maximum 20 words, including spaces, per bullet point). See the following website for more information 
