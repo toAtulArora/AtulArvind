@@ -11,6 +11,7 @@
 \usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{geometry}
+\usepackage{braket}
 \geometry{verbose,tmargin=3cm,bmargin=2cm,lmargin=2cm,rmargin=2cm,headheight=2cm,headsep=2cm,footskip=1cm}
 \makeatletter
 
@@ -36,7 +37,7 @@
   {\def\RSsubtxt{section~}\newref{sub}{name = \RSsubtxt}}
   {}
 \RS@ifundefined{thmref}
-  {\def\RSthmtxt{Theorem~}\newref{thm}{name = \RSthmtxt}}
+ {\def\RSthmtxt{Theorem~}\newref{thm}{name = \RSthmtxt}}
   {}
 \RS@ifundefined{lemref}
   {\def\RSlemtxt{Lemma~}\newref{lem}{name = \RSlemtxt}}
@@ -221,8 +222,8 @@ consistent with QM.
 with kinematic predictions of QM} \label{fig:block}\end{figure}
 {
 The KS theorem is applicable to non-contextual HV models
-which additionally satisfy \emph{functional-consistency ---
-algebraic constraints obeyed by commuting quantum
+which additionally satisfy \emph{functional-consistency---algebraic 
+constraints obeyed by commuting quantum
 observables must be satisfied by the HV model at the level
 of individual outcomes}. 
 One of the main justifications for imposing
@@ -234,13 +235,13 @@ observables { can} get mapped to random variables
 with no relation to each other (see~\cite{KochenSpecker}). 
 As we
 will show, one can weaken this requirement into what we call
-\emph{weak functional-consistency -- functional-consistency is
+\emph{weak functional-consistency---functional-consistency is
 demanded only when the observables in question have sharp
 values}. This entails that even in the HV model the
 observables will depend on each other where they should for
 { consistency} and not otherwise,
-thereby capturing the essential idea { without undue
-constraints}. The consequence of
+thereby capturing the essential idea without undue
+constraints. The consequence of
 demanding only the weaker variant is that the KS theorem no
 longer applies and non-contextual HV models can be
 consistently constructed. This is in stark contrast with
@@ -365,7 +366,7 @@ In addition to a HV model being non-contextual KS~\cite{KochenSpecker} demand \e
 % multiplicativity explicitly.}
 
 \begin{defn}
-A prediction map $M$ is \emph{functionally-consistent} iff
+A prediction map $M$ is \emph{functionally-consistent} if
 \begin{align*} &
 M(f(\hat{B}_{1},\hat{B}_{2},\dots\hat{B}_{N}),[\psi])
 = \\ & \tilde
@@ -406,7 +407,7 @@ $\hat{C}$. { In our treatment, instead of imposing \emph{functional-consistency}
 \begin{defn} 
 A prediction map $m$ has
 \emph{weak functional-consistency} for a given
-sequence map $s$, iff \begin{align*}
+sequence map $s$, if \begin{align*}
 &M(f(\hat{B}_{1},\hat{B}_{2},\dots\hat{B}_{N}),[\psi_{1}])=\\
 &\tilde
 f(M(\hat{B}_{1},[\psi_{k_{1}}]),M(\hat{B}_{2},[\psi_{k_{2}}]),\dots,M(\hat{B}_{N},[\psi_{k_{N}}])),
@@ -439,12 +440,12 @@ predictions of QM.
 \label{thm:KS}
 \end{thm*}
 
-\begin{proof} Peres Mermin [PM]
-($\left|\mathcal{H}\right|\ge4$)
+\begin{proof} Due to Peres Mermin for
+$\left|\mathcal{H}\right|\ge4$
 \cite{Peres,Mermin}:
 For a system composed of two spin-half particles 
 consider the following set of operators 
-\begin{equation*}
+\begin{equation}\label{eqn:PM}
 \hat{A}_{ij}\doteq\left[\begin{array}{ccc}
 \hat{\mathbb{I}}\otimes\hat{\sigma}_{x} &
 \hat{\sigma}_{x}\otimes\hat{\mathbb{I}} &
@@ -456,7 +457,7 @@ consider the following set of operators
 \hat{\sigma}_{x}\otimes\hat{\sigma}_{y} &
 \hat{\sigma}_{z}\otimes\hat{\sigma}_{z}
 \end{array}\right]
-\end{equation*}
+\end{equation}
 which have the property that
 all operators along a row (or column) commute. Further,
 the product of rows (or columns) yields
@@ -478,7 +479,7 @@ even number of $-1$ assignments along each row.
 Thus, in the entire square, the number of $-1$
 assignments must be even. We have arrived at a
 contradiction and therefore we conclude 
-that $M$ does not exist
+that $M$ does not exist.
 \end{proof}
 
 \begin{rem} One could in principle assume $M$, to
@@ -510,7 +511,7 @@ system be in a state, s.t. measurement of
 $\hat{C}$ yields repeatable results (same result
 each time). Then according to QM, \emph{weak functional consistency} holds, where $\hat{C}:=
 f(\hat{B}_{1},\hat{B}_{2},\dots\hat{B}_{n})$, and
-$\hat{B}_{i}$ are as defined (in \defnref{seqnMltpl})
+$\hat{B}_{i}$ are as defined in \defnref{seqnMltpl}.
 \end{prop*}
 \begin{proof} 
 Without loss of generality we can take
@@ -590,12 +591,14 @@ We are now ready to describe our
 model explicitly.
 Let the state of a finite dimensional quantum
 system be $\left|\chi\right\rangle $. We wish to
-assign a value to an arbitrary observable
-$\hat{A}=\sum_{a}a\left|a\right\rangle
-\left\langle a\right|$, which has eigenvectors $\{
+assign a value to an arbitrary observable, given in terms of its spectral decomposition as,
+
+
+$ \hat{A}=\sum_{a\in a_1,a_2,\dots a_n }a\left|a\right\rangle
+\left\langle a\right| $ with $a_1\le a_2 \le \dots a_n$. \sout{which has eigenvectors $\{
 \vert a_j\rangle \}$. The corresponding ordered
 eigenvalues are $\{a_j\}$ such that $a_{\rm
-min}=a_1$ and $a_{\rm max}=a_n$.  Our HV model for
+min}=a_1$ and $a_{\rm max}=a_n$.}  Our HV model for
 QM assigns values in the following three steps:
 \setdefaultleftmargin{0pt}{}{}{}{}{}
 \begin{enumerate}
@@ -606,8 +609,8 @@ $c\in[0,1]$, from a uniform random distribution.\
 {\bf
 Assignment or Prediction:}
  The value assigned to
-$\hat{A}$ is given by finding the smallest $a$
-s.t.  $c\le\sum_{a'=a_{\text{min}}}^{a}\left|\left\langle
+$\hat{A}$ is given by finding the smallest $j$ 
+s.t.  $c\le\sum_{a'=a_1}^{a_j}\left|\left\langle
 a'|\chi\right\rangle \right|^{2},$ viz. we have
 specified a prediction map, $M(\hat{A},[\chi ])=a$.
 \item
@@ -631,7 +634,7 @@ the randomly generated value for
 $c\le\cos^{2}\theta$ else $\hat{A}$ is assigned
 $-1$; it then follows,  from $c$ being uniformly
 random in $[0,1]$ that the statistics agree with
-the predictions of QM {\it i.e.}  the
+the predictions of QM i.e. the
 Born rule. 
 The assignment described by the
 prediction map $M$ is non-contextual since, given
@@ -671,17 +674,17 @@ evident from the previous exercise). For the
 final step we choose to measure
 $\hat{A}_{23}(=\hat{\sigma}_{y}\otimes\hat{\sigma}_{y})$,
 to proceed with sequentially measuring
-$\hat{C}_{3}$. To simplify calculations, we note
+$\hat{C}_{3}$. {\color{blue} Atul: Kishor could you please verify the calculation.} To simplify calculations, we note
+
 $\left|00\right\rangle
-=\frac{1}{\sqrt 2} \left[ \left(\left|\tilde{+}\tilde{-}\right\rangle
-+\left|\tilde{-}\tilde{+}\right\rangle
-\right)/\sqrt{2}+\left(\left|\tilde{+}\tilde{+}\right\rangle
-+\left|\tilde{-}\tilde{-}\right\rangle
+=\frac{1}{\sqrt 2} \left[ \left(\left| \uparrow \downarrow \right\rangle
++\left|\downarrow \uparrow \right\rangle
+\right)/\sqrt{2}+\left(\left|\uparrow \uparrow \right\rangle
++\left|\downarrow \downarrow \right\rangle
 \right)/\sqrt{2}\right] , 
 $
-with
-$\left|\tilde{\pm}\right\rangle
-=(\left|0\right\rangle \pm i\left|1\right\rangle)/\sqrt{2} $
+
+with $\ket{\uparrow} = (\ket{0}+i\ket{1})/\sqrt{2}$ and $\ket{\downarrow}=(\ket{0}-i\ket{1})/\sqrt{2}$
 (eigenkets of $\hat{\sigma}_{y}$). Since
 $\left|00\right\rangle$ is manifestly not an
 eigenket of $\hat A_{23}$, we must find an appropriate
@@ -691,10 +694,10 @@ $\hat A_{23}\left|a^{-}_{23}\right\rangle
 $\left\langle a_{23}^{-}|00\right\rangle $ is already
 $>0.1$. It is evident that
 $\left|a^{-}_{23}\right\rangle
-=\left(\left|\tilde{+}\tilde{-}\right\rangle
-+\left|\tilde{-}\tilde{+}\right\rangle
+=\left(\left|\uparrow \downarrow \right\rangle
++\left|\downarrow \uparrow \right\rangle
 \right)/\sqrt{2}=\left(\left|00\right\rangle
-+\left|11\right\rangle \right)/\sqrt{2}$, which
++\left|11\right\rangle \right)/\sqrt{2}$ which 
 becomes the final state. 
 
 
@@ -787,7 +790,7 @@ M_{1}(\hat{C}_{3})=-1 & M_{2}(\hat{C}_{3})=-1 & M_{3}(\hat{C}_{3})=-1\\
 \end{array}
 % \label{eq:toyModel}
 \end{equation*}
-\caption{HV model applied to the Peres Mermin situation}
+\caption{For a given initial state, we apply our HV model to the Peres Mermin square (see Equation \ref{eqn:PM}; $R_j$ ($C_j$) refers to product of the observables along the $j^{\text{th}}$ row (column)) and explicitly write the predictions. At each step encoded by $i$, a value of $c\in[0,1]$ is picked from a uniformly random distribution. This, together with the state, completely specifies the predicted value of each observable which we denote by the map $M_1$. An observable is then selected and measured, which is specified in the second last row  (together with the predicted value assigned to it by the HV model) and the state is then updated to the one specified in the last row using the rules specified by the HV model. This state becomes the initial state for the next step. Note that we are able to assign values to the Peres Mermin square and they exhibit non functional-consistency. To see this, recall that the product of the numbers along any given row should be one if the assignment satisfies functional-consistency but this is not the case even in the very first row of $M_1(\hat A _{ij})$.}
 \label{tbl:HVmodel}
 \end{table*}
 The \emph{non functional-consistency} is
@@ -857,7 +860,7 @@ model\footnote{as referred to earlier} to demonstrate a HV
 construction that is not ruled out by his contextuality
 no-go theorem. However, his model was contextual (and
 \emph{functionally-consistent}) which is in contrast with our
-construction which is non-contextual (and has \emph{weak
+construction which is non-contextual (and only has \emph{weak
 functional-consistency}).
 
 
@@ -873,11 +876,10 @@ Imagine for two spin 1/2 particles
 \left\langle 10\right|+\left|11\right\rangle
 \left\langle 11\right|\right], \\
 &&\hat{B}_{2}\!=\!\hat{\mathbb{I}}\otimes\hat{\sigma}_{z}\!=\\
-&&\!\left|10\right\rangle
-\left\langle 10\right|+\left|11\right\rangle
-\left\langle 11\right|-\left[\left|00\right\rangle
-\left\langle 00\right|+\left|01\right\rangle
-\left\langle 01\right|\right], \\
+&&\!\left|00\right\rangle \left\langle 00\right|+
+\left|10\right\rangle \left\langle 10\right|-
+\left[\left|01\right\rangle \left\langle 01\right|+
+\left|11\right\rangle \left\langle 11\right|\right], \\
 &&\hat{C}=\!f(\{\hat{B}_{i}\}) \\
 &&\quad=1.\left|00\right\rangle \left\langle
 00\right|+2.\left|01\right\rangle \left\langle
@@ -887,7 +889,10 @@ Imagine for two spin 1/2 particles
 10\right|+4.\left|11\right\rangle \left\langle
 11\right|. 
 \end{eqnarray*}
-$\hat{C}$ maybe viewed as a function of
+We introduced $\hat{C}$ as an example of a \emph{refinement}, i.e. an observable 
+whose measurement can reveal the values of other compatible observables
+which in this case are $\hat B_1$ and $\hat B_2$. To see this, note that $\hat C$
+maybe viewed as a function of
 $\hat{B}_{1}$, $\hat{B}_{2}$ and other operators
 $\hat{B}_{i}$ which are constructed to obtain a
 maximally commuting set. A measurement of
@@ -905,9 +910,9 @@ $c<0.5$. However, $M_{1}(\hat{C})=1$, from which
 one can deduce that $\hat{B}_{1}$ was $+1$, while
 $\hat{B}_{2}$ was $-1$.  This property itself, one
 may be tempted call contextuality, viz.  the value
-of $\hat{B}_{1}$ depends on whether it is measured
+of $\hat{B}_{2}$ depends on whether it is measured
 alone or with the remaining $\{\hat{B}_{i}\}$.
-However, it must be noted that $\hat{B}_{1}$ has a
+However, it must be noted that $\hat{B}_{2}$ has a
 well defined value, and so does $\hat{C}$. Thus by
 our accepted definition, there is no
 contextuality. It is just that $M_{1}(\hat{C})\neq
@@ -936,29 +941,33 @@ The answer is no and, therefore, one can say that
 Bell's inequalities bring out  non-local
 consequences of \emph{non functionally-consistent} prediction
 maps and the notion of \emph{non functional-consistency} is
-more basic.
+more basic. {\color{blue} Atul: The referee wants a physical meaning of this. I am not sure how to respond.}
 
 \section{Conclusion}
+ {\color{blue} Atul: The refere wants this section to be made more particular; feel free to improve upon/add to the following.}
 In this letter we have presented
 \emph{non functional-consistency} as an alternative to
-contextuality and as an essential signature of
-quantumness at the kinematic level. Our result
+contextuality \sout{and as an essential signature of
+quantumness at the kinematic level} which bolsters the stance that one can not, and must not,
+deduce from the KS theorem that quantum mechanics is contextual without further investigation. We 
+also showed how viewing quantum mechanics this way already clarifies various aspects of Bohmian Mechanics, a completion of quantum mechanics whose proponents included Bell himself. Our result
 points to a (quantum) dynamical exploration of contextuality which 
-so far has effectively been studied kinematically only.
+so far has effectively been studied kinematically only. This should
+help us further rule out specific kinds of contextual/non functionally-consistent models and 
+clarify what quantum mechanics can not be thought of as.
 %Implications of quantum dynamics for
 %our model and in general for the notion of
 %non-multiplicativity need to be explored
 %further.
 %We expect this to provide new insights that will be useful
-We expect our result to provide new insights that will be useful
-in the areas of foundations of QM and QIP.
+In addition to its intrinsic value to the fundamental understanding of quantum mechanics, we expect \sout{our result} this investigation to also provide new insights that will be useful
+in the area of quantum computation. In particular, it has been shown that an established measure of contextuality can be related directly to a measure of the quantum advantage obtained in the measurement based model of quantum computing [Kishor cite]. A dynamical study of contextuality/non functional-consistency is expected to open up similar connections and deepen our understanding of the strange computational power of quantum mechanics.
 
 
 
 \acknowledgments
-ASA and Arvind acknowledge
-funding from KVPY and DST Grant No.
-EMR/2014/000297 respectively.
+ASA and KB acknowledge funding from KVPY, DST, India. Arvind also acknowledges the DST, India, for support through Grant No.
+EMR/2014/000297. ASA acknowledges the Belgian Fonds de la Recherche Scientifique -- FNRS for support through the FRIA grant, numbered F3/5/5MCF/XH/FC16749. KB acknowledges the CQT graduate scholarship.
 
 % \begin{thebibliography}{0}
 
