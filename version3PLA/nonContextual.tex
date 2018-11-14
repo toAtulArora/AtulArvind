@@ -1,19 +1,27 @@
-\documentclass[doublecol,british]{epl2} 
+\documentclass[5p]{elsarticle} 
 % or \documentclass[page-classic]{epl2} for one column style
 \usepackage[normalem]{ulem}
-
-
+\usepackage{color}
+\raggedbottom
 %\setcounter{secnumdepth}{3}     
-\usepackage{mathtools}
-\usepackage{verbatim}
-\usepackage{refstyle}
+%\usepackage{mathtools}
+%\usepackage{verbatim}
+
 \usepackage{amsmath}
+\usepackage{graphicx}
 \usepackage{amsthm}
 \usepackage{amssymb}
-\usepackage{geometry}
+%\usepackage{geometry}
 \usepackage{braket}
-\geometry{verbose,tmargin=3cm,bmargin=2cm,lmargin=2cm,rmargin=2cm,headheight=2cm,headsep=2cm,footskip=1cm}
+%\geometry{verbose,tmargin=3cm,bmargin=2cm,lmargin=2cm,rmargin=2cm,headheight=2cm,headsep=2cm,footskip=1cm}
+%\makeatletter
+
+%%%%%%%%%%%%%%Arvind%%%%%%%%%%%%
+\journal{Physics Letters A}
+\bibliographystyle{elsarticle-num}
 \makeatletter
+\let\fnref\relax
+\usepackage{refstyle}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
@@ -79,12 +87,13 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage{paralist}
-\usepackage{graphicx}
+\usepackage{hyperref}
+
+\usepackage[english]{babel}
 \graphicspath{ {images/} }
 
 \usepackage{xcolor}
 %\usepackage{url}
-\usepackage{hyperref}
 \hypersetup{
     colorlinks,
     linkcolor={red!50!black},
@@ -94,7 +103,6 @@
 
 \makeatother
 
-\usepackage{babel}
   \providecommand{\definitionname}{Definition}
   \providecommand{\examplename}{Example}
   \providecommand{\lemmaname}{Lemma}
@@ -112,33 +120,71 @@
 %%%%%%%%%%%%%%%%%%%
 
 
-\title{Revisiting the admissibility of non-contextual hidden variable models in quantum mechanics}
-% \title{Relexation of functional-consistency allows
-% a non-contextual hidden variable model for quantum mechanics
-%\\
-% \sout{A non-contextual Hidden Variable Model for Quantum
-% Mechanics}}
-\shorttitle{Admissibility of non-contextual HV models in QM} 
-%Non-contextual HV Model for QM} %Insert here a short version of the title if it exceeds 70 characters
+% \title{Revisiting the admissibility of non-contextual hidden variable models in quantum mechanics}
+% % \title{Relexation of functional-consistency allows
+% % a non-contextual hidden variable model for quantum mechanics
+% %\\
+% % \sout{A non-contextual Hidden Variable Model for Quantum
+% % Mechanics}}
+% \shorttitle{Admissibility of non-contextual HV models in QM} 
+% %Non-contextual HV Model for QM} %Insert here a short version of the title if it exceeds 70 characters
 
-\author{Atul Singh Arora\inst{1,2} \and Kishor Bharti\inst{3} \and Arvind\inst{1}}
-\shortauthor{A. S. Arora \etal}
+% \author{Atul Singh Arora\inst{1,2} \and Kishor Bharti\inst{3} \and Arvind\inst{1}}
+% \shortauthor{A. S. Arora \etal}
 
-\institute{                    
-  \inst{1} Indian Institute of Science Education and Research (IISER), Mohali,\\Sector 81 SAS Nagar 140306 Punjab India.\\
-  \inst{2} Centre for Quantum Information and Communication, Ecole polytechnique de Bruxelles, CP 165,\\Universit\'e libre de Bruxelles (ULB), 1050 Brussels, Belgium \\
-  %\inst{2} Universit\'e libre de Bruxelles, \\50 av. F. D. Roosevelt - CP 165/59, B-1050 Brussels, Belgium.\\
-  \inst{3} Centre for Quantum Technologies (CQT), \\National University of Singapore (NUS) -  Block S15, 3 Science Drive 2, Singapore 117543.
-}
+% \institute{                    
+%   \inst{1} Indian Institute of Science Education and Research (IISER), Mohali,\\Sector 81 SAS Nagar 140306 Punjab India.\\
+%   \inst{2} Centre for Quantum Information and Communication, Ecole polytechnique de Bruxelles, CP 165,\\Universit\'e libre de Bruxelles (ULB), 1050 Brussels, Belgium \\
+%   %\inst{2} Universit\'e libre de Bruxelles, \\50 av. F. D. Roosevelt - CP 165/59, B-1050 Brussels, Belgium.\\
+%   \inst{3} Centre for Quantum Technologies (CQT), \\National University of Singapore (NUS) -  Block S15, 3 Science Drive 2, Singapore 117543.
+% }
 
-\pacs{03.65.Ta}{Foundations of quantum mechanics}
-%\pacs{}{}
-% \pacs{nn.mm.xx}{First pacs description}
-% \pacs{nn.mm.xx}{Second pacs description}
-% \pacs{nn.mm.xx}{Third pacs description}
+% \pacs{03.65.Ta}{Foundations of quantum mechanics}
+% %\pacs{}{}
+% % \pacs{nn.mm.xx}{First pacs description}
+% % \pacs{nn.mm.xx}{Second pacs description}
+% % \pacs{nn.mm.xx}{Third pacs description}
+
+%%%%%%%%%%%%%%%%%%Injected from Arvind sir's PLA draft variant%%%%%%%%%%%%%%%
+\usepackage{paralist}
+\usepackage{hyperref}
+%\makeatother
+\usepackage[english]{babel}
+  \providecommand{\definitionname}{Definition}
+  \providecommand{\examplename}{Example}
+  \providecommand{\lemmaname}{Lemma}
+  \providecommand{\propositionname}{Proposition}
+  \providecommand{\remarkname}{Remark}
+  \providecommand{\theoremname}{Theorem}
+  \providecommand{\notationname}{Notation}
+\begin{document}
+\title{Revisiting the admissibility of non-contextual hidden 
+variable models in quantum mechanics}
+%\shorttitle{Admissibility of non-contextual HV models in QM} 
+%\keywords{Non-contextuality, HV Model for QM}
+\author{Atul Singh Arora}
+\ead{atul.singh.arora@ulb.ac.be}
+\address{Department of Physical Sciences,
+Indian Institute of Science Education \&
+Research (IISER) Mohali, Sector 81 SAS Nagar,
+Manauli PO 140306 Punjab India.}
+\address{Centre for Quantum Information and Communication,
+Ecole polytechnique de Bruxelles, CP 165,\\Universit\'e
+libre de Bruxelles (ULB), 1050 Brussels, Belgium}
+\author{Kishor Bharti}
+\ead{kishor.bharti1@gmail.com}
+\address{Centre for Quantum Technologies (CQT), \\National University
+of Singapore (NUS) -  Block S15, 3 Science Drive 2,
+Singapore 117543.  } 
+\author{Arvind}
+\ead{arvind@iisermohali.ac.in}
+\address{Department of Physical Sciences,
+Indian Institute of Science Education \&
+Research (IISER) Mohali, Sector 81 SAS Nagar,
+Manauli PO 140306 Punjab India.}
 
 
-\abstract{ %
+\begin{abstract} %
 We construct a non-contextual
 hidden variable model consistent with all { the}
 kinematic predictions of quantum mechanics (QM). The famous
@@ -153,8 +199,8 @@ the one by Bell, { and}  brings out an interesting
 alternate way of looking at QM. { The results}
 also relate to { the Bohmian}
 model, where it is harder to pin
-down such features.}
-\begin{document}
+down such features.\end{abstract}
+%\begin{document}
 
 \maketitle
 
@@ -678,16 +724,13 @@ final step we choose to measure
 $\hat{A}_{23}(=\hat{\sigma}_{y}\otimes\hat{\sigma}_{y})$,
 to proceed with sequentially measuring
 $\hat{C}_{3}$. \sout{\color{blue} Atul: Kishor could you please verify the calculation.} To simplify calculations, we note
-
-$\left|00\right\rangle
+\[\left|00\right\rangle
 =\frac{1}{\sqrt 2} \left[ \left(\left| \uparrow \downarrow \right\rangle
 +\left|\downarrow \uparrow \right\rangle
 \right)/\sqrt{2}+\left(\left|\uparrow \uparrow \right\rangle
 +\left|\downarrow \downarrow \right\rangle
 \right)/\sqrt{2}\right] , 
-$
-
-with $\ket{\uparrow} = (\ket{0}+i\ket{1})/\sqrt{2}$ and $\ket{\downarrow}=(\ket{0}-i\ket{1})/\sqrt{2}$
+\] with $\ket{\uparrow} = (\ket{0}+i\ket{1})/\sqrt{2}$ and $\ket{\downarrow}=(\ket{0}-i\ket{1})/\sqrt{2}$
 (eigenkets of $\hat{\sigma}_{y}$). Since
 $\left|00\right\rangle$ is manifestly not an
 eigenket of $\hat A_{23}$, we must find an appropriate
@@ -796,6 +839,7 @@ M_{1}(\hat{C}_{3})=-1 & M_{2}(\hat{C}_{3})=-1 & M_{3}(\hat{C}_{3})=-1\\
 \caption{For a given initial state, we apply our HV model to the Peres Mermin square (see Equation \ref{eqn:PM}; $R_j$ ($C_j$) refers to product of the observables along the $j^{\text{th}}$ row (column)) and explicitly write the predictions. At each step encoded by $i$, a value of $c\in[0,1]$ is picked from a uniformly random distribution. This, together with the state, completely specifies the predicted value of each observable which we denote by the map $M_1$. An observable is then selected and measured, which is specified in the second last row  (together with the predicted value assigned to it by the HV model) and the state is then updated to the one specified in the last row using the rules specified by the HV model. This state becomes the initial state for the next step. Note that we are able to assign values to the Peres Mermin square and they exhibit non functional-consistency. To see this, recall that the product of the numbers along any given row should be one if the assignment satisfies functional-consistency but this is not the case even in the very first row of $M_1(\hat A _{ij})$.}
 \label{tbl:HVmodel}
 \end{table*}
+{\sloppy
 The \emph{non functional-consistency} is
 manifest, for $M_{1}(\hat{C}_{3})=-1\neq
 M_{1}(\hat{A}_{13})M_{1}(\hat{A}_{23})M_{1}(\hat{A}_{33})=1$,
@@ -808,16 +852,16 @@ complete state $\left[\left|\psi_{1}\right\rangle
 state $\left|00\right\rangle $ and the HV $c=0.4$.
 The model, however, obeys the \emph{weak functional-consistency} requirement,
 namely,
-$M_{1}(\hat{C}_{3})=M_{1}
-(\hat{A}_{33})M_{2}(\hat{A}_{23})M_{3}(\hat{A}_{13})$,
+\[ M_{1}(\hat{C}_{3})=M_{1}
+(\hat{A}_{33})M_{2}(\hat{A}_{23})M_{3}(\hat{A}_{13}), \]
 where
-$M_{2}:=M(\hat{O},\left[\left|\psi_{2}\right\rangle
-\right])$,
-$M_{3}:=M(\hat{O},\left[\left|\psi_{3}\right\rangle
-\right])$ and $\left|\psi_{2}\right\rangle
-,\,\left|\psi_{3}\right\rangle $ are obtained from
+\[ M_{2}:=M(\hat{O},\left[\left|\psi_{2}\right\rangle
+\right]), \] 
+\[ M_{3}:=M(\hat{O},\left[\left|\psi_{3}\right\rangle
+\right]) \] and $\left|\psi_{2}\right\rangle
+,\,\left|\psi_{3}\right\rangle$ are obtained from
 postulate 3. Note that for each iteration, a new
-HV is generated. 
+HV is generated. }
 % To illustrate \emph{weak functional-consistency}, 
 % we must choose to measure
 % $\hat{A}_{33}$. According to step 3, since
@@ -970,9 +1014,12 @@ in the area of quantum computation. In particular, it has been shown that an est
 
 
 
-\acknowledgments
-ASA and KB acknowledge funding from KVPY, DST, India. Arvind also acknowledges the DST, India, for support through Grant No.
-EMR/2014/000297. ASA acknowledges the Belgian Fonds de la Recherche Scientifique -- FNRS for support through the FRIA grant, numbered F3/5/5MCF/XH/FC16749. KB acknowledges the CQT Graduate Scholarship.
+\section{Acknowledgments}
+{
+  ASA and KB acknowledge funding from KVPY, DST, India. Arvind also acknowledges the DST, India, for support through Grant No.
+  EMR/2014/000297. ASA acknowledges the Belgian Fonds de la Recherche Scientifique (FNRS) for support through 
+  grants no F.4515.16 (QUICTIME), R.50.05.18.F (QuantAlgo) and F3/5/5MCF/XH/ FC16749 (FRIA). KB acknowledges the CQT Graduate Scholarship.
+}
 
 % \begin{thebibliography}{0}
 
@@ -996,7 +1043,7 @@ EMR/2014/000297. ASA acknowledges the Belgian Fonds de la Recherche Scientifique
 %   \Publ{Publishing house, City}
 %   \Year{1939}
 %   \Section{A}.
-\bibliographystyle{unsrt}
+%\bibliographystyle{unsrt}
 \bibliography{references}
 % \end{thebibliography}
 
